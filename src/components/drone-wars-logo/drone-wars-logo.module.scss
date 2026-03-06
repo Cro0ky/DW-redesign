@@ -1,0 +1,22 @@
+.wrapper {
+  @include flex(flex-start, $gap: 6px);
+  width: 100%;
+
+  .text {
+    @include flex(flex-start, flex-start, 4px, column);
+    padding-top: 2px;
+
+    .title {
+      font-size: 24px;
+      font-weight: 1000;
+      text-transform: uppercase;
+      text-wrap: nowrap;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+  }
+}

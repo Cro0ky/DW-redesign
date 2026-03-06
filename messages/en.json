@@ -1,0 +1,11 @@
+{
+  "HomePage": {
+    "title": "Home"
+  },
+
+  "all": {},
+  "header": {
+    "battle": "Battle",
+    "connect_with_code": "Connect using code"
+  }
+}

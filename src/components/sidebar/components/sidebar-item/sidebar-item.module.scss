@@ -1,0 +1,15 @@
+.item {
+  @include flex(center, flex-start, 10px);
+  border-radius: 8px;
+  padding: 10px 12px;
+  width: 100%;
+  transition: 0.24s;
+
+  &:hover {
+    background: rgba(63, 81, 181, 0.15);
+  }
+
+  &:active {
+    background: rgba(94, 110, 204, 0.15);
+  }
+}

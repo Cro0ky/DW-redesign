@@ -1,0 +1,14 @@
+.wrapper {
+  @include flex(flex-start, $gap: 20px, $direction: column);
+  height: calc(100vh - 50px);
+  width: 250px;
+  border-radius: 10px;
+  background: rgba(54, 57, 76, 0.15);
+  padding: 12px 8px;
+
+  .items {
+    @include flex(flex-start, $gap: 4px, $direction: column);
+    height: 100%;
+    width: 100%;
+  }
+}
