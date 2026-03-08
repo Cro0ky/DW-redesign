@@ -1,0 +1,68 @@
+.switcher {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  z-index: 1;
+  background-color: rgba(37, 37, 41, 1);
+  padding: 2px;
+  border-radius: 8px;
+  max-width: 300px;
+
+  &.fullWidth {
+    max-width: unset;
+    width: 100%;
+  }
+
+  .indicator {
+    position: absolute;
+    height: calc(100% - 4px);
+    background: $neutral-30;
+    border-radius: 8px;
+    transition:
+      left 0.25s ease,
+      width 0.25s ease;
+    z-index: 0;
+
+    &.withBorder {
+      outline: 1px solid $error-30;
+    }
+  }
+
+  .switch {
+    @include flex(center, center, 4px);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 16px;
+    color: $white;
+
+    .iconWrapper {
+      @include flex(center, center);
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &:hover {
+      background-color: rgba(74, 74, 74, 0.37);
+    }
+
+    &.fullWidth {
+      width: 100%;
+    }
+
+    &.active {
+      color: $white;
+    }
+  }
+}

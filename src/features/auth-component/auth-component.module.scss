@@ -1,0 +1,63 @@
+.wrapper {
+  @include flex(flex-start, space-between, 12px);
+  position: relative;
+  z-index: 1;
+  border-radius: 24px;
+  background: #121212;
+  width: 720px;
+  height: 540px;
+
+  .content {
+    @include flex(flex-start, space-between, 12px, column);
+    height: 100%;
+    width: 420px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: #1c1c1c;
+    padding: 28px 20px;
+
+    .title {
+      text-align: center;
+      width: 100%;
+      color: $white;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 22px;
+      letter-spacing: 0.2px;
+    }
+
+    .logo {
+      width: 200px;
+    }
+  }
+
+  .info {
+    @include flex(flex-start, space-between, 12px, column);
+    width: 300px;
+    height: 100%;
+    padding: 20px;
+
+    .support {
+      @include flex(flex-start, space-between, 4px, column);
+      width: 100%;
+
+      .title {
+        color: var(--colors-typo-main-20, #6b6b6b);
+
+        font-size: var(--font-caption-c1-fontSize, 14px);
+        font-weight: var(--font-caption-c1-fontWeight-regular, 400);
+        line-height: var(--font-caption-c1-lineHeight, 18px); /* 128.571% */
+        letter-spacing: var(--font-caption-c1-letterSpacing, 0.1px);
+      }
+
+      .email {
+        color: var(--colors-button-ghost-secondary-text-default, #fff);
+        text-align: center;
+        font-size: var(--button-typo-fontSize, 12px);
+        font-weight: var(--typo-component-fontWeight-medium, 500);
+        line-height: var(--button-typo-lineHeight, 16px); /* 133.333% */
+        letter-spacing: var(--typo-component-letterSpacing-main, 0.2px);
+      }
+    }
+  }
+}

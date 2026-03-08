@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 
 import { isAuthenticated } from "@/lib/auth";
-import { routing } from "@/i18n/routing";
 
 import type { ReactNode } from "react";
 

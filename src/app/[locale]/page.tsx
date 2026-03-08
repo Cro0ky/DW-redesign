@@ -1,7 +1,8 @@
 import { redirect } from "next/navigation";
 
 import { isAuthenticated } from "@/lib/auth";
-import { routing } from "@/i18n/routing";
+import styles from "./page.module.scss";
+import { AuthComponent } from "@/features/auth-component/auth-component";
 
 interface ILandingPageProps {
   params: Promise<{ locale: string }>;
@@ -15,9 +16,8 @@ export default async function LandingPage({ params }: ILandingPageProps) {
   }
 
   return (
-    <div style={{ padding: "2rem", textAlign: "center" }}>
-      <h1>Landing</h1>
-      <p>Войдите, чтобы продолжить</p>
+    <div className={styles.page}>
+      <AuthComponent />
     </div>
   );
 }

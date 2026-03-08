@@ -1,6 +1,7 @@
 .wrapper {
   @include flex(flex-start, $gap: 6px);
   width: 100%;
+  max-width: 300px;
 
   .text {
     @include flex(flex-start, flex-start, 4px, column);
@@ -19,4 +20,8 @@
       text-transform: uppercase;
     }
   }
+}
+
+.fullWidth {
+  max-width: unset;
 }

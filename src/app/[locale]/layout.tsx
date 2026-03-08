@@ -7,6 +7,7 @@ import { Header, Sidebar } from "@/components";
 import { routing } from "@/i18n/routing";
 
 import styles from "./layout.module.scss";
+import { isAuthenticated } from "@/lib/auth";
 
 interface IRootLayoutProps {
   children: ReactNode;
@@ -25,14 +26,22 @@ export default async function RootLayout({
 
   setRequestLocale(locale);
 
+  const isAuth = await isAuthenticated();
+
   return (
     <NextIntlClientProvider>
       <div className={styles.wrapper}>
-        <Sidebar />
-        <div className={styles.content}>
-          <Header />
-          {children}
-        </div>
+        {!isAuth ? (
+          <>{children}</>
+        ) : (
+          <>
+            <Sidebar />
+            <div className={styles.content}>
+              <Header />
+              {children}
+            </div>
+          </>
+        )}
       </div>
     </NextIntlClientProvider>
   );

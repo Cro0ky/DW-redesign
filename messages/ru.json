@@ -4,6 +4,25 @@
     "battle": "В бой",
     "connect_with_code": "Подключиться по коду"
   },
+  "auth": {
+    "username": "Логин",
+    "password": "Пароль",
+
+    "write_username": "Введите логин",
+    "write_password": "Введите пароль",
+
+    "login": {
+      "title": "Войти в аккаунт",
+      "button_text": "Авторизоваться"
+    },
+    "registration": {
+      "title": "Регистрация",
+      "button_text": "Зарегистрироваться"
+    },
+    "recover_password": {
+      "title": "Восстановить пароль"
+    }
+  },
   "HomePage": {
     "title": "Главная"
   }
