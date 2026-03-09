@@ -14,10 +14,18 @@
     "email": "Электронная почта",
     "write_username": "Введите логин",
     "write_password": "Введите пароль",
-    "repeat_password": "Повторите пароль",
     "write_email": "Введите пароль",
 
+    "repeat_password": "Повторите пароль",
+    "create_password": "Придумайте пароль",
+    "passwords_dont_match": "Пароли не совпадают",
+
     "support": "Техническая поддержка",
+
+    "errors": {
+      "incorrect_mail_format": "Неправильный формат почты",
+      "password_must_be_least_8_characters": "Пароль должен быть не менее 8 символов"
+    },
 
     "login": {
       "title": "Войти в аккаунт",
@@ -34,5 +42,9 @@
   },
   "HomePage": {
     "title": "Главная"
+  },
+  "errors": {
+    "max_length": "Максимальная длина {length} символа",
+    "min_length": "Минимальная длина {length} символа"
   }
 }

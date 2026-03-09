@@ -11,9 +11,18 @@
   "auth": {
     "username": "Username",
     "password": "Password",
+    "email": "Email",
     "write_username": "Enter username",
     "write_password": "Enter password",
+    "write_email": "Enter email",
+    "repeat_password": "Repeat password",
+    "create_password": "Create password",
+    "passwords_dont_match": "Passwords do not match",
     "support": "Technical Support",
+    "errors": {
+      "incorrect_mail_format": "Invalid email format",
+      "password_must_be_least_8_characters": "Password must be at least 8 characters"
+    },
     "login": {
       "title": "Log in to Account",
       "button_text": "Log In"
@@ -29,5 +38,9 @@
   },
   "HomePage": {
     "title": "Home"
+  },
+  "errors": {
+    "max_length": "Maximum length {length} characters",
+    "min_length": "Minimum length {length} characters"
   }
 }

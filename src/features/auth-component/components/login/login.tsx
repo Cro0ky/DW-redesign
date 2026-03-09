@@ -64,7 +64,7 @@ export const Login = ({ onStepChange }: ILoginProps) => {
             label={t("auth.email")}
             placeholder={t("auth.write_email")}
             value={field.value}
-            error={errors.email?.message}
+            error={errors.email?.message && t(errors.email?.message)}
           />
         )}
       />
@@ -78,7 +78,10 @@ export const Login = ({ onStepChange }: ILoginProps) => {
             type={"password"}
             placeholder={t("auth.write_password")}
             value={field.value}
-            error={errors.password?.message}
+            error={
+              errors.password?.message &&
+              t(errors.password?.message, { length: 64 })
+            }
           />
         )}
       />

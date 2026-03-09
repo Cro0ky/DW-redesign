@@ -65,7 +65,7 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
             type={"email"}
             placeholder={t("auth.write_email")}
             value={field.value}
-            error={errors.email?.message}
+            error={errors.email?.message && t(errors.email?.message)}
           />
         )}
       />
@@ -78,7 +78,7 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
             label={t("auth.username")}
             placeholder={t("auth.write_username")}
             value={field.value}
-            error={errors.username?.message}
+            error={errors.username?.message && t(errors.username?.message)}
           />
         )}
       />
@@ -88,11 +88,14 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
         render={({ field }) => (
           <Input
             {...field}
-            label={t("Придумайте пароль")}
+            label={t("auth.create_password")}
             type={"password"}
             placeholder={t("auth.write_password")}
             value={field.value}
-            error={errors.password?.message}
+            error={
+              errors.password?.message &&
+              t(errors.password?.message, { length: 64 })
+            }
           />
         )}
       />
@@ -107,7 +110,10 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
             type={"password"}
             placeholder={t("auth.repeat_password")}
             value={field.value}
-            error={errors.confirm_password?.message}
+            error={
+              errors.confirm_password?.message &&
+              t(errors.confirm_password?.message, { length: 64 })
+            }
           />
         )}
       />

@@ -11,9 +11,18 @@
   "auth": {
     "username": "用户名",
     "password": "密码",
+    "email": "电子邮箱",
     "write_username": "输入用户名",
     "write_password": "输入密码",
+    "write_email": "输入邮箱",
+    "repeat_password": "重复密码",
+    "create_password": "创建密码",
+    "passwords_dont_match": "密码不一致",
     "support": "技术支持",
+    "errors": {
+      "incorrect_mail_format": "邮箱格式不正确",
+      "password_must_be_least_8_characters": "密码至少需要8个字符"
+    },
     "login": {
       "title": "登录账户",
       "button_text": "登录"
@@ -29,5 +38,9 @@
   },
   "HomePage": {
     "title": "主页"
+  },
+  "errors": {
+    "max_length": "最大长度 {length} 个字符",
+    "min_length": "最小长度 {length} 个字符"
   }
 }

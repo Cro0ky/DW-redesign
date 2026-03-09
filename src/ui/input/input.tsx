@@ -20,6 +20,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
       className,
       disabled,
       type,
+      value,
       ...otherProps
     },
     ref,
@@ -47,6 +48,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
               className={styles.input}
               disabled={disabled}
               aria-invalid={!!error}
+              value={value ?? ""}
               {...otherProps}
             />
           </div>
