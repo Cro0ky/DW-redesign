@@ -5,9 +5,9 @@ import { ReactNode } from "react";
 
 import { Header, Sidebar } from "@/components";
 import { routing } from "@/i18n/routing";
+import { isAuthenticated } from "@/lib/auth";
 
 import styles from "./layout.module.scss";
-import { isAuthenticated } from "@/lib/auth";
 
 interface IRootLayoutProps {
   children: ReactNode;

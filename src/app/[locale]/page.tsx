@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 
-import { isAuthenticated } from "@/lib/auth";
-import styles from "./page.module.scss";
 import { AuthComponent } from "@/features/auth-component/auth-component";
+import { isAuthenticated } from "@/lib/auth";
+
+import styles from "./page.module.scss";
 
 interface ILandingPageProps {
   params: Promise<{ locale: string }>;

@@ -1,3 +1,5 @@
-export { Header } from "./header/header";
-export { Sidebar } from "./sidebar/sidebar";
 export { DroneWarsLogo } from "./drone-wars-logo/drone-wars-logo";
+export { Header } from "./header/header";
+export { MailRuCounter } from "./metrika/MailRuCounter";
+export { YandexMetrika } from "./metrika/YandexMetrika";
+export { Sidebar } from "./sidebar/sidebar";

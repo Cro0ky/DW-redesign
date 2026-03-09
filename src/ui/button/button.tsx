@@ -3,8 +3,9 @@
 import cn from "classnames";
 import { forwardRef, type MouseEvent } from "react";
 
-import styles from "./button.module.scss";
 import { IButtonProps } from "@/ui";
+
+import styles from "./button.module.scss";
 
 export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
   (props, ref) => {

@@ -1,10 +1,33 @@
 {
-  "HomePage": {
-    "title": "首页"
-  },
   "all": {},
   "header": {
-    "battle": "對戰",
-    "connect_with_code": "使用代碼連接"
+    "battle": "开始战斗",
+    "connect_with_code": "使用代码连接"
+  },
+  "banner": {
+    "title": "无人机对战",
+    "subtitle": "乌克兰"
+  },
+  "auth": {
+    "username": "用户名",
+    "password": "密码",
+    "write_username": "输入用户名",
+    "write_password": "输入密码",
+    "support": "技术支持",
+    "login": {
+      "title": "登录账户",
+      "button_text": "登录"
+    },
+    "registration": {
+      "title": "注册",
+      "button_text": "注册"
+    },
+    "recover_password": {
+      "title": "找回密码",
+      "button_text": "恢复"
+    }
+  },
+  "HomePage": {
+    "title": "主页"
   }
 }

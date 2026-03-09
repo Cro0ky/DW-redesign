@@ -1,5 +1,7 @@
 import { FC, ReactNode } from "react";
+
 import { Link } from "@/i18n/routing";
+
 import styles from "./sidebar-item.module.scss";
 
 interface ISidebarItem {

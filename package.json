@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@yandex/smart-captcha": "^2.9.1",
     "classnames": "^2.5.1",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",

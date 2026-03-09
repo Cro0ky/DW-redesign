@@ -1,7 +1,8 @@
-import styles from "./sidebar.module.scss";
-import { useSidebar } from "./hooks/useSidebar";
 import { DroneWarsLogo } from "@/components";
-import { SupportComponent, SidebarItem } from "./components";
+
+import { SidebarItem,SupportComponent } from "./components";
+import { useSidebar } from "./hooks/useSidebar";
+import styles from "./sidebar.module.scss";
 
 export const Sidebar = () => {
   const { DEFAULT_SIDEBAR_ITEMS } = useSidebar();

@@ -39,6 +39,7 @@
 
     .iconWrapper {
       @include flex(center, center);
+      cursor: pointer;
       flex-shrink: 0;
 
       svg {

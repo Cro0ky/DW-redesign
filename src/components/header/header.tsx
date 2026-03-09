@@ -1,10 +1,10 @@
 import { Binary, Swords } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/ui";
+import { IButtonProps } from "@/ui";
 
 import styles from "./header.module.scss";
-import { IButtonProps } from "@/ui";
-import { useTranslations } from "next-intl";
 
 export const Header = () => {
   const t = useTranslations();

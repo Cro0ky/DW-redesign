@@ -1,8 +1,9 @@
 "use client";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
-import styles from "./switcher.module.scss";
 import cn from "classnames";
+import { ReactNode, useEffect, useRef, useState } from "react";
+
+import styles from "./switcher.module.scss";
 
 interface ISwitcherProps<T> {
   onClick: (value: T) => void;

@@ -5,7 +5,9 @@
   border-radius: 24px;
   background: #121212;
   width: 720px;
-  height: 540px;
+  max-height: 650px;
+  min-height: 500px;
+  height: 100%;
 
   .content {
     @include flex(flex-start, space-between, 12px, column);
@@ -42,21 +44,32 @@
       width: 100%;
 
       .title {
-        color: var(--colors-typo-main-20, #6b6b6b);
+        color: #6b6b6b;
 
-        font-size: var(--font-caption-c1-fontSize, 14px);
-        font-weight: var(--font-caption-c1-fontWeight-regular, 400);
-        line-height: var(--font-caption-c1-lineHeight, 18px); /* 128.571% */
-        letter-spacing: var(--font-caption-c1-letterSpacing, 0.1px);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0.1px;
       }
 
-      .email {
-        color: var(--colors-button-ghost-secondary-text-default, #fff);
+      .mail {
+        @include flex(center, $gap: 6px);
         text-align: center;
-        font-size: var(--button-typo-fontSize, 12px);
-        font-weight: var(--typo-component-fontWeight-medium, 500);
-        line-height: var(--button-typo-lineHeight, 16px); /* 133.333% */
-        letter-spacing: var(--typo-component-letterSpacing-main, 0.2px);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16px;
+        letter-spacing: 0.2px;
+        transition: 0.2s;
+        cursor: pointer;
+        margin-bottom: 10px;
+
+        &:hover {
+          color: #b5b5b5;
+        }
+
+        &:active {
+          color: $white;
+        }
       }
     }
   }

@@ -1,6 +1,8 @@
-import styles from "./support-component.module.scss";
-import { Button } from "@/ui";
 import { ChevronRight, MessageCirclePlus } from "lucide-react";
+
+import { Button } from "@/ui";
+
+import styles from "./support-component.module.scss";
 
 export const SupportComponent = () => {
   return (

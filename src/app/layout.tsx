@@ -2,8 +2,9 @@ import "../styles/globals.scss";
 
 import type { Metadata } from "next";
 import { Oswald, Roboto_Condensed, Roboto_Flex } from "next/font/google";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 
+import { MailRuCounter, YandexMetrika } from "@/components";
 import { routing } from "@/i18n/routing";
 
 const roboto = Roboto_Condensed({
@@ -54,7 +55,13 @@ export default function AppLayout({ children }: Readonly<IAppLayoutProps>) {
       <head>
         <meta name="google" content="notranslate" />
       </head>
-      <body>{children}</body>
+      <body>
+        <Suspense>
+          <YandexMetrika />
+          <MailRuCounter />
+        </Suspense>
+        {children}
+      </body>
     </html>
   );
 }

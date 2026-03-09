@@ -1,11 +1,33 @@
 {
-  "HomePage": {
-    "title": "Home"
-  },
-
   "all": {},
   "header": {
     "battle": "Battle",
-    "connect_with_code": "Connect using code"
+    "connect_with_code": "Connect with Code"
+  },
+  "banner": {
+    "title": "Drone Battle",
+    "subtitle": "Ukraine"
+  },
+  "auth": {
+    "username": "Username",
+    "password": "Password",
+    "write_username": "Enter username",
+    "write_password": "Enter password",
+    "support": "Technical Support",
+    "login": {
+      "title": "Log in to Account",
+      "button_text": "Log In"
+    },
+    "registration": {
+      "title": "Registration",
+      "button_text": "Register"
+    },
+    "recover_password": {
+      "title": "Recover Password",
+      "button_text": "Recover"
+    }
+  },
+  "HomePage": {
+    "title": "Home"
   }
 }

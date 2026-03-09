@@ -6,18 +6,18 @@ import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import type { TAuthStep } from "@/features/auth-component/auth-component";
-import { useLoginSchema } from "@/schemes";
+import { useRegistrationSchema } from "@/schemes";
 import { Button, Input } from "@/ui";
 
-import styles from "./login.module.scss";
+import styles from "./registration.module.scss";
 
-interface ILoginProps {
+interface IRegistrationProps {
   onStepChange: (step: TAuthStep) => void;
 }
 
-export const Login = ({ onStepChange }: ILoginProps) => {
-  const { loginSchema } = useLoginSchema();
-  type LoginSchema = z.infer<typeof loginSchema>;
+export const Registration = ({ onStepChange }: IRegistrationProps) => {
+  const { registrationSchema } = useRegistrationSchema();
+  type RegistrationSchema = z.infer<typeof registrationSchema>;
   const t = useTranslations();
 
   const [token, setToken] = useState("");
@@ -27,14 +27,14 @@ export const Login = ({ onStepChange }: ILoginProps) => {
     control,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<LoginSchema>({
+  } = useForm<RegistrationSchema>({
     shouldFocusError: false,
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(registrationSchema),
     mode: "onChange",
     reValidateMode: "onChange",
   });
 
-  const onSubmit = async (data: LoginSchema) => {
+  const onSubmit = async (data: RegistrationSchema) => {
     try {
       console.log(data);
     } catch {
@@ -62,9 +62,23 @@ export const Login = ({ onStepChange }: ILoginProps) => {
           <Input
             {...field}
             label={t("auth.email")}
+            type={"email"}
             placeholder={t("auth.write_email")}
             value={field.value}
             error={errors.email?.message}
+          />
+        )}
+      />
+      <Controller
+        name="username"
+        control={control}
+        render={({ field }) => (
+          <Input
+            {...field}
+            label={t("auth.username")}
+            placeholder={t("auth.write_username")}
+            value={field.value}
+            error={errors.username?.message}
           />
         )}
       />
@@ -74,7 +88,7 @@ export const Login = ({ onStepChange }: ILoginProps) => {
         render={({ field }) => (
           <Input
             {...field}
-            label={t("auth.password")}
+            label={t("Придумайте пароль")}
             type={"password"}
             placeholder={t("auth.write_password")}
             value={field.value}
@@ -82,6 +96,22 @@ export const Login = ({ onStepChange }: ILoginProps) => {
           />
         )}
       />
+
+      <Controller
+        name="confirm_password"
+        control={control}
+        render={({ field }) => (
+          <Input
+            {...field}
+            label={t("auth.repeat_password")}
+            type={"password"}
+            placeholder={t("auth.repeat_password")}
+            value={field.value}
+            error={errors.confirm_password?.message}
+          />
+        )}
+      />
+
       <div className={styles.buttons}>
         <div className={styles.capcha}>
           <SmartCaptcha
@@ -91,17 +121,17 @@ export const Login = ({ onStepChange }: ILoginProps) => {
           />
         </div>
         <Button
-          children={t("auth.login.button_text")}
+          children={t("auth.registration.button_text")}
           disabled={!isValid || isDisabled}
           fullWidth
           type={"submit"}
         />
         <Button
-          children={t("auth.registration.button_text")}
-          onClick={() => onStepChange("registration")}
-          color={"gray"}
-          type={"button"}
+          color="gray"
           fullWidth
+          type="button"
+          onClick={() => onStepChange("login")}
+          children={t("auth.login.button_text")}
         />
       </div>
       {error && <span className={styles.error}>{error}</span>}

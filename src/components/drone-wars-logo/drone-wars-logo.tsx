@@ -1,13 +1,17 @@
-import styles from "./drone-wars-logo.module.scss";
-import { DroneLogo } from "@/assets/svg";
-import { FC } from "react";
 import cn from "classnames";
+import { useTranslations } from "next-intl";
+import { FC } from "react";
+
+import { DroneLogo } from "@/assets/svg";
+
+import styles from "./drone-wars-logo.module.scss";
 
 interface DroneWarsLogoProps {
   fullWidth?: boolean;
 }
 
 export const DroneWarsLogo: FC<DroneWarsLogoProps> = ({ fullWidth = true }) => {
+  const t = useTranslations();
   return (
     <div
       className={cn(styles.wrapper, {
@@ -18,8 +22,8 @@ export const DroneWarsLogo: FC<DroneWarsLogoProps> = ({ fullWidth = true }) => {
         <DroneLogo />
       </div>
       <div className={styles.text}>
-        <span className={styles.title}>БИТВА ДРОНОВ</span>
-        <span className={styles.subtitle}>Украина</span>
+        <span className={styles.title}>{t("banner.title").toUpperCase()}</span>
+        <span className={styles.subtitle}>{t("banner.subtitle")}</span>
       </div>
     </div>
   );

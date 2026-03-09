@@ -4,12 +4,20 @@
     "battle": "В бой",
     "connect_with_code": "Подключиться по коду"
   },
+  "banner": {
+    "title": "Битва Дронов",
+    "subtitle": "Украина"
+  },
   "auth": {
     "username": "Логин",
     "password": "Пароль",
-
+    "email": "Электронная почта",
     "write_username": "Введите логин",
     "write_password": "Введите пароль",
+    "repeat_password": "Повторите пароль",
+    "write_email": "Введите пароль",
+
+    "support": "Техническая поддержка",
 
     "login": {
       "title": "Войти в аккаунт",
@@ -20,7 +28,8 @@
       "button_text": "Зарегистрироваться"
     },
     "recover_password": {
-      "title": "Восстановить пароль"
+      "title": "Восстановить пароль",
+      "button_text": "Восстановить"
     }
   },
   "HomePage": {

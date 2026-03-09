@@ -1,10 +1,12 @@
 "use client";
 
 import cn from "classnames";
-import { forwardRef } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import { forwardRef, useState } from "react";
+
+import type { IInputProps } from "@/ui";
 
 import styles from "./input.module.scss";
-import type { IInputProps } from "@/ui";
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>(
   (
@@ -17,10 +19,12 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
       iconRight,
       className,
       disabled,
+      type,
       ...otherProps
     },
     ref,
   ) => {
+    const [localType, setLocalType] = useState(type);
     return (
       <div
         className={cn(styles.container, {
@@ -39,13 +43,26 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
           <div className={styles.inputContainer}>
             <input
               ref={ref}
+              type={localType}
               className={styles.input}
               disabled={disabled}
               aria-invalid={!!error}
               {...otherProps}
             />
           </div>
-          {iconRight && <div className={styles.iconWrapper}>{iconRight}</div>}
+          {(iconRight || type === "password") && (
+            <div className={styles.iconWrapper}>
+              {type === "password" ? (
+                localType !== "password" ? (
+                  <Eye onClick={() => setLocalType("password")} />
+                ) : (
+                  <EyeOff onClick={() => setLocalType("text")} />
+                )
+              ) : (
+                iconRight
+              )}
+            </div>
+          )}
         </div>
         {error && (
           <span className={styles.error} role="alert">

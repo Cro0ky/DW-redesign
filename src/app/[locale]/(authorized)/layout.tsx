@@ -1,8 +1,7 @@
 import { redirect } from "next/navigation";
+import type { ReactNode } from "react";
 
 import { isAuthenticated } from "@/lib/auth";
-
-import type { ReactNode } from "react";
 
 interface IAuthorizedLayoutProps {
   children: ReactNode;
