@@ -26,3 +26,7 @@ export interface IAuthResponse {
   token?: string;
   user?: { id: string; email: string };
 }
+
+export interface ILogoutRequest {
+  refresh: string;
+}

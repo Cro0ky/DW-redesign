@@ -1,5 +1,7 @@
-import { IModalProps, Portal } from "@/ui";
 import { FC } from "react";
+
+import { IModalProps, Portal } from "@/ui";
+
 import { ModalWrapper } from "./components/modal-wrapper/modal-wrapper";
 
 export const Modal: FC<IModalProps> = ({

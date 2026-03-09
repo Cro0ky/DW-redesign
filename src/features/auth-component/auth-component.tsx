@@ -14,6 +14,7 @@ import type { TLanguage } from "@/i18n/types";
 import { Switcher } from "@/ui";
 
 import styles from "./auth-component.module.scss";
+import cn from "classnames";
 
 export type TAuthStep = "login" | "registration" | "recover_password";
 
@@ -24,9 +25,14 @@ export const AuthComponent = () => {
   const { handleChangeLocale } = useChangeLocale();
   const { LANGUAGES, step, renderForm } = useAuthComponent();
 
+  const changingStep = step === "login";
   return (
     <div className={styles.wrapper}>
-      <div className={styles.content}>
+      <div
+        className={cn(styles.content, {
+          [styles.content_changed]: changingStep,
+        })}
+      >
         <AuthFormTransition
           step={step}
           renderForm={(displayStep) => (
@@ -39,7 +45,11 @@ export const AuthComponent = () => {
           )}
         />
       </div>
-      <div className={styles.info}>
+      <div
+        className={cn(styles.info, {
+          [styles.info_changed]: changingStep,
+        })}
+      >
         <DroneWarsLogo fullWidth={false} />
         <div className={styles.support}>
           <span className={styles.title}>{t("auth.support")}:</span>

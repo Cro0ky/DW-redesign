@@ -1,17 +1,16 @@
+import { deleteCookie } from "cookies-next";
 import Cookies from "js-cookie";
 import { create } from "zustand";
 
 import { authService } from "@/lib/api/services/auth.service";
+import { getDomain } from "@/utils/getDomain";
 import {
   type IAccount,
   type ILoginPayload,
   type IRegisterPayload,
 } from "@/lib/api/services/auth.types";
 
-export type TAuthPage =
-  | "login"
-  | "account_selection"
-  | "verify_email";
+export type TAuthPage = "login" | "account_selection" | "verify_email";
 
 interface IUser {
   id: string;
@@ -123,10 +122,17 @@ export const useAuthStore = create<IAuthState>((set) => ({
   logout: async () => {
     set({ isLoading: true });
     try {
-      await authService.logout();
+      const refresh = Cookies.get(COOKIE_REFRESH);
+      await authService.logout({ refresh: refresh ?? "" });
     } catch {
       // ignore
     } finally {
+      const domain = getDomain();
+      const opts = ["localhost", "127.0.0.1"].includes(domain)
+        ? {}
+        : { domain };
+      deleteCookie(COOKIE_ACCESS, opts);
+      deleteCookie(COOKIE_REFRESH, opts);
       set({ user: null, isLoading: false, error: null });
     }
   },
