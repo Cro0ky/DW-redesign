@@ -11,16 +11,19 @@ export const useAuthComponent = () => {
     setStep(newStep);
   }, []);
 
-  const getCurrentForm = useCallback(() => {
-    switch (step) {
-      case "login":
-        return <Login onStepChange={handleChangeStep} />;
-      case "registration":
-        return <Registration onStepChange={handleChangeStep} />;
-      case "recover_password":
-        return <div />;
-    }
-  }, [step, handleChangeStep]);
+  const renderForm = useCallback(
+    (formStep: TAuthStep) => {
+      switch (formStep) {
+        case "login":
+          return <Login onStepChange={handleChangeStep} />;
+        case "registration":
+          return <Registration onStepChange={handleChangeStep} />;
+        case "recover_password":
+          return <div />;
+      }
+    },
+    [handleChangeStep],
+  );
 
   const LANGUAGES = [
     {
@@ -39,5 +42,5 @@ export const useAuthComponent = () => {
       icon: <CnFlag />,
     },
   ];
-  return { getCurrentForm, handleChangeStep, step, LANGUAGES };
+  return { renderForm, handleChangeStep, step, LANGUAGES };
 };

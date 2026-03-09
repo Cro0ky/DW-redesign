@@ -11,6 +11,7 @@ export const useLoginSchema = () => {
       .nonempty({ message: "auth.write_password" })
       .min(8, { message: "auth.errors.password_must_be_least_8_characters" })
       .max(64, { message: "errors.max_length" }),
+    save_me: z.boolean(),
   });
 
   return { loginSchema };

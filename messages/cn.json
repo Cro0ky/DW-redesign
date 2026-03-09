@@ -24,6 +24,7 @@
       "password_must_be_least_8_characters": "密码至少需要8个字符"
     },
     "login": {
+      "save_me": "记住我",
       "title": "登录账户",
       "button_text": "登录"
     },

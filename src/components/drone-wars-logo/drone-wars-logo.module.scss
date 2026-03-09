@@ -1,7 +1,8 @@
 .wrapper {
   @include flex(flex-start, $gap: 6px);
-  width: 100%;
   max-width: 300px;
+  cursor: pointer;
+  width: 100%;
 
   .text {
     @include flex(flex-start, flex-start, 4px, column);

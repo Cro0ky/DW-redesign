@@ -4,7 +4,10 @@ import { Mail } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { DroneWarsLogo } from "@/components";
-import { SUPPORT_MAIL } from "@/features/auth-component/components";
+import {
+  AuthFormTransition,
+  SUPPORT_MAIL,
+} from "@/features/auth-component/components";
 import { useAuthComponent } from "@/features/auth-component/hooks/useAuthComponent";
 import { useChangeLocale } from "@/hooks/useChageLocale";
 import type { TLanguage } from "@/i18n/types";
@@ -19,13 +22,22 @@ export const AuthComponent = () => {
   const locale = useLocale() as TLanguage;
 
   const { handleChangeLocale } = useChangeLocale();
-  const { LANGUAGES, step, getCurrentForm } = useAuthComponent();
+  const { LANGUAGES, step, renderForm } = useAuthComponent();
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        <div className={styles.title}>{t(`auth.${step}.title`)}</div>
-        {getCurrentForm()}
+        <AuthFormTransition
+          step={step}
+          renderForm={(displayStep) => (
+            <>
+              <div className={styles.title}>
+                {t(`auth.${displayStep}.title`)}
+              </div>
+              {renderForm(displayStep)}
+            </>
+          )}
+        />
       </div>
       <div className={styles.info}>
         <DroneWarsLogo fullWidth={false} />

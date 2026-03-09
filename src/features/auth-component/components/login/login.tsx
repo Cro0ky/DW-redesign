@@ -1,12 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SmartCaptcha } from "@yandex/smart-captcha";
-import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import type { TAuthStep } from "@/features/auth-component/auth-component";
 import { useLoginSchema } from "@/schemes";
+import { useAuthStore } from "@/stores";
 import { Button, Input } from "@/ui";
 
 import styles from "./login.module.scss";
@@ -19,9 +20,10 @@ export const Login = ({ onStepChange }: ILoginProps) => {
   const { loginSchema } = useLoginSchema();
   type LoginSchema = z.infer<typeof loginSchema>;
   const t = useTranslations();
+  const locale = useLocale();
 
   const [token, setToken] = useState("");
-  const [error, setError] = useState("");
+  const { login, error, clearError, isLoading } = useAuthStore();
 
   const {
     control,
@@ -32,27 +34,41 @@ export const Login = ({ onStepChange }: ILoginProps) => {
     resolver: zodResolver(loginSchema),
     mode: "onChange",
     reValidateMode: "onChange",
+    defaultValues: { save_me: false },
   });
 
+  useEffect(() => {
+    return () => clearError();
+  }, [clearError]);
+
   const onSubmit = async (data: LoginSchema) => {
-    try {
-      console.log(data);
-    } catch {
-      setError("Ошибка авторизации, проверьте введенные данные!");
-    }
+    const domain =
+      typeof window !== "undefined"
+        ? new URL(window.location.origin).hostname
+        : undefined;
+
+    await login(data, token, {
+      onSuccess: (path) => {
+        const target = path ?? "/home";
+        window.location.href = `/${locale}${target}`;
+      },
+      domain,
+    });
   };
 
-  const isDisabled = [
-    "http://localhost:3000",
-    "https://dev.lobby.dronewars.su",
-  ].includes(window.location.origin)
-    ? false
-    : !token;
+  const isDisabled =
+    typeof window === "undefined"
+      ? true
+      : ["http://localhost:3000", "https://dev.lobby.dronewars.su"].includes(
+            window.location.origin,
+          )
+        ? false
+        : !token;
 
   return (
     <form
       className={styles.form}
-      onFocus={() => setError("")}
+      onFocus={() => clearError()}
       onSubmit={handleSubmit(onSubmit)}
     >
       <Controller
@@ -85,6 +101,21 @@ export const Login = ({ onStepChange }: ILoginProps) => {
           />
         )}
       />
+      <Controller
+        name="save_me"
+        control={control}
+        render={({ field }) => (
+          <label className={styles.saveMe}>
+            <input
+              type="checkbox"
+              checked={field.value ?? false}
+              onChange={(e) => field.onChange(e.target.checked)}
+              onBlur={field.onBlur}
+            />
+            <span>{t("auth.login.save_me")}</span>
+          </label>
+        )}
+      />
       <div className={styles.buttons}>
         <div className={styles.capcha}>
           <SmartCaptcha
@@ -95,9 +126,9 @@ export const Login = ({ onStepChange }: ILoginProps) => {
         </div>
         <Button
           children={t("auth.login.button_text")}
-          disabled={!isValid || isDisabled}
-          fullWidth
+          disabled={!isValid || isDisabled || isLoading}
           type={"submit"}
+          fullWidth
         />
         <Button
           children={t("auth.registration.button_text")}

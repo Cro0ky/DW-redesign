@@ -1,0 +1,24 @@
+.formWrapper {
+  @include flex(flex-start, space-between, 12px, column);
+  transition: opacity 0.2s ease-in-out;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+
+  &.exiting {
+    opacity: 0;
+  }
+
+  &.entering {
+    animation: fadeIn 0.2s ease-out forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

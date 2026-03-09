@@ -24,6 +24,7 @@
       "password_must_be_least_8_characters": "Password must be at least 8 characters"
     },
     "login": {
+      "save_me": "Remember me",
       "title": "Log in to Account",
       "button_text": "Log In"
     },

@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-const AUTH_COOKIE = "auth";
+const AUTH_COOKIE = "jwt-access";
 
 export async function isAuthenticated(): Promise<boolean> {
   const cookieStore = await cookies();
