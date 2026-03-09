@@ -101,21 +101,24 @@ export const Login = ({ onStepChange }: ILoginProps) => {
           />
         )}
       />
-      <Controller
-        name="save_me"
-        control={control}
-        render={({ field }) => (
-          <label className={styles.saveMe}>
-            <input
-              type="checkbox"
-              checked={field.value ?? false}
-              onChange={(e) => field.onChange(e.target.checked)}
-              onBlur={field.onBlur}
-            />
-            <span>{t("auth.login.save_me")}</span>
-          </label>
-        )}
-      />
+      <div className={styles.save_me}>
+        <Controller
+          name="save_me"
+          control={control}
+          render={({ field }) => (
+            <label className={styles.save_me_text}>
+              <input
+                type="checkbox"
+                checked={field.value ?? false}
+                onChange={(e) => field.onChange(e.target.checked)}
+                onBlur={field.onBlur}
+              />
+              <span>{t("auth.login.save_me")}</span>
+            </label>
+          )}
+        />
+        <span className={styles.forgot_password}>Забыли пароль?</span>
+      </div>
       <div className={styles.buttons}>
         <div className={styles.capcha}>
           <SmartCaptcha
