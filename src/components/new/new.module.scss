@@ -1,0 +1,84 @@
+.wrapper {
+  @include flex(flex-start, $gap: 12px, $direction: column);
+  max-width: 400px;
+  min-width: 350px;
+  height: 330px;
+  padding: 16px 16px 10px;
+  flex: 1 0 0;
+  border-radius: 10px;
+  background: rgba(90, 93, 117, 0.05);
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+
+  &:hover {
+    scale: 1.02;
+  }
+
+  .preview {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  .title {
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .description {
+    max-width: 100%;
+    max-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0.2px;
+  }
+
+  .published_date {
+    width: 100%;
+    color: #c8c5ca;
+    text-align: right;
+    font-size: 14px;
+    margin-top: auto;
+  }
+
+  .indicator {
+    @include flex(center, center);
+    background-color: $accent-60;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 25px;
+    right: 25px;
+    border-radius: 50%;
+    animation: indicatorShake 5s ease-in-out infinite;
+  }
+}
+
+@keyframes indicatorShake {
+  0%,
+  90%,
+  100% {
+    transform: translateX(0) rotate(10deg);
+  }
+  92% {
+    transform: translateX(-2px) rotate(20deg);
+  }
+  94% {
+    transform: translateX(2px) rotate(0deg);
+  }
+  96% {
+    transform: translateX(-2px) rotate(-20deg);
+  }
+  98% {
+    transform: translateX(2px) rotate(0deg);
+  }
+}

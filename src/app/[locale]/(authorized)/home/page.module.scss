@@ -1,6 +1,6 @@
 .page {
   @include flex(flex-start, flex-start, 20px, column);
-  height: 100%;
+  max-height: calc(100% - 50px);
   width: 100%;
 
   .banner {
