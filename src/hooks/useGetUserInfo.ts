@@ -3,7 +3,7 @@ import { useLayoutEffect } from "react";
 
 import { useClearCookiesAndRedirect } from "@/hooks/useClearCookiesAndRedirect";
 import { userService } from "@/lib/api/services/user/user.service";
-import { useUserStore } from "@/stores";
+import { useUserStore } from "@/store";
 import { getUserUuid } from "@/utils/getUserUuid";
 
 export const useGetUserInfo = () => {

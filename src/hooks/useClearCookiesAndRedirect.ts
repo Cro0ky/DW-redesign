@@ -3,7 +3,7 @@
 import { useLocale } from "next-intl";
 import { useCallback } from "react";
 
-import { useAuthStore } from "@/stores";
+import { useAuthStore } from "@/store";
 
 export const useClearCookiesAndRedirect = () => {
   const locale = useLocale();

@@ -8,7 +8,7 @@ import { useChangeLocale } from "@/hooks/useChageLocale";
 import { useClearCookiesAndRedirect } from "@/hooks/useClearCookiesAndRedirect";
 import { useRouter } from "@/i18n/routing";
 import type { TLanguage } from "@/i18n/types";
-import { useUserStore } from "@/stores";
+import { useUserStore } from "@/store";
 import { Switcher } from "@/ui";
 
 import styles from "./header-drop-down.module.scss";

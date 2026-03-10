@@ -1,7 +1,11 @@
 import { getCookie } from "cookies-next";
 import { jwtDecode } from "jwt-decode";
 
-export const getUserUuid = () => {
+interface IAccessTokenPayload {
+  user_id: string;
+}
+
+export const getUserUuid = (): IAccessTokenPayload | null => {
   const jwt = getCookie("jwt-access");
 
   if (!jwt || typeof jwt !== "string") {
@@ -10,7 +14,7 @@ export const getUserUuid = () => {
   }
 
   try {
-    return jwtDecode(jwt);
+    return jwtDecode<IAccessTokenPayload>(jwt);
   } catch (error) {
     console.error("Ошибка декодирования JWT:", error);
     return null;

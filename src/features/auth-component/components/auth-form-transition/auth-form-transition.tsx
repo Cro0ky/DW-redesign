@@ -14,12 +14,14 @@ interface IAuthFormTransitionProps {
 
 const TRANSITION_DURATION = 200;
 
+type TPhase = "idle" | "exiting" | "entering";
+
 export const AuthFormTransition = ({
   step,
   renderForm,
 }: IAuthFormTransitionProps) => {
   const [displayStep, setDisplayStep] = useState<TAuthStep>(step);
-  const [phase, setPhase] = useState<"idle" | "exiting" | "entering">("idle");
+  const [phase, setPhase] = useState<TPhase>("idle");
   const enteringKey = useRef(0);
 
   useEffect(() => {

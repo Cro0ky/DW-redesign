@@ -7,7 +7,7 @@ import { z } from "zod";
 
 import type { TAuthStep } from "@/features/auth-component/auth-component";
 import { useLoginSchema } from "@/schemes";
-import { useAuthStore } from "@/stores";
+import { useAuthStore } from "@/store";
 import { Button, Input } from "@/ui";
 
 import styles from "./login.module.scss";

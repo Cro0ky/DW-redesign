@@ -1,6 +1,6 @@
 "use client";
 
-import { useUserStore } from "@/stores";
+import { useUserStore } from "@/store";
 
 import { Frame } from "./components/frame/frame";
 import styles from "./mini-profile.module.scss";
