@@ -11,3 +11,21 @@
   flex-flow: $direction $wrap;
   gap: $gap;
 }
+
+@mixin scrollbar() {
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #232125;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 10px 0;
+  }
+}

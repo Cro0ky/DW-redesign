@@ -4,6 +4,10 @@
   height: 100vh;
   width: 100%;
 
+  @media (max-width: 1400px) {
+    padding: 20px 80px;
+  }
+
   .content {
     @include flex(flex-start, $gap: 10px, $direction: column);
     max-width: 1200px;

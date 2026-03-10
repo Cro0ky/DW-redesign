@@ -8,6 +8,7 @@
 
   .items {
     @include flex(flex-start, $gap: 4px, $direction: column);
+    @include scrollbar();
     height: 100%;
     width: 100%;
   }
