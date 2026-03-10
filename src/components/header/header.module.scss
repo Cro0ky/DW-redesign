@@ -7,4 +7,21 @@
   .buttons {
     @include flex(center, center, 10px);
   }
+
+  .profile {
+    @include flex(center, center, 2px);
+    transition: 0.3s;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 4px 4px 2px;
+    position: relative;
+
+    --height: 230px;
+
+    &:hover {
+      background-color: rgba(80, 77, 77, 0.1);
+    }
+  }
 }
+
+

@@ -1,0 +1,108 @@
+.info {
+  position: absolute;
+  top: 100%;
+  right: 0;
+
+  width: 260px;
+  height: var(--height);
+  border-radius: 12px;
+  transition: 0.3s;
+  overflow: hidden;
+
+  border: 1px solid rgba(90, 93, 117, 0);
+  background: #0b0d17;
+
+  opacity: 0;
+  pointer-events: none;
+
+  &.isOpen {
+    opacity: 1;
+    pointer-events: auto;
+    animation: fadeIn 0.24s ease-out forwards;
+  }
+
+  &.isClosing {
+    animation: fadeOut 0.24s ease-in forwards;
+  }
+
+  .head {
+    @include flex(center, flex-start, 4px);
+    padding: 10px;
+    background: #1a1b25;
+    height: calc(var(--height) - 70%);
+    border-radius: 12px;
+
+    .text {
+      @include flex(flex-start, flex-start, 2px, column);
+
+      .username {
+        color: #d2d4df;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+      }
+
+      .rank {
+        color: #6d728d;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .body {
+    @include flex(flex-start, $gap: 3px, $direction: column);
+    height: calc(var(--height) - 30%);
+    padding: 10px;
+    border-radius: 12px;
+
+    .button {
+      @include flex(center, flex-start, 8px);
+      cursor: pointer;
+      height: 100%;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 18px;
+      letter-spacing: 0.2px;
+      width: 100%;
+      padding: 0 12px;
+      border-radius: 12px;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: rgba(188, 188, 188, 0.11);
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    right: -10px;
+    top: 90%;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    right: 0;
+    top: 100%;
+    height: var(--height);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    right: 0;
+    top: 100%;
+    height: var(--height);
+  }
+  to {
+    opacity: 0;
+    right: -10px;
+    top: 90%;
+    height: 0;
+  }
+}

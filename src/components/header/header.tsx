@@ -1,6 +1,11 @@
-import { Binary, Swords } from "lucide-react";
+"use client";
+
+import { Binary, ChevronDown, Swords } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { HeaderDropDown, MiniProfile } from "@/features";
+import { useGetUserInfo } from "@/hooks/useGetUserInfo";
+import { useToggleWithCloseAnimation } from "@/hooks/useToggleWithCloseAnimation";
 import { Button } from "@/ui";
 import { IButtonProps } from "@/ui";
 
@@ -8,6 +13,14 @@ import styles from "./header.module.scss";
 
 export const Header = () => {
   const t = useTranslations();
+  const {
+    ref: profileRef,
+    isOpen,
+    isClosing,
+    toggle,
+    onAnimationEnd,
+  } = useToggleWithCloseAnimation({ defaultOpen: false });
+
   const buttons: IButtonProps[] = [
     {
       iconLeft: <Swords />,
@@ -21,12 +34,23 @@ export const Header = () => {
     },
   ];
 
+  useGetUserInfo();
+
   return (
     <header className={styles.header}>
       <div className={styles.buttons}>
         {buttons.map((button, index) => (
           <Button {...button} key={index} />
         ))}
+      </div>
+      <div ref={profileRef} className={styles.profile} onClick={toggle}>
+        <MiniProfile />
+        <ChevronDown />
+        <HeaderDropDown
+          onAnimationEnd={onAnimationEnd}
+          isOpen={isOpen}
+          isClosing={isClosing}
+        />
       </div>
     </header>
   );

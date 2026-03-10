@@ -2,13 +2,13 @@ import { deleteCookie } from "cookies-next";
 import Cookies from "js-cookie";
 import { create } from "zustand";
 
-import { authService } from "@/lib/api/services/auth.service";
-import { getDomain } from "@/utils/getDomain";
+import { authService } from "@/lib/api/services/auth/auth.service";
 import {
   type IAccount,
   type ILoginPayload,
   type IRegisterPayload,
-} from "@/lib/api/services/auth.types";
+} from "@/lib/api/services/auth/auth.types";
+import { getDomain } from "@/utils/getDomain";
 
 export type TAuthPage = "login" | "account_selection" | "verify_email";
 

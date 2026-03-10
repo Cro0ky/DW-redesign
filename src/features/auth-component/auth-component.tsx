@@ -1,5 +1,6 @@
 "use client";
 
+import cn from "classnames";
 import { Mail } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -14,7 +15,6 @@ import type { TLanguage } from "@/i18n/types";
 import { Switcher } from "@/ui";
 
 import styles from "./auth-component.module.scss";
-import cn from "classnames";
 
 export type TAuthStep = "login" | "registration" | "recover_password";
 

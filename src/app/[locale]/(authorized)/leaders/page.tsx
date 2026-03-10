@@ -1,3 +1,3 @@
 export default function Leaders() {
-  return <div>KnowledgeBasePage</div>;
+  return <div>Leaders</div>;
 }

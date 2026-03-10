@@ -1,3 +1,3 @@
 export default function Matches() {
-  return <div>KnowledgeBasePage</div>;
+  return <div>Matches</div>;
 }

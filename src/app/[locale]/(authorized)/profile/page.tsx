@@ -1,3 +1,3 @@
 export default function Profile() {
-  return <div>KnowledgeBasePage</div>;
+  return <div>Profile</div>;
 }

@@ -3,7 +3,6 @@ import {
   CircleHelp,
   CircleUser,
   GraduationCap,
-  Newspaper,
   Play,
   Trophy,
   Users,
@@ -46,11 +45,11 @@ export const useSidebar = () => {
       title: "FAQ",
       icon: <CircleHelp />,
     },
-    {
-      href: "news",
-      title: "Новости",
-      icon: <Newspaper />,
-    },
+    // {
+    //   href: "news",
+    //   title: "Новости",
+    //   icon: <Newspaper />,
+    // },
   ];
 
   return { DEFAULT_SIDEBAR_ITEMS };

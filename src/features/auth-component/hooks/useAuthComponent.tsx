@@ -42,5 +42,6 @@ export const useAuthComponent = () => {
       icon: <CnFlag />,
     },
   ];
+
   return { renderForm, handleChangeStep, step, LANGUAGES };
 };

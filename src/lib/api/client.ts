@@ -1,3 +1,5 @@
+import { getCookie } from "cookies-next";
+
 import type { IRequestConfig } from "./types";
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v2`;
@@ -42,9 +44,11 @@ export async function apiRequest<T>(
 ): Promise<T> {
   const { params, ...init } = options;
   const url = buildUrl(path, params);
+  const jwt = getCookie("jwt-access");
 
   const headers: HeadersInit = {
     "Content-Type": "application/json",
+    Authorization: `Bearer ${jwt}`,
     ...init.headers,
   };
 

@@ -1,3 +1,3 @@
 export default function KnowledgeBase() {
-  return <div>KnowledgeBasePage</div>;
-};
+  return <div>KnowledgeBase</div>;
+}
