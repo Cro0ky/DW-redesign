@@ -1,10 +1,16 @@
-import styles from "./news-list.module.scss";
-import { useNewsStore } from "@/store/news/news.store";
-import { New } from "@/components";
+"use client";
+
 import { useLayoutEffect } from "react";
+import { useTranslations } from "next-intl";
+
+import { New } from "@/components";
 import { newsService } from "@/lib/api/services/news/news.service";
+import { useNewsStore } from "@/store/news/news.store";
+
+import styles from "./news-list.module.scss";
 
 export const NewsList = () => {
+  const t = useTranslations();
   const { news, setNews } = useNewsStore();
   const { getNews } = newsService;
 
@@ -23,7 +29,7 @@ export const NewsList = () => {
 
   return (
     <div className={styles.wrapper}>
-      <span className={styles.title}>Новости</span>
+      <span className={styles.title}>{t("news.title")}</span>
       <div className={styles.list}>
         {news.map((n) => (
           <New {...n} key={n.id} />

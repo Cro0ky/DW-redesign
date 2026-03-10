@@ -1,3 +1,5 @@
+"use client";
+
 import { DroneWarsLogo } from "@/components";
 
 import { SidebarItem,SupportComponent } from "./components";

@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { CircleUser, LogOut } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { FC } from "react";
 
 import { MiniProfile, useAuthComponent } from "@/features";
@@ -25,6 +25,7 @@ export const HeaderDropDown: FC<HeaderDropDownProps> = ({
   isClosing,
 }) => {
   const locale = useLocale() as TLanguage;
+  const t = useTranslations();
 
   const { rank, username } = useUserStore();
   const router = useRouter();
@@ -36,12 +37,12 @@ export const HeaderDropDown: FC<HeaderDropDownProps> = ({
   const BUTTONS = [
     {
       icon: <CircleUser />,
-      text: "Профиль",
+      text: t("header.profile"),
       onClick: () => router.push("/profile"),
     },
     {
       icon: <LogOut />,
-      text: "logout",
+      text: t("header.logout"),
       onClick: logout,
     },
   ];

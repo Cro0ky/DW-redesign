@@ -2,7 +2,9 @@
   "all": {},
   "header": {
     "battle": "开始战斗",
-    "connect_with_code": "使用代码连接"
+    "connect_with_code": "使用代码连接",
+    "profile": "个人资料",
+    "logout": "退出"
   },
   "banner": {
     "title": "无人机对战",
@@ -21,7 +23,8 @@
     "support": "技术支持",
     "errors": {
       "incorrect_mail_format": "邮箱格式不正确",
-      "password_must_be_least_8_characters": "密码至少需要8个字符"
+      "password_must_be_least_8_characters": "密码至少需要8个字符",
+      "passwords_dont_match": "密码不一致"
     },
     "login": {
       "save_me": "记住我",
@@ -36,6 +39,28 @@
       "title": "找回密码",
       "button_text": "恢复"
     }
+  },
+  "sidebar": {
+    "home": "主页",
+    "tutorial": "教程",
+    "matches": "比赛",
+    "profile": "个人资料",
+    "leaders": "排行榜",
+    "knowledge_base": "知识库",
+    "faq": "常见问题",
+    "news": "新闻",
+    "feedback": "反馈",
+    "telegram_title": "MAX 和 Telegram",
+    "telegram_description": "加入我们，第一时间了解所有新闻！",
+    "join": "加入"
+  },
+  "home": {
+    "banner_title": "游戏基础",
+    "banner_subtitle": "教程将帮助您了解游戏机制",
+    "start_tutorial": "开始教程"
+  },
+  "news": {
+    "title": "新闻"
   },
   "HomePage": {
     "title": "主页"

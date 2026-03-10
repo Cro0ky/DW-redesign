@@ -1,7 +1,6 @@
 import styles from "./new.module.scss";
 import { INews } from "@/types/news.types";
 import { FC } from "react";
-import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { formatDateTime } from "@/utils/formatDateTime";
 import { MailPlus } from "lucide-react";
@@ -16,7 +15,11 @@ export const New: FC<INews> = ({
   return (
     <div className={styles.wrapper}>
       <div className={styles.preview}>
-        <Image alt={"new"} fill src={image ?? "/images/new-background.png"} />
+        <img
+          alt="new"
+          src={image ?? "/images/new-background.png"}
+          className={styles.previewImg}
+        />
       </div>
       <span className={styles.title}>{title}</span>
       <div className={styles.description}>

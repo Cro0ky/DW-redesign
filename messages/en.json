@@ -2,7 +2,9 @@
   "all": {},
   "header": {
     "battle": "Battle",
-    "connect_with_code": "Connect with Code"
+    "connect_with_code": "Connect with Code",
+    "profile": "Profile",
+    "logout": "Log out"
   },
   "banner": {
     "title": "Drone Battle",
@@ -21,7 +23,8 @@
     "support": "Technical Support",
     "errors": {
       "incorrect_mail_format": "Invalid email format",
-      "password_must_be_least_8_characters": "Password must be at least 8 characters"
+      "password_must_be_least_8_characters": "Password must be at least 8 characters",
+      "passwords_dont_match": "Passwords do not match"
     },
     "login": {
       "save_me": "Remember me",
@@ -36,6 +39,28 @@
       "title": "Recover Password",
       "button_text": "Recover"
     }
+  },
+  "sidebar": {
+    "home": "Home",
+    "tutorial": "Tutorial",
+    "matches": "Matches",
+    "profile": "Profile",
+    "leaders": "Leaderboard",
+    "knowledge_base": "Knowledge Base",
+    "faq": "FAQ",
+    "news": "News",
+    "feedback": "Feedback",
+    "telegram_title": "MAX and Telegram",
+    "telegram_description": "Join us and be the first to know all the news!",
+    "join": "Join"
+  },
+  "home": {
+    "banner_title": "Game Basics",
+    "banner_subtitle": "The tutorial will help you understand the mechanics",
+    "start_tutorial": "Start Tutorial"
+  },
+  "news": {
+    "title": "News"
   },
   "HomePage": {
     "title": "Home"

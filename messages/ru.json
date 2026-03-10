@@ -2,7 +2,9 @@
   "all": {},
   "header": {
     "battle": "В бой",
-    "connect_with_code": "Подключиться по коду"
+    "connect_with_code": "Подключиться по коду",
+    "profile": "Профиль",
+    "logout": "Выйти"
   },
   "banner": {
     "title": "Битва Дронов",
@@ -14,19 +16,16 @@
     "email": "Электронная почта",
     "write_username": "Введите логин",
     "write_password": "Введите пароль",
-    "write_email": "Введите пароль",
-
+    "write_email": "Введите почту",
     "repeat_password": "Повторите пароль",
     "create_password": "Придумайте пароль",
     "passwords_dont_match": "Пароли не совпадают",
-
     "support": "Техническая поддержка",
-
     "errors": {
       "incorrect_mail_format": "Неправильный формат почты",
-      "password_must_be_least_8_characters": "Пароль должен быть не менее 8 символов"
+      "password_must_be_least_8_characters": "Пароль должен быть не менее 8 символов",
+      "passwords_dont_match": "Пароли не совпадают"
     },
-
     "login": {
       "title": "Войти в аккаунт",
       "button_text": "Авторизоваться",
@@ -40,6 +39,28 @@
       "title": "Восстановить пароль",
       "button_text": "Восстановить"
     }
+  },
+  "sidebar": {
+    "home": "Главная",
+    "tutorial": "Обучение",
+    "matches": "Матчи",
+    "profile": "Профиль",
+    "leaders": "Таблица лидеров",
+    "knowledge_base": "База знаний",
+    "faq": "FAQ",
+    "news": "Новости",
+    "feedback": "Обратная связь",
+    "telegram_title": "MAX и Telegram",
+    "telegram_description": "Присоединяйся к нам, и узнавай все новости - первым!",
+    "join": "Присоединиться"
+  },
+  "home": {
+    "banner_title": "Основы игры",
+    "banner_subtitle": "Обучение поможет вам разобраться в механике",
+    "start_tutorial": "Начать обучение"
+  },
+  "news": {
+    "title": "Новости"
   },
   "HomePage": {
     "title": "Главная"
