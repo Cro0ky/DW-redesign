@@ -5,6 +5,7 @@ import {
   CircleHelp,
   CircleUser,
   GraduationCap,
+  Newspaper,
   Play,
   Trophy,
   Users,
@@ -26,7 +27,7 @@ export const useSidebar = () => {
       icon: <BookMarked />,
     },
     { href: "faq", title: t("sidebar.faq"), icon: <CircleHelp /> },
-    // { href: "news", title: t("sidebar.news"), icon: <Newspaper /> },
+    { href: "news", title: t("sidebar.news"), icon: <Newspaper /> },
   ];
 
   return { DEFAULT_SIDEBAR_ITEMS };

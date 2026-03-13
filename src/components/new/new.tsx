@@ -1,9 +1,11 @@
-import styles from "./new.module.scss";
-import { INews } from "@/types/news.types";
+import { MailPlus } from "lucide-react";
 import { FC } from "react";
 import ReactMarkdown from "react-markdown";
+
+import { INews } from "@/types/news.types";
 import { formatDateTime } from "@/utils/formatDateTime";
-import { MailPlus } from "lucide-react";
+
+import styles from "./new.module.scss";
 
 export const New: FC<INews> = ({
   image,

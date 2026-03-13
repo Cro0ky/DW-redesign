@@ -1,3 +1,5 @@
+"use client";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SmartCaptcha } from "@yandex/smart-captcha";
 import { useLocale, useTranslations } from "next-intl";

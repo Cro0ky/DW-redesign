@@ -1,7 +1,14 @@
 .wrapper {
   @include flex(flex-start, flex-start, 12px, column);
-  max-height: calc(100% - 300px);
   width: 100%;
+
+  &.component {
+    max-height: calc(100% - 300px);
+  }
+
+  &.page {
+    max-height: calc(100% - 100px);
+  }
 
   .title {
     font-size: 28px;

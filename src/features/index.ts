@@ -3,3 +3,5 @@ export * from "./auth-component/hooks/useAuthComponent";
 export { HeaderDropDown } from "./header-drop-down/header-drop-down";
 export { MiniProfile } from "./mini-profile/mini-profile";
 export { NewsList } from "./news-list/news-list";
+export { TutorialBanner } from "./tutorial-banner/tutorial-banner";
+export { TutorialChapters } from "./tutorial-chapters/tutorial-chapters";

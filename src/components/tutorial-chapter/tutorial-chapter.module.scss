@@ -1,0 +1,65 @@
+.wrapper {
+  @include flex(flex-start, flex-end, 8px, column);
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  max-width: 430px;
+  height: 220px;
+
+  padding: 8px 12px;
+  flex: 1 0 0;
+  border-radius: 10px;
+
+  .status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+    z-index: 2;
+    border-radius: 6px;
+
+    &_closed {
+      background: #303034;
+    }
+
+    &_in_progress {
+      background: #e64a19;
+    }
+
+    &_completed {
+      background: #28a745;
+    }
+  }
+
+  .background {
+    z-index: 1;
+
+    &_closed {
+      mix-blend-mode: luminosity;
+    }
+  }
+
+  .info {
+    @include flex(flex-start, flex-end, 8px, column);
+    z-index: 2;
+    width: 100%;
+
+    .title {
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .description {
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 0.2px;
+    }
+
+    .buttons {
+      @include flex(center, center, 8px);
+      width: 100%;
+    }
+  }
+}

@@ -1,7 +1,8 @@
 "use client";
 
-import { useLayoutEffect } from "react";
+import cn from "classnames";
 import { useTranslations } from "next-intl";
+import { FC, useLayoutEffect } from "react";
 
 import { New } from "@/components";
 import { newsService } from "@/lib/api/services/news/news.service";
@@ -9,7 +10,11 @@ import { useNewsStore } from "@/store/news/news.store";
 
 import styles from "./news-list.module.scss";
 
-export const NewsList = () => {
+interface NewsListProps {
+  variant?: "page" | "component";
+}
+
+export const NewsList: FC<NewsListProps> = ({ variant = "component" }) => {
   const t = useTranslations();
   const { news, setNews } = useNewsStore();
   const { getNews } = newsService;
@@ -28,9 +33,12 @@ export const NewsList = () => {
   if (news.length === 0) return null;
 
   return (
-    <div className={styles.wrapper}>
+    <div className={cn(styles.wrapper, styles[variant])}>
       <span className={styles.title}>{t("news.title")}</span>
       <div className={styles.list}>
+        {news.map((n) => (
+          <New {...n} key={n.id} />
+        ))}
         {news.map((n) => (
           <New {...n} key={n.id} />
         ))}

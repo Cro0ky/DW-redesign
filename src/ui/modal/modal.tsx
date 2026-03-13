@@ -4,20 +4,22 @@ import { IModalProps, Portal } from "@/ui";
 
 import { ModalWrapper } from "./components/modal-wrapper/modal-wrapper";
 
-export const Modal: FC<IModalProps> = ({
-  size = "s",
-  buttons,
-  title,
-  children,
-  zIndex = 100,
-  name,
-  onClose = () => {},
-}) => {
-  const handleClose = () => {
-    onClose?.();
-  };
+export const Modal: FC<IModalProps> = (
+  {
+    // size = "s",
+    // buttons,
+    // title,
+    // children,
+    // zIndex = 100,
+    // name,
+    // onClose = () => {},
+  },
+) => {
+  // const handleClose = () => {
+  //   onClose?.();
+  // };
 
-  const activeModal = { name: "" };
+  // const activeModal = { name: "" };
   // const isOpen = activeModal?.name === name;
 
   // const { isAnimating, isClosing, isMounted } = useModal({

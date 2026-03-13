@@ -3,12 +3,18 @@ import { getCookie } from "cookies-next";
 import type { IRequestConfig } from "./types";
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v2`;
+const SIMULATION_URL = `${process.env.NEXT_PUBLIC_BACKEND_SIMULATION_URL}/api/v1`;
 
 function buildUrl(
   path: string,
   params?: Record<string, string | number | boolean>,
+  toSimulation?: boolean,
 ): string {
-  const url = new URL(path.startsWith("http") ? path : `${BASE_URL}${path}`);
+  const url = new URL(
+    path.startsWith("http")
+      ? path
+      : `${toSimulation ? SIMULATION_URL : BASE_URL}${path}`,
+  );
   if (params) {
     Object.entries(params).forEach(([key, value]) => {
       url.searchParams.append(key, String(value));
@@ -41,9 +47,10 @@ async function handleResponse<T>(response: Response): Promise<T> {
 export async function apiRequest<T>(
   path: string,
   options: IRequestConfig = {},
+  toSimulation: boolean = false,
 ): Promise<T> {
   const { params, ...init } = options;
-  const url = buildUrl(path, params);
+  const url = buildUrl(path, params, toSimulation);
   const jwt = getCookie("jwt-access");
 
   const headers: HeadersInit = {
@@ -61,30 +68,57 @@ export async function apiRequest<T>(
 }
 
 export const api = {
-  get: <T>(path: string, config?: IRequestConfig) =>
-    apiRequest<T>(path, { ...config, method: "GET" }),
+  get: <T>(path: string, config?: IRequestConfig, toSimulation?: boolean) =>
+    apiRequest<T>(path, { ...config, method: "GET" }, toSimulation),
 
-  post: <T>(path: string, body?: unknown, config?: IRequestConfig) =>
-    apiRequest<T>(path, {
-      ...config,
-      method: "POST",
-      body: JSON.stringify(body),
-    }),
+  post: <T>(
+    path: string,
+    body?: unknown,
+    toSimulation?: boolean,
+    config?: IRequestConfig,
+  ) =>
+    apiRequest<T>(
+      path,
+      {
+        ...config,
+        method: "POST",
+        body: JSON.stringify(body),
+      },
+      toSimulation,
+    ),
 
-  put: <T>(path: string, body?: unknown, config?: IRequestConfig) =>
-    apiRequest<T>(path, {
-      ...config,
-      method: "PUT",
-      body: JSON.stringify(body),
-    }),
+  put: <T>(
+    path: string,
+    body?: unknown,
+    toSimulation?: boolean,
+    config?: IRequestConfig,
+  ) =>
+    apiRequest<T>(
+      path,
+      {
+        ...config,
+        method: "PUT",
+        body: JSON.stringify(body),
+      },
+      toSimulation,
+    ),
 
-  patch: <T>(path: string, body?: unknown, config?: IRequestConfig) =>
-    apiRequest<T>(path, {
-      ...config,
-      method: "PATCH",
-      body: JSON.stringify(body),
-    }),
+  patch: <T>(
+    path: string,
+    body?: unknown,
+    toSimulation?: boolean,
+    config?: IRequestConfig,
+  ) =>
+    apiRequest<T>(
+      path,
+      {
+        ...config,
+        method: "PATCH",
+        body: JSON.stringify(body),
+      },
+      toSimulation,
+    ),
 
-  delete: <T>(path: string, config?: IRequestConfig) =>
-    apiRequest<T>(path, { ...config, method: "DELETE" }),
+  delete: <T>(path: string, config?: IRequestConfig, toSimulation?: boolean) =>
+    apiRequest<T>(path, { ...config, method: "DELETE" }, toSimulation),
 };

@@ -62,11 +62,15 @@
   "news": {
     "title": "Новости"
   },
-  "HomePage": {
-    "title": "Главная"
-  },
   "errors": {
     "max_length": "Максимальная длина {length} символа",
     "min_length": "Минимальная длина {length} символа"
+  },
+  "tutorial": {
+    "status": {
+      "completed": "Пройдено",
+      "in_progress": "Доступно",
+      "closed": "Недоступно"
+    }
   }
 }

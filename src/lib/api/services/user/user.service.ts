@@ -1,7 +1,14 @@
 import { api } from "@/lib/api";
-import { IUser } from "@/types/user.types";
+import {
+  CreateTutorialPracticeRequest,
+  CreateTutorialPracticeResponse,
+  IUser,
+} from "@/types/user.types";
 
 export const userService = {
   getUserInfo: (uid: string) =>
     api.get<IUser | "user_not_found">(`/user/${uid}`),
+
+  createTutorialPractice: (chapter: CreateTutorialPracticeRequest) =>
+    api.post<CreateTutorialPracticeResponse>(`/create`, chapter, true),
 };

@@ -12,7 +12,7 @@ export const formatDateTime = (isoString: string): string => {
     return date.toLocaleString("ru-RU", options) === "01.01.1970, 03:00"
       ? ""
       : date.toLocaleString("ru-RU", options);
-  } catch (error) {
+  } catch {
     console.error("Invalid ISO string:", isoString);
     return "";
   }
