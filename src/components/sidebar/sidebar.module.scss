@@ -1,10 +1,18 @@
 .wrapper {
   @include flex(flex-start, $gap: 20px, $direction: column);
-  height: calc(100vh - 50px);
   width: 250px;
   border-radius: 10px;
   background: rgba(54, 57, 76, 0.15);
   padding: 12px 8px;
+  height: 100%;
+
+  @media (max-height: 1400px) {
+    max-height: calc(100vh - 50px);
+  }
+
+  @media (min-height: 1401px) {
+    max-height: 1200px;
+  }
 
   .items {
     @include flex(flex-start, $gap: 4px, $direction: column);

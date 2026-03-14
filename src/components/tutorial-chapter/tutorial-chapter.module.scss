@@ -5,11 +5,15 @@
 
   width: 100%;
   max-width: 430px;
-  height: 220px;
+  height: 200px;
 
   padding: 8px 12px;
   flex: 1 0 0;
   border-radius: 10px;
+
+  &:hover .background {
+    transform: scale(1.1);
+  }
 
   .status {
     position: absolute;
@@ -34,6 +38,7 @@
 
   .background {
     z-index: 1;
+    transition: 0.4s;
 
     &_closed {
       mix-blend-mode: luminosity;
