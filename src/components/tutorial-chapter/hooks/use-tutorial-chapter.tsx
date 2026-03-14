@@ -12,6 +12,7 @@ export const useTutorialChapter = () => {
 
   const { createTutorialPractice } = userService;
   const availableChapter = Number(rt_tutorial_unit.split("_")[1]);
+  const availableChapterType = rt_tutorial_unit.split("_")[2] as ETutorialType;
 
   const getChapter = (chapter_id: number) => {
     return CHAPTERS[chapter_id - 1];
@@ -34,7 +35,7 @@ export const useTutorialChapter = () => {
   const redirectToChapter = async (chapter: number, variant: ETutorialType) => {
     if (variant === ETutorialType.PRACTICE && id && username) {
       const res = await createTutorialPractice({
-        chapter: `CHAPTER_${chapter}_PRACTICE`,
+        chapter: `CHAPTER_${chapter}_${ETutorialType.PRACTICE}`,
         player: {
           uid: id,
           name: username,
@@ -53,6 +54,7 @@ export const useTutorialChapter = () => {
   return {
     rt_tutorial_unit,
     availableChapter,
+    availableChapterType,
     getChapter,
     getChapterStatus,
     redirectToChapter,

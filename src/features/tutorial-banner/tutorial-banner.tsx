@@ -2,16 +2,18 @@
 
 import { Target, Trophy } from "lucide-react";
 // import { useTranslations } from "next-intl";
-
 import { Button } from "@/ui";
 
 import styles from "./tutorial-banner.module.scss";
+import { useTutorialChapter } from "@/components/tutorial-chapter/hooks/use-tutorial-chapter";
 
 export const TutorialBanner = () => {
   // const t = useTranslations();
+  const { availableChapter, availableChapterType, redirectToChapter } =
+    useTutorialChapter();
 
   const completeLastChapter = () => {
-    console.log(13123);
+    redirectToChapter(availableChapter, availableChapterType);
   };
 
   return (
