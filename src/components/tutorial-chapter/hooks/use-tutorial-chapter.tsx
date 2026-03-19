@@ -35,7 +35,7 @@ export const useTutorialChapter = () => {
   const redirectToChapter = async (chapter: number, variant: ETutorialType) => {
     if (variant === ETutorialType.PRACTICE && id && username) {
       const res = await createTutorialPractice({
-        chapter: `CHAPTER_${chapter}_${ETutorialType.PRACTICE}`,
+        chapter: `CHAPTER_${chapter}_${ETutorialType.PRACTICE.toUpperCase()}`,
         player: {
           uid: id,
           name: username,
