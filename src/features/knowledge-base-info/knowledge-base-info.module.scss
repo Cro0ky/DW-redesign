@@ -1,0 +1,68 @@
+.wrapper {
+  .head {
+    @include flex(center);
+    border-radius: 14px 14px 0 0;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+
+    .tab {
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: 0.3s;
+      border-bottom: 2px solid transparent;
+
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22px;
+      letter-spacing: 0.2px;
+
+      &:hover {
+        border-bottom: 2px solid #676464;
+      }
+
+      &_active {
+        border-bottom: 2px solid #fff;
+
+        &:hover {
+          border-bottom: 2px solid #fff;
+        }
+      }
+    }
+  }
+
+  .body {
+    @include flex(center, flex-start, 8px, $wrap: wrap);
+    border-radius: 0 0 14px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 16px;
+
+    .topic {
+      @include flex(flex-end, center);
+      cursor: pointer;
+      width: 380px;
+      height: 220px;
+      padding: 16px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      outline: 1px solid #757575;
+
+      &:hover .image {
+        transform: scale(1.1);
+      }
+
+      .image {
+        transition: 0.5s;
+      }
+
+      .title {
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22px;
+        letter-spacing: 0.2px;
+        z-index: 1;
+      }
+    }
+  }
+}

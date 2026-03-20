@@ -7,3 +7,4 @@ export { NewsList } from "./news-list/news-list";
 export { ProfileInfo } from "./profile-info/profile-info";
 export { TutorialBanner } from "./tutorial-banner/tutorial-banner";
 export { TutorialChapters } from "./tutorial-chapters/tutorial-chapters";
+export { KnowledgeBaseInfo } from "./knowledge-base-info/knowledge-base-info";
