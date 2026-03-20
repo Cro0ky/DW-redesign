@@ -1,0 +1,36 @@
+.wrapper {
+  width: 100%;
+  height: calc(100% - 200px);
+  position: relative;
+
+  .tabs {
+    @include flex(center);
+    position: absolute;
+    top: -44px;
+    left: 26px;
+
+    .tab {
+      padding: 12px 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      border-bottom: 2px solid transparent;
+
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22px;
+      letter-spacing: 0.2px;
+
+      &:hover {
+        border-bottom: 2px solid #676464;
+      }
+
+      &_active {
+        border-bottom: 2px solid #fff;
+
+        &:hover {
+          border-bottom: 2px solid #fff;
+        }
+      }
+    }
+  }
+}

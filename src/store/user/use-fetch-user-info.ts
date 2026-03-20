@@ -1,4 +1,5 @@
 import { useShallow } from "zustand/react/shallow";
+
 import { useUserStore } from "@/store";
 
 export function useFetchUserInfo() {

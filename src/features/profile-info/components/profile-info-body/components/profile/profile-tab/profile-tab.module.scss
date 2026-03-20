@@ -1,0 +1,31 @@
+.wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  padding: 20px;
+
+  .avatars {
+    @include flex($gap: 6px, $wrap: wrap);
+  }
+}
+
+.image {
+  position: relative;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  opacity: 1;
+  transition: 0.3s;
+  border-radius: 10px;
+  overflow: hidden;
+
+  &:hover {
+    background-color: rgba(152, 150, 150, 0.12);
+    opacity: 0.75;
+  }
+
+  &_active {
+    border: 1px solid #dc4141;
+  }
+}

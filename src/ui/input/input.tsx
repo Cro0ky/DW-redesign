@@ -48,8 +48,8 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
               className={styles.input}
               disabled={disabled}
               aria-invalid={!!error}
-              value={value ?? ""}
               {...otherProps}
+              {...(value !== undefined && { value: value ?? "" })}
             />
           </div>
           {(iconRight || type === "password") && (
