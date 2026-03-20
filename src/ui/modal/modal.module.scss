@@ -1,7 +1,6 @@
 .content {
   @include flex(flex-start, center, 16px, column);
   border-radius: 8px;
-  padding: 6px;
   width: 100%;
 }
 

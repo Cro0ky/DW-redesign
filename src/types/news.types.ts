@@ -14,5 +14,9 @@ export interface INews {
 
 export interface INewsStore {
   news: INews[];
-  setNews: (news: INews[]) => void;
+  isLoading: boolean;
+  isError: boolean;
+  newsFulfilled: (data: INews[]) => void;
+  newsRejected: () => void;
+  fetchNews: () => Promise<void>;
 }

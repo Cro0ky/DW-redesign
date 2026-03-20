@@ -39,7 +39,7 @@ export default async function RootLayout({
             <Sidebar />
             <div className={styles.content}>
               <Header />
-              {children}
+              <div className={styles.content_wrapper}>{children}</div>
               <ModalContainer />
             </div>
           </>

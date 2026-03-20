@@ -1,0 +1,42 @@
+.head {
+  @include flex(center, flex-start, 4px);
+  border-radius: 24px 24px 0 0;
+  background: rgba(0, 0, 0, 0.53);
+  padding: 20px;
+  max-height: 200px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  &_image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: 850px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .avatar {
+    flex-shrink: 0;
+  }
+
+  .text {
+    @include flex(flex-start, flex-start, 2px, column);
+
+    .username {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 28px;
+      letter-spacing: 0.2px;
+    }
+
+    .rank {
+      color: #c7c7c7;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: 0.2px;
+    }
+  }
+}

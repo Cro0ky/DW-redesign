@@ -21,6 +21,7 @@ export interface IModalProps extends IBaseModalProps {
   buttons?: IButtonProps[];
 }
 
+// interface для типизации пропсов МО
 export interface IModalParams {}
 
 export interface IActiveModal {

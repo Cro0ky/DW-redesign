@@ -37,13 +37,17 @@ export function useModal({ animationDelay, isOpen, onClose }: IUseModalProps) {
   // Логика открытия (установка анимации)
   useEffect(() => {
     if (isOpen) {
-      setIsClosing(false);
-      setTimeout(() => {
-        setIsAnimating(true); // Запускаем анимацию после задержки
-      }, 30);
+      const id = setTimeout(() => {
+        setIsClosing(false);
+        setTimeout(() => setIsAnimating(true), 30);
+      }, 0);
+      return () => clearTimeout(id);
     } else if (!isOpen) {
-      setIsAnimating(false); // Отключаем анимацию при закрытии
-      close();
+      const id = setTimeout(() => {
+        setIsAnimating(false);
+        close();
+      }, 0);
+      return () => clearTimeout(id);
     }
   }, [isOpen, close]);
 

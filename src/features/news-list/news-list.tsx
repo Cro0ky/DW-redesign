@@ -2,11 +2,10 @@
 
 import cn from "classnames";
 import { useTranslations } from "next-intl";
-import { FC, useLayoutEffect, useState } from "react";
+import { FC, useLayoutEffect } from "react";
 
 import { New, NewCardSkeleton } from "@/components";
-import { newsService } from "@/lib/api/services/news/news.service";
-import { useNewsStore } from "@/store/news/news.store";
+import { useFetchNews } from "@/store/news/use-fetch-news";
 
 import styles from "./news-list.module.scss";
 
@@ -18,25 +17,11 @@ interface NewsListProps {
 
 export const NewsList: FC<NewsListProps> = ({ variant = "component" }) => {
   const t = useTranslations("news");
-  const { news, setNews } = useNewsStore();
-  const { getNews } = newsService;
-  const [isLoading, setIsLoading] = useState(true);
+  const { news, isLoading, fetchNews } = useFetchNews();
 
   useLayoutEffect(() => {
-    const request = async () => {
-      setIsLoading(true);
-      try {
-        const data = await getNews();
-        if (data.results) setNews(data.results);
-      } catch {
-        // ignore
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    request();
-  }, []);
+    fetchNews();
+  }, [fetchNews]);
 
   return (
     <div className={cn(styles.wrapper, styles[variant])}>
