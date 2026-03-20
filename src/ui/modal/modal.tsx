@@ -1,53 +1,68 @@
+"use client";
+
 import { FC } from "react";
 
-import { IModalProps, Portal } from "@/ui";
+import { useModalStore } from "@/store/modal/modal.store";
+import { Button, IModalProps, Portal } from "@/ui";
+import { useModal } from "@/ui/modal/hooks/useModal";
 
 import { ModalWrapper } from "./components/modal-wrapper/modal-wrapper";
+import styles from "./modal.module.scss";
 
-export const Modal: FC<IModalProps> = (
-  {
-    // size = "s",
-    // buttons,
-    // title,
-    // children,
-    // zIndex = 100,
-    // name,
-    // onClose = () => {},
-  },
-) => {
-  // const handleClose = () => {
-  //   onClose?.();
-  // };
+const ANIMATION_DELAY = 200;
 
-  // const activeModal = { name: "" };
-  // const isOpen = activeModal?.name === name;
+export const Modal: FC<IModalProps> = ({
+  size = "s",
+  buttons,
+  title = "TITLE TITLE TITLE",
+  subtitle = "SUBTITLE SUBTITLE",
+  children,
+  zIndex = 100,
+  name,
+  onClose = () => {},
+}) => {
+  const handleClose = () => {
+    onClose?.();
+  };
 
-  // const { isAnimating, isClosing, isMounted } = useModal({
-  //   animationDelay: ANIMATION_DELAY,
-  //   isOpen,
-  //   onClose: handleClose,
-  // });
+  const { activeModal } = useModalStore();
+  const isOpen = activeModal?.name === name;
+
+  const { isAnimating, isClosing } = useModal({
+    animationDelay: ANIMATION_DELAY,
+    isOpen,
+    onClose: handleClose,
+  });
 
   return (
     <Portal>
       <ModalWrapper
-      // name={name}
-      // isClosing={isClosing}
-      // isAnimating={isAnimating}
-      // zIndex={zIndex}
-      // size={size}
-      // onClose={() => {
-      //   handleClose();
-      //   onClose();
-      // }}
+        name={name}
+        isClosing={isClosing}
+        isAnimating={isAnimating}
+        zIndex={zIndex}
+        size={size}
+        onClose={() => {
+          handleClose();
+          onClose();
+        }}
       >
-        {/*{!!title && <span className={styles.title}>{title}</span>}*/}
-        {/*{!!children && <div className={styles.content}>{children}</div>}*/}
-        {/*<div className={styles.btns}>*/}
-        {/*  {buttons?.length*/}
-        {/*    ? buttons.map((props, index) => <Button key={index} {...props} />)*/}
-        {/*    : null}*/}
-        {/*</div>*/}
+        {(!!title || !!subtitle) && (
+          <div className={styles.head}>
+            {!!title && <span className={styles.title}>{title}</span>}
+            {!!subtitle && <span className={styles.subtitle}>{subtitle}</span>}
+          </div>
+        )}
+
+        {!!children && <div className={styles.content}>{children}</div>}
+
+        {buttons?.length && (
+          <div className={styles.btns}>
+            {buttons.map((props, index) => (
+              <Button key={index} {...props} />
+            ))}
+          </div>
+        )}
       </ModalWrapper>
     </Portal>
   );

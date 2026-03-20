@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { ReactNode } from "react";
 
 import { Header, Sidebar } from "@/components";
+import { ModalContainer } from "@/features/modals/modal-container";
 import { routing } from "@/i18n/routing";
 import { isAuthenticated } from "@/lib/auth";
 
@@ -39,6 +40,7 @@ export default async function RootLayout({
             <div className={styles.content}>
               <Header />
               {children}
+              <ModalContainer />
             </div>
           </>
         )}

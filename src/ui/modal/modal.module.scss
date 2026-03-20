@@ -1,62 +1,22 @@
-.overlay {
-  @include flex(center, center);
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 1rem;
-}
-
 .content {
   @include flex(flex-start, center, 16px, column);
-  max-width: 400px;
-  width: 100%;
-  padding: 24px;
-  border-radius: 12px;
-  background: var(--neutral-10, #1b1b1f);
-  border: 1px solid var(--neutral-20, #303034);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-}
-
-.title {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--neutral-99, #fefbff);
-}
-
-.field {
-  @include flex(flex-start, stretch, 8px, column);
-  width: 100%;
-}
-
-.label {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--neutral-90, #e4e1e6);
-}
-
-.input {
-  width: 100%;
-  padding: 10px 14px;
-  font-size: 16px;
   border-radius: 8px;
-  border: 1px solid var(--neutral-30, #47464a);
-  background: var(--neutral-15, #252529);
-  color: var(--neutral-99, #fefbff);
-  outline: none;
-  transition: border-color 0.2s;
-
-  &::placeholder {
-    color: var(--neutral-60, #929094);
-  }
-
-  &:focus {
-    border-color: var(--primary-50, #5f70ce);
-  }
+  padding: 6px;
+  width: 100%;
 }
 
-.actions {
-  @include flex(flex-end, center, 10px);
+.head {
+  @include flex(flex-start, flex-start, 6px, column);
   width: 100%;
-  margin-top: 8px;
+
+  .title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fefbff;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    color: #aeaeae;
+  }
 }

@@ -29,3 +29,26 @@
     padding: 10px 0;
   }
 }
+
+@mixin position(
+  $position: null,
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null,
+  $z-index: null
+) {
+  $properties: (
+    position: $position,
+    top: $top,
+    right: $right,
+    bottom: $bottom,
+    left: $left,
+    z-index: $z-index,
+  );
+  @each $property, $value in $properties {
+    @if $value {
+      #{$property}: $value;
+    }
+  }
+}

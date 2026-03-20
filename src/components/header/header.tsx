@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 import { HeaderDropDown, MiniProfile } from "@/features";
 import { useGetUserInfo } from "@/hooks/useGetUserInfo";
 import { useToggleWithCloseAnimation } from "@/hooks/useToggleWithCloseAnimation";
-import { Button } from "@/ui";
-import { IButtonProps } from "@/ui";
+import { useModalStore } from "@/store/modal/modal.store";
+import { Button, EModalName, IButtonProps } from "@/ui";
 
 import styles from "./header.module.scss";
 
@@ -21,11 +21,14 @@ export const Header = () => {
     onAnimationEnd,
   } = useToggleWithCloseAnimation({ defaultOpen: false });
 
+  const { openModal } = useModalStore();
+
   const buttons: IButtonProps[] = [
     {
       iconLeft: <Swords />,
       children: t("header.battle"),
       color: "white",
+      onClick: () => openModal({ name: EModalName.CREATE_GAME_MODAL }),
     },
     {
       iconLeft: <Binary />,
