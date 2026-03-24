@@ -3,13 +3,13 @@
 import { Target, Trophy } from "lucide-react";
 
 import { useTutorialChapter } from "@/components/tutorial-chapter/hooks/use-tutorial-chapter";
-// import { useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Button } from "@/ui";
 
 import styles from "./tutorial-banner.module.scss";
 
 export const TutorialBanner = () => {
-  // const t = useTranslations();
+  const t = useTranslations();
   const { availableChapter, availableChapterType, redirectToChapter } =
     useTutorialChapter();
 
@@ -22,18 +22,17 @@ export const TutorialBanner = () => {
       <div className={styles.text}>
         <span className={styles.title}>
           <Trophy width={30} height={30} />
-          Сделай первый шаг к <span className={styles.title_span}>победам</span>
-          !
+          {t("tutorial.banner_title_prefix")}
+          <span className={styles.title_span}>
+            {t("tutorial.banner_title_highlight")}
+          </span>
+          {t("tutorial.banner_title_suffix")}
         </span>
-        <span className={styles.subtitle}>
-          Научись основам, освой ключевые навыки и получи доступ к захватывающим
-          матчам. Не упускай шанс показать, на что ты способен — начни прямо
-          сейчас!
-        </span>
+        <span className={styles.subtitle}>{t("tutorial.banner_subtitle")}</span>
       </div>
 
       <Button
-        children={"Продолжить обучение"}
+        children={t("tutorial.banner_continue")}
         onClick={completeLastChapter}
         iconLeft={<Target />}
         color={"gray"}

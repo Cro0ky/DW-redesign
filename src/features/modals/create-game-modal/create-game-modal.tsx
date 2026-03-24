@@ -1,9 +1,12 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { useModalStore } from "@/store/modal/modal.store";
 import { EModalName, Modal } from "@/ui";
 
 export const CreateGameModal = () => {
+  const t = useTranslations();
   const { closeModal } = useModalStore();
 
   const handleCloseModal = () => {
@@ -16,7 +19,7 @@ export const CreateGameModal = () => {
       name={EModalName.CREATE_GAME_MODAL}
       buttons={[
         {
-          children: "ЗАКРЫТЬ",
+          children: t("modals.create_game_close"),
           onClick: handleCloseModal,
         },
       ]}

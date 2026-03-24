@@ -1,5 +1,6 @@
 import cn from "classnames";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import { ProfileInfoBlock } from "@/features/profile-info/components";
 import { useUserStore } from "@/store";
@@ -8,6 +9,7 @@ import { Input } from "@/ui";
 import styles from "./profile-tab.module.scss";
 
 export const ProfileTab = () => {
+  const t = useTranslations();
   const { frame_number, avatar_number, username, email } = useUserStore();
 
   const renderImages = (variant: "avatar" | "frame") => {
@@ -39,15 +41,21 @@ export const ProfileTab = () => {
   return (
     <div className={styles.wrapper}>
       <ProfileInfoBlock
-        title={"НИКНЕЙМ"}
+        title={t("profile.nickname")}
         children={<Input value={username} fullWidth disabled />}
       />
       <ProfileInfoBlock
-        title={"ПОЧТА"}
+        title={t("profile.email")}
         children={<Input value={email} fullWidth disabled />}
       />
-      <ProfileInfoBlock title={"АВАТАР"} children={renderImages("avatar")} />
-      <ProfileInfoBlock title={"РАМКА"} children={renderImages("frame")} />
+      <ProfileInfoBlock
+        title={t("profile.avatar")}
+        children={renderImages("avatar")}
+      />
+      <ProfileInfoBlock
+        title={t("profile.frame")}
+        children={renderImages("frame")}
+      />
     </div>
   );
 };

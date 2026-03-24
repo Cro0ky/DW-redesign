@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { FC } from "react";
 
 import type { FilterConfig, FilterValues } from "@/ui";
@@ -17,6 +18,8 @@ export const TableFilter: FC<TableFilterProps> = ({
   value,
   onChange,
 }) => {
+  const t = useTranslations();
+
   if (config.type === "text") {
     return (
       <input
@@ -41,7 +44,7 @@ export const TableFilter: FC<TableFilterProps> = ({
           );
         }}
       >
-        <option value="">{config.placeholder ?? "Все"}</option>
+        <option value="">{config.placeholder ?? t("table.filter_all")}</option>
         {config.options.map((opt) => (
           <option key={opt.value} value={opt.value}>
             {opt.label}
@@ -88,15 +91,17 @@ export const TableFilter: FC<TableFilterProps> = ({
 
   if (config.type === "daterange") {
     const range = (value as [string?, string?]) ?? [undefined, undefined];
+    const start = range[0] as string | Date | undefined;
+    const end = range[1] as string | Date | undefined;
     return (
       <div className={styles.dateRange}>
         <input
           type="date"
           className={styles.dateInput}
           value={
-            range[0] instanceof Date
-              ? range[0].toISOString().slice(0, 10)
-              : ((range[0] as string) ?? "")
+            start instanceof Date
+              ? start.toISOString().slice(0, 10)
+              : (start ?? "")
           }
           onChange={(e) =>
             onChange([e.target.value || undefined, range[1]] as [
@@ -110,9 +115,7 @@ export const TableFilter: FC<TableFilterProps> = ({
           type="date"
           className={styles.dateInput}
           value={
-            range[1] instanceof Date
-              ? range[1].toISOString().slice(0, 10)
-              : ((range[1] as string) ?? "")
+            end instanceof Date ? end.toISOString().slice(0, 10) : (end ?? "")
           }
           onChange={(e) =>
             onChange([range[0], e.target.value || undefined] as [

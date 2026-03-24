@@ -3,8 +3,6 @@ import { useUserStore } from "@/store";
 import { ETutorialType, GameSide, IGameType } from "@/types/types";
 import { getSimulationUrl } from "@/utils/getSimulationUrl";
 
-import { CHAPTERS } from "./tutorial-chapter.const";
-
 export type TChapterStatus = "completed" | "in_progress" | "closed";
 
 export const useTutorialChapter = () => {
@@ -13,10 +11,6 @@ export const useTutorialChapter = () => {
   const { createTutorialPractice } = userService;
   const availableChapter = Number(rt_tutorial_unit.split("_")[1]);
   const availableChapterType = rt_tutorial_unit.split("_")[2] as ETutorialType;
-
-  const getChapter = (chapter_id: number) => {
-    return CHAPTERS[chapter_id - 1];
-  };
 
   const getChapterStatus = (
     availableChapter: number,
@@ -55,7 +49,6 @@ export const useTutorialChapter = () => {
     rt_tutorial_unit,
     availableChapter,
     availableChapterType,
-    getChapter,
     getChapterStatus,
     redirectToChapter,
   };

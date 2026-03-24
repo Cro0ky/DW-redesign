@@ -29,7 +29,8 @@
     "login": {
       "save_me": "Remember me",
       "title": "Log in to Account",
-      "button_text": "Log In"
+      "button_text": "Log In",
+      "forgot_password": "Forgot password?"
     },
     "registration": {
       "title": "Registration",
@@ -62,6 +63,23 @@
   "news": {
     "title": "News"
   },
+  "profile": {
+    "nickname": "USERNAME",
+    "email": "EMAIL",
+    "avatar": "AVATAR",
+    "frame": "FRAME",
+    "tabs": {
+      "profile": "Profile",
+      "statistic": "Statistics",
+      "history": "Event History"
+    }
+  },
+  "table": {
+    "filter_all": "All"
+  },
+  "modals": {
+    "create_game_close": "CLOSE"
+  },
   "HomePage": {
     "title": "Home"
   },
@@ -74,6 +92,55 @@
       "completed": "Completed",
       "in_progress": "Available",
       "closed": "Unavailable"
+    },
+    "theory_button": "Theory",
+    "practice_button": "Practice",
+    "banner_title_prefix": "Take your first step toward ",
+    "banner_title_highlight": "victory",
+    "banner_title_suffix": "!",
+    "banner_subtitle": "Learn the basics, master key skills, and unlock exciting matches. Don’t miss your chance to show what you can do — start now!",
+    "banner_continue": "Continue tutorial",
+    "chapters": {
+      "1": {
+        "title": "Game basics",
+        "description": "Game objectives, unit control, movement, and attacking the enemy"
+      },
+      "2": {
+        "title": "Reconnaissance",
+        "description": "Scouting enemy territory with scout drones"
+      },
+      "3": {
+        "title": "Medium-range strike drone",
+        "description": "Launching and controlling medium-range strike drones"
+      },
+      "4": {
+        "title": "FPV interceptor",
+        "description": "Intercepting UAVs with FPV drones"
+      },
+      "5": {
+        "title": "Logistics",
+        "description": "Using transport to move troops and stations"
+      },
+      "6": {
+        "title": "EW station",
+        "description": "Countering enemy drones"
+      },
+      "7": {
+        "title": "Satellite, topography, terrain, and weather",
+        "description": "Satellite and map reconnaissance; how terrain and weather affect play"
+      },
+      "8": {
+        "title": "Frequency scanner",
+        "description": "Detecting enemies in dense forest and buildings with the frequency scanner"
+      },
+      "9": {
+        "title": "Long-range strike drone",
+        "description": "Striking the enemy and countering enemy EW stations"
+      },
+      "10": {
+        "title": "Finale",
+        "description": "Completing the tutorial"
+      }
     }
   },
   "knowledge_base": {
@@ -141,6 +208,42 @@
     "satellite": "Satellite",
     "satellite_description": "Satellite reconnaissance.",
     "topography": "Topography",
-    "topography_description": "Terrain relief."
+    "topography_description": "Terrain relief.",
+    "sec": "s",
+    "parameters_of_the_current_session": "Current session parameters",
+    "session_parameters": "Session parameters",
+    "step_duration": "Step duration",
+    "number_of_days": "Number of days",
+    "pilots": "Pilots"
+  },
+  "questions": {
+    "heading": "FIND THE ANSWER TO ANY QUESTION",
+    "subheading": "We've gathered answers to the main questions",
+    "how_to_contact_customer_support": "How do I contact customer support?",
+    "how_to_contact_customer_support_description": "To reach us, send an email to support@mail.dronewars.su. We will try to resolve your issue as quickly as possible.",
+    "the_site_administrators_are_asking": "Site administrators are asking for my account password—what should I do?",
+    "the_site_administrators_are_asking_description": "If you receive such a request by email, in messages, or on social media, do not share your credentials or follow links in those messages. Our administrators never ask for account passwords.",
+    "suspicious_activity_on_your_account": "What should I do if I notice suspicious activity on my account?",
+    "suspicious_activity_on_your_account_description": "If you notice suspicious activity on your account, change your password immediately and contact customer support.",
+    "what_if_I_forgot_my_account_password": "What if I forgot my account password?",
+    "what_if_I_forgot_my_account_password_description": "To reset your password, click “Forgot password?” on the sign-in page and follow the instructions.",
+    "more_than_one_account_per_person": "Can I use more than one account per person?",
+    "more_than_one_account_per_person_description": "Using multiple accounts for one person is not allowed. Violating this rule may result in all linked accounts being blocked.",
+    "how_do_I_delete_my_account": "How do I delete my account?",
+    "how_do_I_delete_my_account_description": "An account can only be deleted through our site’s technical support. This action is irreversible, and you will not be able to restore your account later.",
+    "why_is_my_game_lagging_and_freezing": "Why is my game lagging or freezing?",
+    "why_is_my_game_lagging_and_freezing_description": "Lag may be caused by internet issues, high server load, or other technical problems. Try refreshing the page and checking that your connection is stable.",
+    "change_the_nickname_on_the_site": "Can I change my nickname on the site after registering?",
+    "change_the_nickname_on_the_site_description": "Yes, you can change your nickname, password, or linked email on the Profile page.",
+    "play_against_friends": "Can I play against my friends?",
+    "play_against_friends_description": "Yes! Create a lobby and invite your friends using the room code or name.",
+    "play_mobile_device": "Can I play on a mobile device?",
+    "play_mobile_device_description": "No, the simulation is not designed for mobile devices; you may encounter issues during play.",
+    "request_help_in_completing_the_game": "Can I share video or photo hints and ask for help completing the game?",
+    "request_help_in_completing_the_game_description": "It is forbidden to create and/or distribute tutorials on how to play the game in video, audio, and/or text formats. Providing such consultations is also prohibited. Breaking these rules may result in your site account being blocked.",
+    "suggest_my_ideas": "How can I suggest ideas for the game?",
+    "suggest_my_ideas_description": "We are always happy to hear your ideas and suggestions! You can contact us using the Feedback button on the site’s home page.",
+    "receive_news_and_updates": "How can I get news and updates about the game?",
+    "receive_news_and_updates_description": "Follow us on social media to be the first to hear about updates and new features."
   }
 }

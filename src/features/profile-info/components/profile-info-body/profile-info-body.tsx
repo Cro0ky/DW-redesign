@@ -1,4 +1,5 @@
 import cn from "classnames";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { ProfileTab } from "@/features/profile-info/components";
@@ -10,6 +11,7 @@ type THeadTabs = "statistic" | "profile" | "history";
 const TABS: THeadTabs[] = ["profile", "statistic", "history"];
 
 export const ProfileInfoBody = () => {
+  const t = useTranslations();
   const [activeTab, setActiveTab] = useState<THeadTabs>("profile");
 
   const renderSelectedComponent = () => {
@@ -32,7 +34,7 @@ export const ProfileInfoBody = () => {
               [styles.tab_active]: tab === activeTab,
             })}
           >
-            {tab}
+            {t(`profile.tabs.${tab}`)}
           </div>
         ))}
       </div>

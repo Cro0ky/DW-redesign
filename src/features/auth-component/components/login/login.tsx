@@ -119,7 +119,9 @@ export const Login = ({ onStepChange }: ILoginProps) => {
             </label>
           )}
         />
-        <span className={styles.forgot_password}>Забыли пароль?</span>
+        <span className={styles.forgot_password}>
+          {t("auth.login.forgot_password")}
+        </span>
       </div>
       <div className={styles.buttons}>
         <div className={styles.capcha}>

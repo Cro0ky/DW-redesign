@@ -21,11 +21,21 @@
   overflow: hidden;
 
   &:hover {
-    background-color: rgba(152, 150, 150, 0.12);
-    opacity: 0.75;
+    background-color: rgba(122, 122, 122, 0.12);
+    opacity: 0.8;
   }
 
   &_active {
     border: 1px solid #dc4141;
+  }
+
+  &_disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      opacity: 0.5;
+      background-color: transparent;
+    }
   }
 }

@@ -29,7 +29,8 @@
     "login": {
       "save_me": "记住我",
       "title": "登录账户",
-      "button_text": "登录"
+      "button_text": "登录",
+      "forgot_password": "忘记密码？"
     },
     "registration": {
       "title": "注册",
@@ -62,6 +63,23 @@
   "news": {
     "title": "新闻"
   },
+  "profile": {
+    "nickname": "昵称",
+    "email": "邮箱",
+    "avatar": "头像",
+    "frame": "边框",
+    "tabs": {
+      "profile": "资料",
+      "statistic": "统计",
+      "history": "事件历史"
+    }
+  },
+  "table": {
+    "filter_all": "全部"
+  },
+  "modals": {
+    "create_game_close": "关闭"
+  },
   "HomePage": {
     "title": "主页"
   },
@@ -74,6 +92,55 @@
       "completed": "已完成",
       "in_progress": "可用",
       "closed": "不可用"
+    },
+    "theory_button": "理论",
+    "practice_button": "练习",
+    "banner_title_prefix": "向",
+    "banner_title_highlight": "胜利",
+    "banner_title_suffix": "迈出第一步！",
+    "banner_subtitle": "学习基础、掌握关键技能，解锁精彩对战。别错过展示实力的机会——立即开始！",
+    "banner_continue": "继续教程",
+    "chapters": {
+      "1": {
+        "title": "游戏基础",
+        "description": "游戏目标、单位控制、移动与攻击敌人"
+      },
+      "2": {
+        "title": "侦察",
+        "description": "使用侦察无人机侦察敌方领土"
+      },
+      "3": {
+        "title": "中程打击无人机",
+        "description": "发射并操控中程打击无人机"
+      },
+      "4": {
+        "title": "FPV 拦截器",
+        "description": "使用 FPV 无人机拦截敌方飞行器"
+      },
+      "5": {
+        "title": "后勤",
+        "description": "使用运输车辆调动部队与站点"
+      },
+      "6": {
+        "title": "电子战站",
+        "description": "对抗敌方无人机"
+      },
+      "7": {
+        "title": "卫星、地形与天气",
+        "description": "卫星与地图侦察；地形与天气对游戏的影响"
+      },
+      "8": {
+        "title": "频率扫描仪",
+        "description": "在密林与建筑中用频率扫描仪发现敌人"
+      },
+      "9": {
+        "title": "远程打击无人机",
+        "description": "打击敌人并反制敌方电子战站"
+      },
+      "10": {
+        "title": "结业",
+        "description": "完成教程"
+      }
     }
   },
   "knowledge_base": {
@@ -141,6 +208,42 @@
     "satellite": "卫星",
     "satellite_description": "卫星侦察。",
     "topography": "地形",
-    "topography_description": "地形起伏。"
+    "topography_description": "地形起伏。",
+    "sec": "秒",
+    "parameters_of_the_current_session": "当前会话参数",
+    "session_parameters": "会话参数",
+    "step_duration": "步长时长",
+    "number_of_days": "天数",
+    "pilots": "飞行员"
+  },
+  "questions": {
+    "heading": "找到任何问题的答案",
+    "subheading": "我们整理了主要问题的解答",
+    "how_to_contact_customer_support": "如何联系客服？",
+    "how_to_contact_customer_support_description": "请发送邮件至 support@mail.dronewars.su。我们会尽快协助您解决问题。",
+    "the_site_administrators_are_asking": "网站管理员要我提供账户密码，我该怎么办？",
+    "the_site_administrators_are_asking_description": "若您通过邮件、私信或社交网络收到此类请求，请勿提供个人信息，也不要点击其中的链接。我们的管理员绝不会索要账户密码。",
+    "suspicious_activity_on_your_account": "如果发现账户有异常活动，该怎么办？",
+    "suspicious_activity_on_your_account_description": "若发现账户存在可疑活动，请立即修改密码并联系客服。",
+    "what_if_I_forgot_my_account_password": "忘记账户密码怎么办？",
+    "what_if_I_forgot_my_account_password_description": "登录时请点击「忘记密码？」并按页面说明操作以重置密码。",
+    "more_than_one_account_per_person": "一个人可以注册多个账号吗？",
+    "more_than_one_account_per_person_description": "禁止一人使用多个账号；违反此规定可能导致所有关联账号被封禁。",
+    "how_do_I_delete_my_account": "如何删除我的账户？",
+    "how_do_I_delete_my_account_description": "账户删除仅能由本站技术支持协助完成。请注意该操作不可恢复，之后无法找回账户。",
+    "why_is_my_game_lagging_and_freezing": "为什么游戏会卡顿或冻结？",
+    "why_is_my_game_lagging_and_freezing_description": "卡顿可能由网络问题、服务器负载过高或其他技术故障引起。请尝试刷新页面并检查网络是否稳定。",
+    "change_the_nickname_on_the_site": "注册后还能修改网站上的昵称吗？",
+    "change_the_nickname_on_the_site_description": "可以。您可在「个人资料」页面修改昵称、密码或绑定邮箱。",
+    "play_against_friends": "我能和朋友对战吗？",
+    "play_against_friends_description": "可以！创建大厅后，可通过房间代码或房间名邀请好友。",
+    "play_mobile_device": "能在手机上玩吗？",
+    "play_mobile_device_description": "不能。本模拟并非为移动设备设计，在手机上游玩可能遇到各种问题。",
+    "request_help_in_completing_the_game": "可以发布视频或图片攻略并请人帮忙通关吗？",
+    "request_help_in_completing_the_game_description": "禁止制作和/或以视频、音频和/或文字形式传播游戏玩法教程，也禁止提供此类咨询。违反规定可能导致网站账号被封禁。",
+    "suggest_my_ideas": "如何向你们提出游戏方面的建议？",
+    "suggest_my_ideas_description": "我们很乐意听取您的想法与建议！您可通过网站首页的「意见反馈」按钮联系我们。",
+    "receive_news_and_updates": "如何获取游戏新闻与更新？",
+    "receive_news_and_updates_description": "请关注我们的社交媒体，第一时间了解更新与新内容。"
   }
 }

@@ -16,12 +16,12 @@ interface TutorialChapterProps {
 }
 
 export const TutorialChapter: FC<TutorialChapterProps> = ({ chapter_id }) => {
-  const { availableChapter, getChapter, getChapterStatus, redirectToChapter } =
+  const { availableChapter, getChapterStatus, redirectToChapter } =
     useTutorialChapter();
 
   const t = useTranslations();
-
-  const { title, description } = getChapter(chapter_id);
+  const title = t(`tutorial.chapters.${chapter_id}.title`);
+  const description = t(`tutorial.chapters.${chapter_id}.description`);
   const status = getChapterStatus(availableChapter, chapter_id);
 
   return (
@@ -36,7 +36,7 @@ export const TutorialChapter: FC<TutorialChapterProps> = ({ chapter_id }) => {
       />
 
       <div className={cn(styles.status, styles[`status_${status}`])}>
-        {t(`tutorial.status.${status}`)}
+        {t(`tutorial.tutorial.status.${status}`)}
       </div>
 
       <div className={styles.info}>
@@ -49,7 +49,7 @@ export const TutorialChapter: FC<TutorialChapterProps> = ({ chapter_id }) => {
               onClick={() =>
                 redirectToChapter(chapter_id, ETutorialType.THEORY)
               }
-              children={"Обучение"}
+              children={t("tutorial.theory_button")}
               color={"gray"}
               fullWidth
             />
@@ -58,7 +58,7 @@ export const TutorialChapter: FC<TutorialChapterProps> = ({ chapter_id }) => {
                 onClick={() =>
                   redirectToChapter(chapter_id, ETutorialType.PRACTICE)
                 }
-                children={"Задание"}
+                children={t("tutorial.practice_button")}
                 fullWidth
               />
             )}

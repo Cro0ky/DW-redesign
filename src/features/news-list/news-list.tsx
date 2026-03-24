@@ -16,7 +16,7 @@ interface NewsListProps {
 }
 
 export const NewsList: FC<NewsListProps> = ({ variant = "component" }) => {
-  const t = useTranslations("news");
+  const t = useTranslations();
   const { news, isLoading, fetchNews } = useFetchNews();
 
   useLayoutEffect(() => {
@@ -25,7 +25,7 @@ export const NewsList: FC<NewsListProps> = ({ variant = "component" }) => {
 
   return (
     <div className={cn(styles.wrapper, styles[variant])}>
-      <span className={styles.title}>{t("title")}</span>
+      <span className={styles.title}>{t("news.title")}</span>
       <div className={styles.list}>
         {isLoading
           ? Array.from({ length: SKELETON_COUNT }).map((_, i) => (

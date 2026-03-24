@@ -1,0 +1,33 @@
+.wrapper {
+  @include flex(flex-start, flex-start, 12px, column);
+  height: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  .head {
+    @include flex(center, center, 8px, column);
+    width: 100%;
+
+    .title {
+      color: #8d8fa8;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 28px;
+      letter-spacing: 0.2px;
+    }
+
+    .subtitle {
+      color: #c7c7c7;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 26px;
+      letter-spacing: 0.2px;
+    }
+  }
+
+  .list {
+    @include flex(flex-start, flex-start, 10px, column);
+    @include scrollbar();
+    width: 100%;
+  }
+}
