@@ -1,9 +1,10 @@
 "use client";
 
-import styles from "./accordion.module.scss";
-import { FC, useLayoutEffect, useRef, useState } from "react";
-import { ChevronDown } from "lucide-react";
 import cn from "classnames";
+import { ChevronDown } from "lucide-react";
+import { FC, useLayoutEffect, useRef, useState } from "react";
+
+import styles from "./accordion.module.scss";
 
 interface IAccordionProps {
   title?: string;

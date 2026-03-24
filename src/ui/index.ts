@@ -1,3 +1,5 @@
+export * from "../types/table.types";
+export { Accordion } from "./accordion/accordion";
 export { Button } from "./button/button";
 export * from "./button/button.types";
 export { Input } from "./input/input";
@@ -8,5 +10,3 @@ export { Portal } from "./portal/portal";
 export { SkeletonLoader } from "./skeleton-loader/skeleton-loader";
 export { Switcher } from "./switcher/switcher";
 export { Table } from "./table/table";
-export * from "../types/table.types";
-export { Accordion } from "./accordion/accordion";

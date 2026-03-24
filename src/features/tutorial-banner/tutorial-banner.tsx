@@ -1,9 +1,9 @@
 "use client";
 
 import { Target, Trophy } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { useTutorialChapter } from "@/components/tutorial-chapter/hooks/use-tutorial-chapter";
-import { useTranslations } from "next-intl";
 import { Button } from "@/ui";
 
 import styles from "./tutorial-banner.module.scss";

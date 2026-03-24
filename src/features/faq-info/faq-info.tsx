@@ -1,6 +1,8 @@
-import styles from "./faq-info.module.scss";
-import { Accordion } from "@/ui";
 import { useTranslations } from "next-intl";
+
+import { Accordion } from "@/ui";
+
+import styles from "./faq-info.module.scss";
 
 const FAQ_QUESTIONS = [
   "how_to_contact_customer_support",
