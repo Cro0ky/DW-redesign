@@ -7,3 +7,5 @@ export * from "./modal/modal.types";
 export { Portal } from "./portal/portal";
 export { SkeletonLoader } from "./skeleton-loader/skeleton-loader";
 export { Switcher } from "./switcher/switcher";
+export { Table } from "./table/table";
+export * from "./table/table.types";

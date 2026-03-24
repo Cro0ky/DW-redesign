@@ -1,11 +1,8 @@
 import { ReactNode } from "react";
 
+import { TBaseTitle, TBaseTopic } from "@/types/knowledge-base-info.types";
 import { Size } from "@/types/types";
 import { IButtonProps } from "@/ui";
-import {
-  TBaseTitle,
-  TBaseTopic,
-} from "@/types/knowledge-base-info.types";
 
 export enum EModalName {
   CREATE_GAME_MODAL = "CREATE_GAME_MODAL",
@@ -29,7 +26,26 @@ export interface IModalProps extends IBaseModalProps {
 /** Маппинг пропсов для каждого модального окна */
 export interface IModalParamsMap {
   [EModalName.CREATE_GAME_MODAL]: undefined;
-  [EModalName.UNIT_MODAL]: { category: TBaseTitle; topic: TBaseTopic };
+  [EModalName.UNIT_MODAL]: {
+    topic: TBaseTopic;
+    description: string;
+    category: TBaseTitle;
+    peculiarities?: string[];
+    data?: {
+      tick_time?: number;
+      tick_activate?: number;
+      unloading_tick?: number;
+      moving_tick?: number;
+      launch_tick?: number;
+      reload_tick?: number;
+      pre_activate_tick?: number;
+      infantry_tick?: number;
+      station_tick?: number;
+      six_ticks?: number;
+      eighteen_ticks?: number;
+      photo_tick?: number;
+    };
+  };
 }
 
 /** Дискриминированное объединение для типизации openModal */

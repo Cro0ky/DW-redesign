@@ -1,0 +1,58 @@
+.textInput {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  font-size: 14px;
+  min-width: 140px;
+  max-width: 200px;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  font-size: 14px;
+  min-width: 120px;
+  max-width: 200px;
+
+  &:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.dateInput {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  font-size: 14px;
+
+  &:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.dateRange {
+  @include flex(center, center, 8px);
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}

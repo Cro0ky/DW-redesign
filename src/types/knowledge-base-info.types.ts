@@ -49,6 +49,7 @@ export interface IKnowledgeBaseInfoData {
     description: string;
     unit?: IUnitParams;
     data?: Record<string, number>;
+    peculiarities?: string[];
   }[];
 }
 

@@ -30,11 +30,24 @@
     }
   }
 
-  .body {
-    @include flex(center, flex-start, 8px, $wrap: wrap);
+  .bodyWrapper {
+    overflow: hidden;
     border-radius: 0 0 14px 14px;
     background: rgba(255, 255, 255, 0.04);
+  }
+
+  .body {
+    @include flex(center, flex-start, 8px, $wrap: wrap);
     padding: 16px;
+    min-height: 200px;
+
+    &.slide_next {
+      animation: slideInFromRight 0.35s ease-out forwards;
+    }
+
+    &.slide_prev {
+      animation: slideInFromLeft 0.35s ease-out forwards;
+    }
 
     .topic {
       @include flex(flex-end, center);
@@ -64,5 +77,27 @@
         z-index: 1;
       }
     }
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

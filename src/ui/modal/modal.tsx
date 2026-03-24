@@ -14,8 +14,8 @@ const ANIMATION_DELAY = 200;
 export const Modal: FC<IModalProps> = ({
   size = "s",
   buttons,
-  title = "TITLE TITLE TITLE",
-  subtitle = "SUBTITLE SUBTITLE",
+  title,
+  subtitle,
   children,
   zIndex = 100,
   name,

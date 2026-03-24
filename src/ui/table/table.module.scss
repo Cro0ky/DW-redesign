@@ -1,0 +1,39 @@
+.wrapper {
+  @include flex(flex-start, stretch, 12px, column);
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+
+.toolbar {
+  @include flex(center, space-between, 16px);
+  flex-wrap: wrap;
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.headerActions {
+  @include flex(center, flex-start, 8px);
+}
+
+.filters {
+  @include flex(center, flex-end, 12px);
+  flex-wrap: wrap;
+}
+
+.filterItem {
+  @include flex(center, stretch);
+}
+
+.tableScroll {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}

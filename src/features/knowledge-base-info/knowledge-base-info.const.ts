@@ -13,6 +13,7 @@ export const knowledgeBaseInfoData: IKnowledgeBaseInfoData[] = [
       {
         title: "total_playing_time",
         description: "total_playing_time_description",
+        data: { tick_time },
       },
       {
         title: "recharge_the_abilities_of_units",
@@ -30,6 +31,7 @@ export const knowledgeBaseInfoData: IKnowledgeBaseInfoData[] = [
       {
         title: "mechanics_of_the_sequence_of_moves",
         description: "mechanics_of_the_sequence_of_moves_description",
+        data: { tick_time },
       },
       { title: "event_history", description: "event_history_description" },
       {
@@ -184,10 +186,18 @@ export const knowledgeBaseInfoData: IKnowledgeBaseInfoData[] = [
       {
         title: "weather",
         description: "weather_description",
+        data: {
+          six_ticks: 6,
+          eighteen_ticks: 18,
+        },
       },
       {
         title: "satellite",
         description: "satellite_description",
+        data: {
+          photo_tick: Math.ceil(tick_time / 2),
+          six_ticks: 6,
+        },
       },
       {
         title: "topography",

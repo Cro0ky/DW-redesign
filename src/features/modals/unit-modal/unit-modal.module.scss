@@ -1,0 +1,60 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  @include flex(flex-start, space-between);
+
+  .info {
+    @include flex(flex-start, flex-start, 12px, column);
+    @include scrollbar();
+    max-width: 500px;
+    height: 100%;
+    width: 100%;
+
+    .head {
+      @include flex(flex-start, flex-start, 4px, column);
+      width: 100%;
+
+      &_title {
+        line-height: 30px;
+        letter-spacing: 0.2px;
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      &_subtitle {
+        color: #8d8fa8;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.1px;
+      }
+    }
+
+    .description {
+      width: 100%;
+      max-width: 500px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      color: #c7c7c7;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22px;
+      letter-spacing: 0.1px;
+    }
+  }
+
+  .unit {
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(255, 0, 0, 0.12);
+  }
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}

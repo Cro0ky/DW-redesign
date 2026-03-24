@@ -1,14 +1,16 @@
 "use client";
 
-import styles from "./knowledge-base-info.module.scss";
 import cn from "classnames";
-import { useState } from "react";
-import { TBaseTitle } from "@/types/knowledge-base-info.types";
-import { knowledgeBaseInfoData } from "@/features/knowledge-base-info/knowledge-base-info.const";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { useRef, useState } from "react";
+
+import { knowledgeBaseInfoData } from "@/features/knowledge-base-info/knowledge-base-info.const";
 import { useModalStore } from "@/store/modal/modal.store";
+import type { TBaseTitle } from "@/types/knowledge-base-info.types";
 import { EModalName } from "@/ui";
+
+import styles from "./knowledge-base-info.module.scss";
 
 const TABS: TBaseTitle[] = [
   "basic_concepts",
@@ -22,9 +24,24 @@ const TABS: TBaseTitle[] = [
 export const KnowledgeBaseInfo = () => {
   const t = useTranslations();
   const { openModal } = useModalStore();
+  const isInitialMountRef = useRef(true);
 
   const [activeCategory, setActiveCategory] =
     useState<TBaseTitle>("basic_concepts");
+  const [slideDirection, setSlideDirection] = useState<"next" | "prev">("next");
+
+  const onTabClick = (tab: TBaseTitle) => {
+    if (tab === activeCategory) return;
+    const prev = TABS.indexOf(activeCategory);
+    const next = TABS.indexOf(tab);
+    setSlideDirection(next > prev ? "next" : "prev");
+    isInitialMountRef.current = false;
+    setActiveCategory(tab);
+  };
+
+  const activeData = knowledgeBaseInfoData.find(
+    ({ category }) => category === activeCategory,
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -32,7 +49,7 @@ export const KnowledgeBaseInfo = () => {
         {TABS.map((tab) => (
           <div
             key={tab}
-            onClick={() => setActiveCategory(tab)}
+            onClick={() => onTabClick(tab)}
             className={cn(styles.tab, {
               [styles.tab_active]: tab === activeCategory,
             })}
@@ -41,17 +58,30 @@ export const KnowledgeBaseInfo = () => {
           </div>
         ))}
       </div>
-      <div className={styles.body}>
-        {knowledgeBaseInfoData
-          .find(({ category }) => category === activeCategory)
-          ?.topics.map((topic) => (
+      <div className={styles.bodyWrapper}>
+        <div
+          key={activeCategory}
+          className={cn(styles.body, {
+            [styles.slide_next]:
+              !isInitialMountRef.current && slideDirection === "next",
+            [styles.slide_prev]:
+              !isInitialMountRef.current && slideDirection === "prev",
+          })}
+        >
+          {activeData?.topics.map((topic) => (
             <div
               key={topic.title}
               className={styles.topic}
               onClick={() =>
                 openModal({
                   name: EModalName.UNIT_MODAL,
-                  props: { category: activeCategory, topic: topic.title },
+                  props: {
+                    topic: topic.title,
+                    description: topic.description,
+                    data: topic.data,
+                    category: activeCategory,
+                    peculiarities: topic.peculiarities,
+                  },
                 })
               }
             >
@@ -64,6 +94,7 @@ export const KnowledgeBaseInfo = () => {
               <span className={styles.title}>{t(`faq.${topic.title}`)}</span>
             </div>
           ))}
+        </div>
       </div>
     </div>
   );
