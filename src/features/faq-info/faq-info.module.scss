@@ -29,5 +29,6 @@
     @include flex(flex-start, flex-start, 10px, column);
     @include scrollbar();
     width: 100%;
+    padding: 0 8px;
   }
 }
