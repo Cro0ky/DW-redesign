@@ -74,6 +74,23 @@
       "history": "事件历史"
     }
   },
+  "statistic": {
+    "tabs": {
+      "general": "综合",
+      "rating": "排位"
+    },
+    "place": "名次",
+    "rating_points": "积分",
+    "rank": "军衔",
+    "leaders_button": "排行榜",
+    "matches": "场次",
+    "for_russia": "俄罗斯",
+    "for_nato": "北约",
+    "match_history": "对局记录",
+    "win_percentage": "胜率",
+    "win_major": "大胜",
+    "win_minor": "小胜"
+  },
   "table": {
     "filter_all": "全部"
   },

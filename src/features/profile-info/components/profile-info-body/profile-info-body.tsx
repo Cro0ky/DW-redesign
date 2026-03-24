@@ -2,7 +2,7 @@ import cn from "classnames";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import { ProfileTab } from "@/features/profile-info/components";
+import { ProfileTab, StatisticInfo } from "@/features/profile-info/components";
 
 import styles from "./profile-info-body.module.scss";
 
@@ -12,11 +12,12 @@ const TABS: THeadTabs[] = ["profile", "statistic", "history"];
 
 export const ProfileInfoBody = () => {
   const t = useTranslations();
-  const [activeTab, setActiveTab] = useState<THeadTabs>("profile");
+  const [activeTab, setActiveTab] = useState<THeadTabs>("statistic");
 
   const renderSelectedComponent = () => {
     switch (activeTab) {
       case "statistic":
+        return <StatisticInfo />;
       case "history":
       case "profile":
         return <ProfileTab />;

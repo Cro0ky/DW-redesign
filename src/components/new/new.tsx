@@ -1,19 +1,12 @@
 import { MailPlus } from "lucide-react";
 import { FC } from "react";
-import ReactMarkdown from "react-markdown";
 
 import { INews } from "@/types/news.types";
 import { formatDateTime } from "@/utils/formatDateTime";
 
 import styles from "./new.module.scss";
 
-export const New: FC<INews> = ({
-  image,
-  title,
-  description,
-  published_at,
-  news_read,
-}) => {
+export const New: FC<INews> = ({ image, title, published_at, news_read }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.preview}>
@@ -24,9 +17,6 @@ export const New: FC<INews> = ({
         />
       </div>
       <span className={styles.title}>{title}</span>
-      <div className={styles.description}>
-        <ReactMarkdown>{description}</ReactMarkdown>
-      </div>
       <div className={styles.published_date}>
         {formatDateTime(published_at)}
       </div>

@@ -74,6 +74,23 @@
       "history": "Event History"
     }
   },
+  "statistic": {
+    "tabs": {
+      "general": "General",
+      "rating": "Rating"
+    },
+    "place": "Place",
+    "rating_points": "Rating",
+    "rank": "Rank",
+    "leaders_button": "Leaderboard",
+    "matches": "Matches",
+    "for_russia": "Russia",
+    "for_nato": "NATO",
+    "match_history": "Match history",
+    "win_percentage": "Win rate",
+    "win_major": "Major",
+    "win_minor": "Minor"
+  },
   "table": {
     "filter_all": "All"
   },

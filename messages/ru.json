@@ -74,6 +74,23 @@
       "history": "История событий"
     }
   },
+  "statistic": {
+    "tabs": {
+      "general": "Общая",
+      "rating": "Рейтинг"
+    },
+    "place": "Место",
+    "rating_points": "Рейтинг",
+    "rank": "Звание",
+    "leaders_button": "Таблица лидеров",
+    "matches": "Матчей",
+    "for_russia": "За россию",
+    "for_nato": "За НАТО",
+    "match_history": "История матчей",
+    "win_percentage": "Процент побед",
+    "win_major": "Крупная",
+    "win_minor": "Незначительная"
+  },
   "table": {
     "filter_all": "Все"
   },

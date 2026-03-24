@@ -57,3 +57,51 @@ export interface CreateTutorialPracticeRequest {
 export interface CreateTutorialPracticeResponse {
   game_id: string;
 }
+
+export interface IStatistic {
+  general_statistic: {
+    total_matches: number;
+    matches_rf: number;
+    matches_nato: number;
+    wins_rf_major: number;
+    wins_rf_minor: number;
+    wins_nato_major: number;
+    wins_nato_minor: number;
+    total_wins: number;
+    total_wins_percentage: number;
+    win_percentage_rf: number;
+    win_percentage_nato: number;
+    win_percentage_major: number;
+    win_percentage_minor: number;
+  };
+  rating_statistic: {
+    total_matches: number;
+    matches_rf: number;
+    matches_nato: number;
+    wins_rf_major: number;
+    wins_rf_minor: number;
+    wins_nato_major: number;
+    wins_nato_minor: number;
+    last_20_ratings: number[];
+    total_wins: number;
+    total_wins_percentage: number;
+    win_percentage_rf: number;
+    win_percentage_nato: number;
+    win_percentage_major: number;
+    win_percentage_minor: number;
+  };
+}
+
+export interface IUserRankTier {
+  name: ERank;
+  min_rate: number;
+  max_rate: number;
+}
+
+export interface IUserRanks {
+  user_rank: ERank;
+  next_rank: ERank;
+  experience: number;
+  position: number;
+  ranks: IUserRankTier[];
+}

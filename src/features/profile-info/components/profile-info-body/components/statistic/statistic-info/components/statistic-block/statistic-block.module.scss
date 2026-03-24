@@ -1,0 +1,120 @@
+.wrapper {
+  @include flex(stretch, space-between, 14px);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  width: 100%;
+  max-height: 160px;
+  height: 100%;
+  padding: 10px;
+
+  .circle {
+    @include flex(center, center, 4px, column);
+    border-radius: 50%;
+    margin: auto;
+    padding: 10px;
+    height: 120px;
+    width: 120px;
+    min-height: 120px;
+    min-width: 120px;
+    max-height: 120px;
+    max-width: 120px;
+
+    &_blue {
+      border: 3px solid #6966c5;
+      background: linear-gradient(
+        180deg,
+        rgba(97, 117, 249, 0.3) 27.69%,
+        rgba(97, 153, 250, 0) 146.63%
+      );
+    }
+
+    &_yellow {
+      border: 3px solid #e5c557;
+      background: linear-gradient(
+        179deg,
+        rgba(255, 205, 34, 0.3) 30.55%,
+        rgba(249, 208, 97, 0) 159.34%
+      );
+    }
+
+    &_green {
+      border: 3px solid #559660;
+      background: linear-gradient(
+        180deg,
+        rgba(85, 150, 96, 0.3) 24.42%,
+        rgba(85, 150, 96, 0) 129.33%
+      );
+    }
+
+    &_counter {
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 28px;
+      letter-spacing: 0.2px;
+
+      &_blue {
+        color: #9ab6ff;
+      }
+
+      &_yellow {
+        color: #fff4ce;
+      }
+
+      &_green {
+        color: #ceffc8;
+      }
+    }
+
+    &_subtitle {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 16px;
+      letter-spacing: 0.2px;
+
+      &_blue {
+        color: #5292ff;
+      }
+
+      &_yellow {
+        color: #e8cd73;
+      }
+
+      &_green {
+        color: #63d876;
+      }
+    }
+  }
+
+  .content {
+    @include flex(flex-start, flex-start, 4px, column);
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    min-height: 0;
+
+    &_item {
+      @include flex(center, space-between, 4px);
+      width: 100%;
+      flex-shrink: 0;
+
+      &_title {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0.2px;
+      }
+
+      &_value {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        letter-spacing: 0.2px;
+      }
+    }
+
+    .button {
+      margin-top: auto;
+    }
+  }
+}
