@@ -7,7 +7,7 @@ import { Table } from "@/ui";
 
 import { useLeadersInfo } from "./hooks/use-leaders-info";
 import styles from "./leaders-info.module.scss";
-import { useRanksStore, useStatisticStore, useUserStore } from "@/store";
+import { useStatisticStore, useUserStore } from "@/store";
 import { useEffect } from "react";
 import { getUserUuid } from "@/utils/getUserUuid";
 
