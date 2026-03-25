@@ -1,4 +1,4 @@
-import { FaqInfo } from "@/features/faq-info/faq-info";
+import { FaqInfo } from "@/features";
 
 export default function Faq() {
   return <FaqInfo />;

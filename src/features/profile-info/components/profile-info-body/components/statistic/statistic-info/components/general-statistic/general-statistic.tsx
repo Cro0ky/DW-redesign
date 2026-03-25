@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
-import { useStatisticInfo } from "@/features/profile-info/components";
+import { useStatisticInfo } from "@/features";
 import { useStatisticStore } from "@/store";
 import { mapRatingsToChartData, RatingChart } from "@/ui";
 
@@ -16,7 +16,8 @@ export const GeneralStatistic = () => {
     (s) => s.statistic?.rating_statistic?.last_20_ratings,
   );
   const chartData =
-    last20Ratings?.length && last20Ratings.some((v) => Number.isFinite(Number(v)))
+    last20Ratings?.length &&
+    last20Ratings.some((v) => Number.isFinite(Number(v)))
       ? mapRatingsToChartData(last20Ratings)
       : [];
 

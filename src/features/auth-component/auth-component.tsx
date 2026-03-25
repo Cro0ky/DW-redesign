@@ -5,11 +5,7 @@ import { Mail } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { DroneWarsLogo } from "@/components";
-import {
-  AuthFormTransition,
-  SUPPORT_MAIL,
-} from "@/features/auth-component/components";
-import { useAuthComponent } from "@/features/auth-component/hooks/useAuthComponent";
+import { AuthFormTransition, SUPPORT_MAIL, useAuthComponent } from "@/features";
 import { useChangeLocale } from "@/hooks/useChageLocale";
 import type { TLanguage } from "@/i18n/types";
 import { Switcher } from "@/ui";

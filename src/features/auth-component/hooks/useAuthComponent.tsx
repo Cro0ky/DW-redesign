@@ -3,8 +3,7 @@
 import { useCallback, useState } from "react";
 
 import { CnFlag, EnFlag, RuFlag } from "@/assets/svg";
-import { TAuthStep } from "@/features/auth-component/auth-component";
-import { Login, Registration } from "@/features/auth-component/components";
+import { Login, Registration, TAuthStep } from "@/features";
 
 export const useAuthComponent = () => {
   const [step, setStep] = useState<TAuthStep>("login");

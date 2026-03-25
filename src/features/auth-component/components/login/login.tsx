@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
-import type { TAuthStep } from "@/features/auth-component/auth-component";
+import type { TAuthStep } from "@/features";
 import { useLoginSchema } from "@/schemes";
 import { useAuthStore } from "@/store";
 import { Button, Input } from "@/ui";

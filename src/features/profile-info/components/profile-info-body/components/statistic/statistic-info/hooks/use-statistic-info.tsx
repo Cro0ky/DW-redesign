@@ -68,7 +68,7 @@ export const useStatisticInfo = () => {
           button: {
             children: t("statistic.match_history"),
             iconLeft: <List />,
-            onClick: () => router.push("/matches"),
+            onClick: () => router.push("/history"),
           },
         },
 

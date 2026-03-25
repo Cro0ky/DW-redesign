@@ -3,7 +3,7 @@
 import cn from "classnames";
 import { ReactNode, useEffect, useRef, useState } from "react";
 
-import type { TAuthStep } from "@/features/auth-component/auth-component";
+import type { TAuthStep } from "@/features";
 
 import styles from "./auth-form-transition.module.scss";
 

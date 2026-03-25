@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 
-import { knowledgeBaseInfoData } from "@/features/knowledge-base-info/knowledge-base-info.const";
+import { knowledgeBaseInfoData } from "@/features";
 import { useModalStore } from "@/store/modal/modal.store";
 import type { TBaseTitle } from "@/types/knowledge-base-info.types";
 import { EModalName } from "@/ui";

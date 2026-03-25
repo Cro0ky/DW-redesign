@@ -2,7 +2,7 @@ import cn from "classnames";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import { ProfileTab, StatisticInfo } from "@/features/profile-info/components";
+import { ProfileTab, StatisticInfo } from "@/features";
 
 import styles from "./profile-info-body.module.scss";
 

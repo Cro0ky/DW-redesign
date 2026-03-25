@@ -2,7 +2,7 @@ import cn from "classnames";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import { ProfileInfoBlock } from "@/features/profile-info/components";
+import { ProfileInfoBlock } from "@/features";
 import { useUserStore } from "@/store";
 import { Input } from "@/ui";
 

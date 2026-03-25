@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { AuthComponent } from "@/features/auth-component/auth-component";
+import { AuthComponent } from "@/features";
 import { isAuthenticated } from "@/lib/auth";
 
 import styles from "./page.module.scss";
