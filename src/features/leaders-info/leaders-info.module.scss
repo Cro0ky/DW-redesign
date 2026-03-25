@@ -2,6 +2,24 @@
   @include flex(flex-start, stretch, 16px, column);
   height: 100%;
   width: 100%;
+
+  .myPosition {
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    max-height: 56px;
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 6px 16px;
+    display: grid;
+    grid-template-columns: 130px 360px 288px 216px 200px;
+
+    &_item {
+      width: 100%;
+      height: 100%;
+      @include flex(center, flex-start);
+    }
+  }
 }
 
 .metaRow {

@@ -3,19 +3,19 @@ import { useCallback, useEffect, useMemo, useReducer, useState } from "react";
 
 import type { IRankingRow } from "@/types/ranking.types";
 import type { TableColumn } from "@/types/table.types";
+import { Tooltip } from "@/ui";
 
 import {
   fetchRankingPage,
   initialLeadersRankingState,
   leadersRankingReducer,
 } from "../leaders-ranking-fetch";
-import { Tooltip } from "@/ui";
 
 const PAGE_SIZE = 50;
 
 function translateRank(t: ReturnType<typeof useTranslations>, code: string) {
   const key = `ranks.${code}`;
-  const out = t(`leaders.${key}`);
+  const out = t(key);
   return out === key ? code : out;
 }
 

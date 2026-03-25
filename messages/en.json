@@ -109,24 +109,6 @@
       "status": "Outcome",
       "rating": "Rating"
     },
-    "status": {
-      "tie": "Tie",
-      "minor_defeat": "Minor defeat",
-      "major_defeat": "Major defeat",
-      "minor_victory": "Minor victory",
-      "major_victory": "Major victory"
-    },
-    "game_type": {
-      "TEAM": "Team",
-      "RT_SINGLE": "Single (RT)",
-      "SINGLE": "Single",
-      "RT_SOLO": "Solo (RT)",
-      "SOLO": "Solo"
-    },
-    "sub_type": {
-      "common": "Common",
-      "single": "Single"
-    },
     "pagination": {
       "prev": "Previous",
       "next": "Next",
@@ -141,12 +123,10 @@
     "load_error": "Failed to load leaderboard",
     "empty": "No data",
     "my_place": "Your rank: #{place}",
-    "columns": {
-      "place": "Place",
-      "username": "Username",
-      "rank": "Rank",
-      "experience": "Experience",
-      "win_percentage": "Win %"
+    "banner": {
+      "title": "Leaderboard",
+      "subtitle": "Compete with players and climb the ranking ladder!",
+      "create_lobby": "Create lobby"
     },
     "ranks": {
       "PRIVATE": "Private",
@@ -159,6 +139,13 @@
       "MAJOR": "Major",
       "COLONEL": "Colonel",
       "MARSHAL": "Marshal"
+    },
+    "columns": {
+      "place": "Place",
+      "username": "Username",
+      "rank": "Rank",
+      "experience": "Experience",
+      "win_percentage": "Win %"
     },
     "pagination": {
       "prev": "Previous",
@@ -339,5 +326,35 @@
     "suggest_my_ideas_description": "We are always happy to hear your ideas and suggestions! You can contact us using the Feedback button on the site’s home page.",
     "receive_news_and_updates": "How can I get news and updates about the game?",
     "receive_news_and_updates_description": "Follow us on social media to be the first to hear about updates and new features."
+  },
+  "ranks": {
+    "PRIVATE": "Private",
+    "CORPORAL": "Corporal",
+    "SERGEANT": "Sergeant",
+    "SERGEANT_MAJOR": "Sergeant Major",
+    "ENSIGN": "Ensign",
+    "LIEUTENANT": "Lieutenant",
+    "CAPTAIN": "Captain",
+    "MAJOR": "Major",
+    "COLONEL": "Colonel",
+    "MARSHAL": "Marshal"
+  },
+  "status": {
+    "tie": "Tie",
+    "minor_defeat": "Minor defeat",
+    "major_defeat": "Major defeat",
+    "minor_victory": "Minor victory",
+    "major_victory": "Major victory"
+  },
+  "game_type": {
+    "TEAM": "Team",
+    "RT_SINGLE": "Single (RT)",
+    "SINGLE": "Single",
+    "RT_SOLO": "Solo (RT)",
+    "SOLO": "Solo"
+  },
+  "sub_type": {
+    "common": "Common",
+    "single": "Single"
   }
 }

@@ -2,10 +2,14 @@
 
 import { useTranslations } from "next-intl";
 
+import { LeadersBanner } from "@/features";
 import { Table } from "@/ui";
 
 import { useLeadersInfo } from "./hooks/use-leaders-info";
 import styles from "./leaders-info.module.scss";
+import { useRanksStore, useStatisticStore, useUserStore } from "@/store";
+import { useEffect } from "react";
+import { getUserUuid } from "@/utils/getUserUuid";
 
 export const LeadersInfo = () => {
   const t = useTranslations();
@@ -14,7 +18,7 @@ export const LeadersInfo = () => {
     isHydrated,
     error,
     count,
-    // myPosition,
+    myPosition,
     loading,
     page,
     totalPages,
@@ -22,6 +26,23 @@ export const LeadersInfo = () => {
     columns,
     goToPage,
   } = useLeadersInfo();
+
+  const { username, rank, experience } = useUserStore();
+  const { statistic, fetchStatistic } = useStatisticStore();
+  const userId = getUserUuid();
+
+  useEffect(() => {
+    if (!userId?.user_id) return;
+    void fetchStatistic(userId.user_id);
+  }, [userId?.user_id, fetchStatistic]);
+
+  const me = [
+    myPosition,
+    `${username} (Вы)`,
+    t(`ranks.${rank}`),
+    experience,
+    `${statistic?.rating_statistic.total_wins_percentage}%`,
+  ];
 
   if (!isHydrated) {
     return (
@@ -47,6 +68,7 @@ export const LeadersInfo = () => {
 
   return (
     <div className={styles.root}>
+      <LeadersBanner />
       {loading && rows.length === 0 ? (
         <div className={styles.empty}>{t("leaders.loading")}</div>
       ) : !loading && rows.length === 0 ? (
@@ -73,6 +95,14 @@ export const LeadersInfo = () => {
           }}
         />
       )}
+
+      <div className={styles.myPosition}>
+        {me.map((i, index) => (
+          <span className={styles.myPosition_item} key={index}>
+            {i}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };

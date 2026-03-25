@@ -1,6 +1,7 @@
-import type { TableColumn } from "@/types/table.types";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { ReactNode } from "react";
+
+import type { TableColumn } from "@/types/table.types";
 
 export function tableColumnsToColumnDefs<T extends Record<string, unknown>>(
   columns: TableColumn<T>[],

@@ -1,5 +1,6 @@
-import styles from "./table-body.module.scss";
 import { flexRender, Row, RowData } from "@tanstack/react-table";
+
+import styles from "./table-body.module.scss";
 
 export function TableBody<TData extends RowData>({
   rows,

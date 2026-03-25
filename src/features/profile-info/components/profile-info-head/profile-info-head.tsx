@@ -5,9 +5,11 @@ import { useFetchUserInfo } from "@/store/user/use-fetch-user-info";
 
 import styles from "./profile-info-head.module.scss";
 import { ProfileInfoSkeleton } from "./profile-info-skeleton";
+import { useTranslations } from "next-intl";
 
 export const ProfileInfoHead = () => {
   const { rank, username, experience, isLoading } = useFetchUserInfo();
+  const t = useTranslations();
 
   if (isLoading) {
     return <ProfileInfoSkeleton />;
@@ -23,7 +25,7 @@ export const ProfileInfoHead = () => {
       <div className={styles.text}>
         <span className={styles.username}>{username}</span>
         <span className={styles.rank}>
-          {rank} ({experience} Очки рейтинга)
+          {t(`ranks.${rank}`)} ({experience} Очки рейтинга)
         </span>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useReducer, useState } from "react";
 
 import type { ISessionHistoryItem } from "@/types/history.types";
 import type { TableColumn } from "@/types/table.types";
+import { Tooltip } from "@/ui";
 import { getUserUuid } from "@/utils/getUserUuid";
 
 import {
@@ -10,19 +11,8 @@ import {
   historySessionReducer,
   initialHistorySessionState,
 } from "../history-session-fetch";
-import { Tooltip } from "@/ui";
 
 const PAGE_SIZE = 20;
-
-function translateOrRaw(
-  t: ReturnType<typeof useTranslations>,
-  prefix: "game_type" | "status" | "sub_type",
-  code: string,
-): string {
-  const key = `${prefix}.${code}`;
-  const out = t(key as never);
-  return out === key ? code : out;
-}
 
 export const useHistoryInfo = () => {
   const t = useTranslations();
@@ -99,26 +89,27 @@ export const useHistoryInfo = () => {
         key: "opponent_name",
         header: t("history.columns.opponent"),
         width: "300px",
-        render: (row) => <>{row.opponent_name}</>,
+        render: (row) => (
+          <Tooltip content={row.opponent_name}>{row.opponent_name}</Tooltip>
+        ),
       },
       {
         key: "game_type",
         header: t("history.columns.game_type"),
         width: "150px",
-        render: (row) => translateOrRaw(t, "game_type", String(row.game_type)),
+        render: (row) => <>{t(`game_type.${row.game_type}`)}</>,
       },
       {
         key: "game_sub_type",
         header: t("history.columns.game_sub_type"),
         width: "120px",
-        render: (row) =>
-          translateOrRaw(t, "sub_type", String(row.game_sub_type)),
+        render: (row) => <>{t(`sub_type.${row.game_sub_type}`)}</>,
       },
       {
         key: "status",
         header: t("history.columns.status"),
         width: "230px",
-        render: (row) => translateOrRaw(t, "status", String(row.status)),
+        render: (row) => <>{t(`status.${row.status}`)}</>,
       },
       {
         key: "rating",

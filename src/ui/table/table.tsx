@@ -11,14 +11,14 @@ import { Loader2 } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
 
 import type { FilterValues, TableProps } from "@/ui";
-
 import { TablePagination } from "@/ui";
+import { TableBody } from "@/ui/table/components/table-body/table-body";
+import { applyFilters } from "@/ui/table/utils/apply-filters";
+
+import { TableHead } from "./components";
 import { TableFilter } from "./components/table-filter/table-filter";
 import styles from "./table.module.scss";
 import { tableColumnsToColumnDefs } from "./utils/table-columns-to-column-defs";
-import { applyFilters } from "@/ui/table/utils/apply-filters";
-import { TableBody } from "@/ui/table/components/table-body/table-body";
-import { TableHead } from "./components";
 
 export function Table<T extends Record<string, unknown>>({
   data,

@@ -3,9 +3,10 @@
 import cn from "classnames";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+import { TablePaginationProps } from "@/types/table-pagination.types";
+
 import styles from "./table-pagination.module.scss";
 import { buildPaginationItems } from "./utils/build-pagination-items";
-import { TablePaginationProps } from "@/types/table-pagination.types";
 
 const DEFAULT_WINDOW = 6;
 

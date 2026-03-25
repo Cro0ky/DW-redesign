@@ -1,5 +1,6 @@
-import styles from "./table-head.module.scss";
 import { flexRender, HeaderGroup, RowData } from "@tanstack/react-table";
+
+import styles from "./table-head.module.scss";
 
 export function TableHead<TData extends RowData>({
   headerGroups,

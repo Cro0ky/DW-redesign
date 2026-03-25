@@ -59,7 +59,7 @@ export const HeaderDropDown: FC<HeaderDropDownProps> = ({
         <MiniProfile />
         <div className={styles.text}>
           <span className={styles.username}>{username}</span>
-          <span className={styles.rank}>{rank}</span>
+          <span className={styles.rank}>{t(`ranks.${rank}`)}</span>
         </div>
       </div>
       <div className={styles.body}>
