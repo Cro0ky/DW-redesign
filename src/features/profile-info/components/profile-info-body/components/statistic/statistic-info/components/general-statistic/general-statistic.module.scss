@@ -1,3 +1,9 @@
+.wrapper {
+  @include flex(flex-start, flex-start, 10px, column);
+  width: 100%;
+}
+
 .list {
   @include flex(center, flex-start, 10px);
+  width: 100%;
 }

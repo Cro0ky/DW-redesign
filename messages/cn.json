@@ -89,7 +89,8 @@
     "match_history": "对局记录",
     "win_percentage": "胜率",
     "win_major": "大胜",
-    "win_minor": "小胜"
+    "win_minor": "小胜",
+    "rating_chart_title": "积分走势"
   },
   "table": {
     "filter_all": "全部"

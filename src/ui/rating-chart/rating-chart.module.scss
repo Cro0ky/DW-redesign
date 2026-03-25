@@ -1,0 +1,26 @@
+.root {
+  width: 100%;
+  margin-top: 16px;
+  padding: 16px 14px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.title {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.chart {
+  width: 100%;
+
+  :global(.recharts-cartesian-grid-horizontal line),
+  :global(.recharts-cartesian-grid-vertical line) {
+    stroke: rgba(255, 255, 255, 0.08);
+  }
+}

@@ -89,7 +89,8 @@
     "match_history": "История матчей",
     "win_percentage": "Процент побед",
     "win_major": "Крупная",
-    "win_minor": "Незначительная"
+    "win_minor": "Незначительная",
+    "rating_chart_title": "График рейтинга"
   },
   "table": {
     "filter_all": "Все"
