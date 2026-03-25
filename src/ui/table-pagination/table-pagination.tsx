@@ -7,38 +7,56 @@ import styles from "./table-pagination.module.scss";
 
 const DEFAULT_WINDOW = 6;
 
+type PaginationItem =
+  | { kind: "page"; n: number }
+  | { kind: "ellipsis"; key: string };
+
+function buildPaginationItems(
+  current: number,
+  total: number,
+  maxVisible: number,
+): PaginationItem[] {
+  if (total < 1) return [];
+  if (total === 1) return [{ kind: "page", n: 1 }];
+
+  const pages = new Set<number>([1, total]);
+
+  const innerLeft = Math.max(2, current - Math.floor(maxVisible / 2));
+  const innerRight = Math.min(total - 1, innerLeft + maxVisible - 1);
+  const from = Math.max(2, innerRight - maxVisible + 1);
+
+  for (let p = from; p <= innerRight; p++) {
+    pages.add(p);
+  }
+
+  const sorted = [...pages].sort((a, b) => a - b);
+  const items: PaginationItem[] = [];
+
+  for (let i = 0; i < sorted.length; i++) {
+    const n = sorted[i];
+    if (i > 0 && n - sorted[i - 1] > 1) {
+      items.push({
+        kind: "ellipsis",
+        key: `gap-${sorted[i - 1]}-${n}`,
+      });
+    }
+    items.push({ kind: "page", n });
+  }
+
+  return items;
+}
+
 export interface TablePaginationProps {
   page: number;
   totalPages: number;
   onPageChange: (page: number) => void;
   isLoading?: boolean;
-  /** Сколько номеров страниц показывать в «окне» */
   maxVisible?: number;
   ariaNavLabel: string;
   ariaPrevLabel: string;
   ariaNextLabel: string;
   getPageAriaLabel: (n: number) => string;
   className?: string;
-}
-
-function getVisiblePageNumbers(
-  current: number,
-  total: number,
-  max: number,
-): number[] {
-  if (total < 1) return [];
-  if (total <= max) {
-    return Array.from({ length: total }, (_, i) => i + 1);
-  }
-  const half = Math.floor(max / 2);
-  let start = current - half;
-  if (start < 1) start = 1;
-  let end = start + max - 1;
-  if (end > total) {
-    end = total;
-    start = Math.max(1, end - max + 1);
-  }
-  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
 }
 
 export function TablePagination({
@@ -53,13 +71,10 @@ export function TablePagination({
   getPageAriaLabel,
   className,
 }: TablePaginationProps) {
-  const pageNumbers = getVisiblePageNumbers(page, totalPages, maxVisible);
+  const items = buildPaginationItems(page, totalPages, maxVisible);
 
   return (
-    <nav
-      className={cn(styles.root, className)}
-      aria-label={ariaNavLabel}
-    >
+    <nav className={cn(styles.root, className)} aria-label={ariaNavLabel}>
       <div className={styles.bar}>
         <button
           type="button"
@@ -70,22 +85,28 @@ export function TablePagination({
         >
           <ChevronLeft className={styles.pageArrowIcon} strokeWidth={2.5} />
         </button>
-        {pageNumbers.map((n) => (
-          <button
-            key={n}
-            type="button"
-            className={cn(
-              styles.pageNum,
-              n === page && styles.pageNumActive,
-            )}
-            disabled={isLoading}
-            aria-label={getPageAriaLabel(n)}
-            aria-current={n === page ? "page" : undefined}
-            onClick={() => onPageChange(n)}
-          >
-            {n}
-          </button>
-        ))}
+        {items.map((item) =>
+          item.kind === "ellipsis" ? (
+            <span key={item.key} className={styles.ellipsis} aria-hidden>
+              …
+            </span>
+          ) : (
+            <button
+              key={item.n}
+              type="button"
+              className={cn(
+                styles.pageNum,
+                item.n === page && styles.pageNumActive,
+              )}
+              disabled={isLoading}
+              aria-label={getPageAriaLabel(item.n)}
+              aria-current={item.n === page ? "page" : undefined}
+              onClick={() => onPageChange(item.n)}
+            >
+              {item.n}
+            </button>
+          ),
+        )}
         <button
           type="button"
           className={styles.pageArrow}

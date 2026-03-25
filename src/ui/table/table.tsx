@@ -15,7 +15,7 @@ import { useCallback, useMemo, useState } from "react";
 
 import type { FilterConfig, FilterValues, TableColumn, TableProps } from "@/ui";
 
-import { TablePagination } from "../table-pagination/table-pagination";
+import { TablePagination } from "@/ui";
 import bodyStyles from "./components/table-body/table-body.module.scss";
 import { TableFilter } from "./components/table-filter/table-filter";
 import headStyles from "./components/table-head/table-head.module.scss";

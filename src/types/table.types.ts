@@ -1,8 +1,13 @@
 import { ReactNode } from "react";
 
-import type { TablePaginationProps } from "../ui/table-pagination/table-pagination";
+import type { TablePaginationProps } from "@/ui";
 
-export type FilterType = "text" | "select" | "multiselect" | "date" | "daterange";
+export type FilterType =
+  | "text"
+  | "select"
+  | "multiselect"
+  | "date"
+  | "daterange";
 
 export interface FilterSelectOption {
   value: string | number;
