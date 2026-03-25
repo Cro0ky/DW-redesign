@@ -19,9 +19,9 @@ export const useSidebar = () => {
   const DEFAULT_SIDEBAR_ITEMS = [
     { href: "home", title: t("sidebar.home"), icon: <Play /> },
     { href: "tutorial", title: t("sidebar.tutorial"), icon: <GraduationCap /> },
+    { href: "profile", title: t("sidebar.profile"), icon: <CircleUser /> },
     { href: "matches", title: t("sidebar.matches"), icon: <Users /> },
     { href: "history", title: t("sidebar.history"), icon: <ClipboardClock /> },
-    { href: "profile", title: t("sidebar.profile"), icon: <CircleUser /> },
     { href: "leaders", title: t("sidebar.leaders"), icon: <Trophy /> },
     {
       href: "knowledge_base",

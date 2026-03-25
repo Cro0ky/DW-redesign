@@ -1,3 +1,5 @@
+import { LeadersInfo } from "@/features";
+
 export default function Leaders() {
-  return <div>Leaders</div>;
+  return <LeadersInfo />;
 }

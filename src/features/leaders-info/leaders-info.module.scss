@@ -1,0 +1,37 @@
+.root {
+  @include flex(flex-start, stretch, 16px, column);
+  height: 100%;
+  width: 100%;
+}
+
+.metaRow {
+  @include flex(center, flex-start, 12px);
+  flex-wrap: wrap;
+}
+
+.meta {
+  font-size: 14px;
+  color: rgba(199, 199, 199, 0.85);
+  line-height: 20px;
+}
+
+.pagination {
+  @include flex(center, flex-end, 0);
+  flex-wrap: wrap;
+}
+
+.error {
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(255, 80, 80, 0.08);
+  border: 1px solid rgba(255, 80, 80, 0.2);
+  color: #ffb4b4;
+  font-size: 14px;
+}
+
+.empty {
+  padding: 24px;
+  text-align: center;
+  color: rgba(199, 199, 199, 0.75);
+  font-size: 14px;
+}

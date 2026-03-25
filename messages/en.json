@@ -136,6 +136,38 @@
       "total": "Total: {count}"
     }
   },
+  "leaders": {
+    "loading": "Loading…",
+    "load_error": "Failed to load leaderboard",
+    "empty": "No data",
+    "my_place": "Your rank: #{place}",
+    "columns": {
+      "place": "Place",
+      "username": "Username",
+      "rank": "Rank",
+      "experience": "Experience",
+      "win_percentage": "Win %"
+    },
+    "ranks": {
+      "PRIVATE": "Private",
+      "CORPORAL": "Corporal",
+      "SERGEANT": "Sergeant",
+      "SERGEANT_MAJOR": "Sergeant Major",
+      "ENSIGN": "Ensign",
+      "LIEUTENANT": "Lieutenant",
+      "CAPTAIN": "Captain",
+      "MAJOR": "Major",
+      "COLONEL": "Colonel",
+      "MARSHAL": "Marshal"
+    },
+    "pagination": {
+      "prev": "Previous",
+      "next": "Next",
+      "page_n": "Page {n}",
+      "nav_label": "Leaderboard pagination",
+      "total": "Total players: {count}"
+    }
+  },
   "table": {
     "filter_all": "All"
   },

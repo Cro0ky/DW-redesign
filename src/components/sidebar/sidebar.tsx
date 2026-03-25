@@ -2,13 +2,12 @@
 
 import { DroneWarsLogo } from "@/components";
 
-import { SidebarItem,SupportComponent } from "./components";
+import { SidebarItem, SupportComponent } from "./components";
 import { useSidebar } from "./hooks/useSidebar";
 import styles from "./sidebar.module.scss";
 
 export const Sidebar = () => {
   const { DEFAULT_SIDEBAR_ITEMS } = useSidebar();
-
   return (
     <div className={styles.wrapper}>
       <DroneWarsLogo />

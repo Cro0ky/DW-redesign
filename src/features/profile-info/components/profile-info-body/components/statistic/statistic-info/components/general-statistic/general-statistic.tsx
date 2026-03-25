@@ -11,7 +11,7 @@ import styles from "./general-statistic.module.scss";
 
 export const GeneralStatistic = () => {
   const { STATISTIC_BLOCKS } = useStatisticInfo();
-  const t = useTranslations("statistic");
+  const t = useTranslations();
   const last20Ratings = useStatisticStore(
     (s) => s.statistic?.rating_statistic?.last_20_ratings,
   );
@@ -29,7 +29,10 @@ export const GeneralStatistic = () => {
         ))}
       </div>
       {chartData.length > 0 && (
-        <RatingChart data={chartData} title={t("rating_chart_title")} />
+        <RatingChart
+          data={chartData}
+          title={t("statistic.rating_chart_title")}
+        />
       )}
     </div>
   );

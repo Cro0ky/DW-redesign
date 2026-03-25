@@ -8,7 +8,7 @@ import styles from "./history-info.module.scss";
 import { useHistoryInfo } from "./hooks/use-history-info";
 
 export const HistoryInfo = () => {
-  const t = useTranslations("history");
+  const t = useTranslations();
 
   const {
     isHydrated,
@@ -26,7 +26,7 @@ export const HistoryInfo = () => {
   if (!isHydrated) {
     return (
       <div className={styles.root}>
-        <div className={styles.empty}>{t("loading")}</div>
+        <div className={styles.empty}>{t("history.loading")}</div>
       </div>
     );
   }
@@ -34,13 +34,13 @@ export const HistoryInfo = () => {
   if (!sessionId) {
     return (
       <div className={styles.root}>
-        <div className={styles.empty}>{t("empty")}</div>
+        <div className={styles.empty}>{t("history.empty")}</div>
       </div>
     );
   }
 
   if (error) {
-    return <div className={styles.error}>{t("load_error")}</div>;
+    return <div className={styles.error}>{t("history.load_error")}</div>;
   }
 
   const tableLoading = loading && rows.length > 0;
@@ -48,26 +48,26 @@ export const HistoryInfo = () => {
   return (
     <div className={styles.root}>
       {loading && rows.length === 0 ? (
-        <div className={styles.empty}>{t("loading")}</div>
+        <div className={styles.empty}>{t("history.loading")}</div>
       ) : !loading && rows.length === 0 ? (
-        <div className={styles.empty}>{t("empty")}</div>
+        <div className={styles.empty}>{t("history.empty")}</div>
       ) : (
         <Table
           data={rows}
           columns={columns}
           rowKey="id"
           isLoading={tableLoading}
-          loadingLabel={t("loading")}
-          paginationMeta={t("pagination.total", { count })}
+          loadingLabel={t("history.loading")}
+          paginationMeta={t("history.pagination.total", { count })}
           pagination={{
             page,
             totalPages,
             onPageChange: goToPage,
             isLoading: loading,
-            ariaNavLabel: t("pagination.nav_label"),
-            ariaPrevLabel: t("pagination.prev"),
-            ariaNextLabel: t("pagination.next"),
-            getPageAriaLabel: (n) => t("pagination.page_n", { n }),
+            ariaNavLabel: t("history.pagination.nav_label"),
+            ariaPrevLabel: t("history.pagination.prev"),
+            ariaNextLabel: t("history.pagination.next"),
+            getPageAriaLabel: (n) => t("history.pagination.page_n", { n }),
             className: styles.pagination,
           }}
         />

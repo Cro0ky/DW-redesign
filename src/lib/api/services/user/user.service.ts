@@ -1,5 +1,6 @@
 import { api } from "@/lib/api";
 import type { IPaginatedSessionHistory } from "@/types/history.types";
+import type { IPaginatedRanking } from "@/types/ranking.types";
 import {
   CreateTutorialPracticeRequest,
   CreateTutorialPracticeResponse,
@@ -21,5 +22,10 @@ export const userService = {
   getSessionHistory: (sessionId: string, page: number = 1) =>
     api.get<IPaginatedSessionHistory>(`/session/${sessionId}/history/`, {
       params: { page },
+    }),
+
+  getRanking: (page: number = 1, pageSize: number = 50) =>
+    api.get<IPaginatedRanking>(`/user/ranking/`, {
+      params: { page, page_size: pageSize },
     }),
 };

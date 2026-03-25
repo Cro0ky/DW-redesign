@@ -25,7 +25,7 @@ function translateOrRaw(
 }
 
 export const useHistoryInfo = () => {
-  const t = useTranslations("history");
+  const t = useTranslations();
 
   const [isHydrated, setIsHydrated] = useState(false);
   useEffect(() => {
@@ -86,43 +86,43 @@ export const useHistoryInfo = () => {
     () => [
       {
         key: "created_at",
-        header: t("columns.created_at"),
+        header: t("history.columns.created_at"),
         width: "110px",
       },
       {
         key: "name",
-        header: t("columns.name"),
+        header: t("history.columns.name"),
         width: "250px",
         render: (row) => <Tooltip content={row.name}>{row.name}</Tooltip>,
       },
       {
         key: "opponent_name",
-        header: t("columns.opponent"),
+        header: t("history.columns.opponent"),
         width: "300px",
         render: (row) => <>{row.opponent_name}</>,
       },
       {
         key: "game_type",
-        header: t("columns.game_type"),
+        header: t("history.columns.game_type"),
         width: "150px",
         render: (row) => translateOrRaw(t, "game_type", String(row.game_type)),
       },
       {
         key: "game_sub_type",
-        header: t("columns.game_sub_type"),
+        header: t("history.columns.game_sub_type"),
         width: "120px",
         render: (row) =>
           translateOrRaw(t, "sub_type", String(row.game_sub_type)),
       },
       {
         key: "status",
-        header: t("columns.status"),
+        header: t("history.columns.status"),
         width: "230px",
         render: (row) => translateOrRaw(t, "status", String(row.status)),
       },
       {
         key: "rating",
-        header: t("columns.rating"),
+        header: t("history.columns.rating"),
         width: "80px",
       },
     ],

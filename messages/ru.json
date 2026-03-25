@@ -136,6 +136,38 @@
       "total": "Всего: {count}"
     }
   },
+  "leaders": {
+    "loading": "Загрузка…",
+    "load_error": "Не удалось загрузить таблицу лидеров",
+    "empty": "Нет данных",
+    "my_place": "Ваше место: {place}",
+    "columns": {
+      "place": "Место",
+      "username": "Никнейм",
+      "rank": "Звание",
+      "experience": "Опыт",
+      "win_percentage": "% побед"
+    },
+    "ranks": {
+      "PRIVATE": "Рядовой",
+      "CORPORAL": "Ефрейтор",
+      "SERGEANT": "Сержант",
+      "SERGEANT_MAJOR": "Старшина",
+      "ENSIGN": "Младший лейтенант",
+      "LIEUTENANT": "Лейтенант",
+      "CAPTAIN": "Капитан",
+      "MAJOR": "Майор",
+      "COLONEL": "Полковник",
+      "MARSHAL": "Маршал"
+    },
+    "pagination": {
+      "prev": "Назад",
+      "next": "Вперёд",
+      "page_n": "Страница {n}",
+      "nav_label": "Навигация по страницам рейтинга",
+      "total": "Всего в рейтинге: {count}"
+    }
+  },
   "table": {
     "filter_all": "Все"
   },
