@@ -1,9 +1,15 @@
-import type { TableColumn } from "@/types/table.types";
-import type { ISessionHistoryItem } from "@/types/history.types";
-import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useCallback, useEffect, useMemo, useReducer, useState } from "react";
+
+import type { ISessionHistoryItem } from "@/types/history.types";
+import type { TableColumn } from "@/types/table.types";
 import { getUserUuid } from "@/utils/getUserUuid";
-import { userService } from "@/lib/api/services/user/user.service";
+
+import {
+  fetchSessionHistoryPage,
+  historySessionReducer,
+  initialHistorySessionState,
+} from "../history-session-fetch";
 
 const PAGE_SIZE = 20;
 
@@ -29,11 +35,12 @@ export const useHistoryInfo = () => {
   const sessionId = user?.user_id ?? "";
 
   const [page, setPage] = useState(1);
-  const [rows, setRows] = useState<ISessionHistoryItem[]>([]);
-  const [count, setCount] = useState(0);
-  const [nextUrl, setNextUrl] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [state, dispatch] = useReducer(
+    historySessionReducer,
+    initialHistorySessionState,
+  );
+
+  const { rows, count, nextUrl, loading, error } = state;
 
   const totalPages = useMemo(
     () => Math.max(1, Math.ceil(count / PAGE_SIZE)),
@@ -50,27 +57,19 @@ export const useHistoryInfo = () => {
 
   const load = useCallback(async () => {
     if (!isHydrated) return;
+
     if (!sessionId) {
-      setLoading(false);
-      setRows([]);
-      setCount(0);
-      setNextUrl(null);
+      dispatch({ type: "no_session" });
       return;
     }
-    setLoading(true);
-    setError(false);
-    try {
-      const data = await userService.getSessionHistory(sessionId, page);
-      setRows(data.results);
-      setCount(data.count);
-      setNextUrl(data.next);
-    } catch {
-      setError(true);
-      setRows([]);
-      setCount(0);
-      setNextUrl(null);
-    } finally {
-      setLoading(false);
+
+    dispatch({ type: "fetch_start" });
+    const data = await fetchSessionHistoryPage(sessionId, page);
+
+    if (data) {
+      dispatch({ type: "fetch_ok", data });
+    } else {
+      dispatch({ type: "fetch_err" });
     }
   }, [isHydrated, sessionId, page]);
 
