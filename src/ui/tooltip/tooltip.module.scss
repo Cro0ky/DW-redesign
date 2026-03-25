@@ -1,0 +1,49 @@
+.anchor {
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.anchorFullWidth {
+  display: flex;
+  width: 100%;
+}
+
+.fallbackTrigger {
+  display: inline-flex;
+  cursor: default;
+  outline: none;
+
+  &:focus-visible {
+    border-radius: 6px;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
+  }
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 11000;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.95);
+  white-space: normal;
+  background: rgba(27, 26, 26, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  animation: tooltipIn 0.12s ease-out;
+}
+
+@keyframes tooltipIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

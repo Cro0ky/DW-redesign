@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 
-import type { ISessionHistoryItem } from "@/types/history.types";
 import { Table } from "@/ui";
 
 import styles from "./history-info.module.scss";
@@ -53,7 +52,7 @@ export const HistoryInfo = () => {
       ) : !loading && rows.length === 0 ? (
         <div className={styles.empty}>{t("empty")}</div>
       ) : (
-        <Table<ISessionHistoryItem>
+        <Table
           data={rows}
           columns={columns}
           rowKey="id"

@@ -10,6 +10,7 @@ import {
   historySessionReducer,
   initialHistorySessionState,
 } from "../history-session-fetch";
+import { Tooltip } from "@/ui";
 
 const PAGE_SIZE = 20;
 
@@ -92,6 +93,7 @@ export const useHistoryInfo = () => {
         key: "name",
         header: t("columns.name"),
         width: "250px",
+        render: (row) => <Tooltip content={row.name}>{row.name}</Tooltip>,
       },
       {
         key: "opponent_name",

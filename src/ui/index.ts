@@ -13,6 +13,8 @@ export {
 } from "./rating-chart/rating-chart";
 export { SkeletonLoader } from "./skeleton-loader/skeleton-loader";
 export { Switcher } from "./switcher/switcher";
+export { Tooltip } from "./tooltip/tooltip";
+export type { TooltipProps, TooltipSide } from "../types/tooltip.types";
 export { Table } from "./table/table";
 export { TablePagination } from "./table-pagination/table-pagination";
 export type { TablePaginationProps } from "../types/table-pagination.types";

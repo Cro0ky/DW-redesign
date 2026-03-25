@@ -1,5 +1,7 @@
 .root {
   @include flex(flex-start, stretch, 16px, column);
+  @include scrollbar();
+  height: 100%;
   width: 100%;
 }
 
