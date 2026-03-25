@@ -100,7 +100,7 @@
     "opponent_deleted": "已删除",
     "columns": {
       "created_at": "日期",
-      "name": "房间",
+      "name": "遊戲名稱",
       "opponent": "对手",
       "game_type": "类型",
       "turns_count": "回合",

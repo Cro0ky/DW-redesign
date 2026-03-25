@@ -106,16 +106,6 @@ export const useHistoryInfo = () => {
         render: (row) => translateOrRaw(t, "game_type", String(row.game_type)),
       },
       {
-        key: "turns_count",
-        header: t("columns.turns_count"),
-        width: "72px",
-      },
-      {
-        key: "sub_turn_duration",
-        header: t("columns.sub_turn_duration"),
-        width: "84px",
-      },
-      {
         key: "game_sub_type",
         header: t("columns.game_sub_type"),
         width: "120px",

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import type { TablePaginationProps } from "@/ui";
+import type { TablePaginationProps } from "./table-pagination.types";
 
 export type FilterType =
   | "text"

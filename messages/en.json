@@ -100,7 +100,7 @@
     "opponent_deleted": "deleted",
     "columns": {
       "created_at": "Date",
-      "name": "Room",
+      "name": "Game name",
       "opponent": "Opponent",
       "game_type": "Game type",
       "turns_count": "Turns",

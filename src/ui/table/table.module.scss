@@ -57,25 +57,6 @@
   font-size: 14px;
 }
 
-.sortButton {
-  background: none;
-  border: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  padding: 0;
-  text-align: inherit;
-  letter-spacing: inherit;
-}
-
-.sortIcon {
-  font-size: 12px;
-  opacity: 0.7;
-}
-
 .loadingOverlay {
   position: absolute;
   inset: 0;

@@ -100,7 +100,7 @@
     "opponent_deleted": "удалён",
     "columns": {
       "created_at": "Дата",
-      "name": "Комната",
+      "name": "Название игры",
       "opponent": "Противник",
       "game_type": "Тип игры",
       "turns_count": "Ходы",
