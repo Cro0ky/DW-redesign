@@ -1,3 +1,5 @@
+"use client";
+
 import cn from "classnames";
 import { useTranslations } from "next-intl";
 import { useState } from "react";

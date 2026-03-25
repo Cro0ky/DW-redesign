@@ -36,7 +36,7 @@ export const TutorialChapter: FC<TutorialChapterProps> = ({ chapter_id }) => {
       />
 
       <div className={cn(styles.status, styles[`status_${status}`])}>
-        {t(`tutorial.tutorial.status.${status}`)}
+        {t(`tutorial.status.${status}`)}
       </div>
 
       <div className={styles.info}>

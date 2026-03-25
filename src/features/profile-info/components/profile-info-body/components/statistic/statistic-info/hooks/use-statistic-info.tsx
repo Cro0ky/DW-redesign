@@ -1,3 +1,5 @@
+"use client";
+
 import { List, Trophy } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
