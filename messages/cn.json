@@ -93,6 +93,45 @@
     "win_minor": "小胜",
     "rating_chart_title": "积分走势"
   },
+  "history": {
+    "loading": "加载中…",
+    "load_error": "加载对战历史失败",
+    "empty": "暂无记录",
+    "opponent_deleted": "已删除",
+    "columns": {
+      "created_at": "日期",
+      "name": "房间",
+      "opponent": "对手",
+      "game_type": "类型",
+      "turns_count": "回合",
+      "sub_turn_duration": "步长(秒)",
+      "game_sub_type": "子模式",
+      "status": "结果",
+      "rating": "积分"
+    },
+    "status": {
+      "tie": "平局",
+      "minor_defeat": "小负",
+      "major_defeat": "大负",
+      "minor_victory": "小胜",
+      "major_victory": "大胜"
+    },
+    "game_type": {
+      "TEAM": "组队",
+      "RT_SINGLE": "单人(RT)",
+      "RT_SOLO": "单排(RT)"
+    },
+    "sub_type": {
+      "common": "常规",
+      "single": "单人"
+    },
+    "pagination": {
+      "prev": "上一页",
+      "next": "下一页",
+      "page": "第 {current} / {total} 页",
+      "total": "共 {count} 条"
+    }
+  },
   "table": {
     "filter_all": "全部"
   },

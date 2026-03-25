@@ -1,13 +1,44 @@
 "use client";
 
+import {
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  useReactTable,
+  type ColumnDef,
+  type SortingState,
+} from "@tanstack/react-table";
 import cn from "classnames";
-import { useCallback, useState } from "react";
+import type { ReactNode } from "react";
+import { useCallback, useMemo, useState } from "react";
 
-import type { FilterConfig, FilterValues, TableProps } from "@/ui";
-import { TableBody, TableHead } from "@/ui/table/components";
+import type { FilterConfig, FilterValues, TableColumn, TableProps } from "@/ui";
 
 import { TableFilter } from "./components/table-filter/table-filter";
+import bodyStyles from "./components/table-body/table-body.module.scss";
+import headStyles from "./components/table-head/table-head.module.scss";
 import styles from "./table.module.scss";
+
+function tableColumnsToColumnDefs<T extends Record<string, unknown>>(
+  columns: TableColumn<T>[],
+): ColumnDef<T>[] {
+  return columns.map((col) => ({
+    id: col.key,
+    accessorKey: col.key,
+    header: col.header,
+    enableSorting: col.sortable ?? false,
+    meta: {
+      width: col.width,
+      align: col.align,
+    },
+    cell: ({ row, getValue }) => {
+      const value = getValue();
+      return col.render
+        ? col.render(row.original, value)
+        : (value as ReactNode);
+    },
+  }));
+}
 
 export function Table<T extends Record<string, unknown>>({
   data,
@@ -20,6 +51,8 @@ export function Table<T extends Record<string, unknown>>({
   className,
 }: TableProps<T>) {
   const [internalFilters, setInternalFilters] = useState<FilterValues>({});
+  const [sorting, setSorting] = useState<SortingState>([]);
+
   const filterValues = controlledFilterValues ?? internalFilters;
   const setFilterValues = useCallback(
     (values: FilterValues) => {
@@ -39,18 +72,33 @@ export function Table<T extends Record<string, unknown>>({
     [filterValues, setFilterValues],
   );
 
-  const getRowKey = useCallback(
-    (row: T, index: number): string | number => {
-      if (rowKey) {
-        if (typeof rowKey === "function") return rowKey(row);
-        return String(row[rowKey] ?? index);
-      }
-      return index;
-    },
-    [rowKey],
+  const filteredData = useMemo(
+    () => applyFilters(data, filters, filterValues),
+    [data, filters, filterValues],
   );
 
-  const filteredData = applyFilters(data, filters, filterValues);
+  const columnDefs = useMemo(
+    () => tableColumnsToColumnDefs(columns),
+    [columns],
+  );
+
+  const table = useReactTable({
+    data: filteredData,
+    columns: columnDefs,
+    state: { sorting },
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getRowId: (originalRow, index) => {
+      if (rowKey) {
+        if (typeof rowKey === "function") {
+          return String(rowKey(originalRow));
+        }
+        return String(originalRow[rowKey as keyof T] ?? index);
+      }
+      return String(index);
+    },
+  });
 
   return (
     <div className={cn(styles.wrapper, className)}>
@@ -76,12 +124,79 @@ export function Table<T extends Record<string, unknown>>({
       )}
       <div className={styles.tableScroll}>
         <table className={styles.table}>
-          <TableHead columns={columns} />
-          <TableBody
-            data={filteredData}
-            columns={columns}
-            getRowKey={getRowKey}
-          />
+          <thead className={headStyles.head}>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => {
+                  const meta = header.column.columnDef.meta as
+                    | { width?: string; align?: "left" | "center" | "right" }
+                    | undefined;
+                  const canSort = header.column.getCanSort();
+                  return (
+                    <th
+                      key={header.id}
+                      className={headStyles.cell}
+                      style={{
+                        width: meta?.width,
+                        textAlign: meta?.align ?? "left",
+                      }}
+                    >
+                      {header.isPlaceholder ? null : canSort ? (
+                        <button
+                          type="button"
+                          className={styles.sortButton}
+                          onClick={header.column.getToggleSortingHandler()}
+                        >
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext(),
+                          )}
+                          <span className={styles.sortIcon} aria-hidden>
+                            {header.column.getIsSorted() === "asc"
+                              ? "↑"
+                              : header.column.getIsSorted() === "desc"
+                                ? "↓"
+                                : ""}
+                          </span>
+                        </button>
+                      ) : (
+                        flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )
+                      )}
+                    </th>
+                  );
+                })}
+              </tr>
+            ))}
+          </thead>
+          <tbody className={bodyStyles.body}>
+            {table.getRowModel().rows.map((row) => (
+              <tr key={row.id} className={bodyStyles.row}>
+                {row.getVisibleCells().map((cell) => {
+                  const meta = cell.column.columnDef.meta as
+                    | { width?: string; align?: "left" | "center" | "right" }
+                    | undefined;
+                  return (
+                    <td
+                      key={cell.id}
+                      className={bodyStyles.cell}
+                      style={{
+                        maxWidth: meta?.width,
+                        textAlign: meta?.align ?? "left",
+                      }}
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

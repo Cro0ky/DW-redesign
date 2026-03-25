@@ -93,6 +93,45 @@
     "win_minor": "Незначительная",
     "rating_chart_title": "График рейтинга"
   },
+  "history": {
+    "loading": "Загрузка…",
+    "load_error": "Не удалось загрузить историю",
+    "empty": "Нет записей",
+    "opponent_deleted": "удалён",
+    "columns": {
+      "created_at": "Дата",
+      "name": "Комната",
+      "opponent": "Противник",
+      "game_type": "Тип игры",
+      "turns_count": "Ходы",
+      "sub_turn_duration": "Шаг, с",
+      "game_sub_type": "Подтип",
+      "status": "Исход",
+      "rating": "Рейтинг"
+    },
+    "status": {
+      "tie": "Ничья",
+      "minor_defeat": "Поражение (незначительное)",
+      "major_defeat": "Поражение (крупное)",
+      "minor_victory": "Победа (незначительная)",
+      "major_victory": "Победа (крупная)"
+    },
+    "game_type": {
+      "TEAM": "Команда",
+      "RT_SINGLE": "Одиночная (RT)",
+      "RT_SOLO": "Соло (RT)"
+    },
+    "sub_type": {
+      "common": "Обычный",
+      "single": "Одиночный"
+    },
+    "pagination": {
+      "prev": "Назад",
+      "next": "Вперёд",
+      "page": "Страница {current} из {total}",
+      "total": "Всего: {count}"
+    }
+  },
   "table": {
     "filter_all": "Все"
   },

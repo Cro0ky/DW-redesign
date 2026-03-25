@@ -93,6 +93,45 @@
     "win_minor": "Minor",
     "rating_chart_title": "Rating chart"
   },
+  "history": {
+    "loading": "Loading…",
+    "load_error": "Failed to load match history",
+    "empty": "No records",
+    "opponent_deleted": "deleted",
+    "columns": {
+      "created_at": "Date",
+      "name": "Room",
+      "opponent": "Opponent",
+      "game_type": "Game type",
+      "turns_count": "Turns",
+      "sub_turn_duration": "Step, s",
+      "game_sub_type": "Sub-type",
+      "status": "Outcome",
+      "rating": "Rating"
+    },
+    "status": {
+      "tie": "Tie",
+      "minor_defeat": "Minor defeat",
+      "major_defeat": "Major defeat",
+      "minor_victory": "Minor victory",
+      "major_victory": "Major victory"
+    },
+    "game_type": {
+      "TEAM": "Team",
+      "RT_SINGLE": "Single (RT)",
+      "RT_SOLO": "Solo (RT)"
+    },
+    "sub_type": {
+      "common": "Common",
+      "single": "Single"
+    },
+    "pagination": {
+      "prev": "Previous",
+      "next": "Next",
+      "page": "Page {current} of {total}",
+      "total": "Total: {count}"
+    }
+  },
   "table": {
     "filter_all": "All"
   },

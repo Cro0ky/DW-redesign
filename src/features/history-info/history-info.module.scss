@@ -1,0 +1,47 @@
+.root {
+  @include flex(flex-start, stretch, 16px, column);
+  width: 100%;
+}
+
+.toolbar {
+  @include flex(center, space-between, 12px);
+  flex-wrap: wrap;
+}
+
+.meta {
+  font-size: 14px;
+  color: rgba(199, 199, 199, 0.85);
+  line-height: 20px;
+}
+
+.pagination {
+  @include flex(center, flex-end, 10px);
+  flex-wrap: wrap;
+}
+
+.pageLabel {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.88);
+  padding: 0 8px;
+}
+
+.error {
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(255, 80, 80, 0.08);
+  border: 1px solid rgba(255, 80, 80, 0.2);
+  color: #ffb4b4;
+  font-size: 14px;
+}
+
+.empty {
+  padding: 24px;
+  text-align: center;
+  color: rgba(199, 199, 199, 0.75);
+  font-size: 14px;
+}
+
+.muted {
+  color: rgba(199, 199, 199, 0.55);
+  font-weight: 400;
+}
