@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 
 import type { ISessionHistoryItem } from "@/types/history.types";
-import { Button, Table, type TableColumn } from "@/ui";
+import { Button, Table } from "@/ui";
 
 import styles from "./history-info.module.scss";
 import { useHistoryInfo } from "./hooks/use-history-info";

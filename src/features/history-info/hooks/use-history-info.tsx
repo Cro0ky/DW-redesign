@@ -1,7 +1,6 @@
 import type { TableColumn } from "@/types/table.types";
 import type { ISessionHistoryItem } from "@/types/history.types";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import styles from "@/features/history-info/history-info.module.scss";
 import { useTranslations } from "next-intl";
 import { getUserUuid } from "@/utils/getUserUuid";
 import { userService } from "@/lib/api/services/user/user.service";
