@@ -3,26 +3,9 @@
   width: 100%;
 }
 
-.toolbar {
-  @include flex(center, space-between, 12px);
-  flex-wrap: wrap;
-}
-
-.meta {
-  font-size: 14px;
-  color: rgba(199, 199, 199, 0.85);
-  line-height: 20px;
-}
-
 .pagination {
-  @include flex(center, flex-end, 10px);
+  @include flex(center, flex-end, 0);
   flex-wrap: wrap;
-}
-
-.pageLabel {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.88);
-  padding: 0 8px;
 }
 
 .error {

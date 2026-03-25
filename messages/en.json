@@ -119,7 +119,9 @@
     "game_type": {
       "TEAM": "Team",
       "RT_SINGLE": "Single (RT)",
-      "RT_SOLO": "Solo (RT)"
+      "SINGLE": "Single",
+      "RT_SOLO": "Solo (RT)",
+      "SOLO": "Solo"
     },
     "sub_type": {
       "common": "Common",
@@ -129,6 +131,8 @@
       "prev": "Previous",
       "next": "Next",
       "page": "Page {current} of {total}",
+      "page_n": "Page {n}",
+      "nav_label": "Match history pagination",
       "total": "Total: {count}"
     }
   },

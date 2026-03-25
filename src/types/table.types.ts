@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+import type { TablePaginationProps } from "../ui/table-pagination/table-pagination";
+
 export type FilterType = "text" | "select" | "multiselect" | "date" | "daterange";
 
 export interface FilterSelectOption {
@@ -78,4 +80,12 @@ export interface TableProps<T = Record<string, unknown>> {
   onFilterChange?: (values: FilterValues) => void;
   /** Класс для контейнера */
   className?: string;
+  /** Оверлей с индикатором загрузки поверх таблицы */
+  isLoading?: boolean;
+  /** Текст для screen reader при isLoading */
+  loadingLabel?: string;
+  /** Контент слева от пагинации (например «Всего: N») */
+  paginationMeta?: ReactNode;
+  /** Пагинация под общим стилем таблицы */
+  pagination?: TablePaginationProps;
 }

@@ -14,3 +14,5 @@ export {
 export { SkeletonLoader } from "./skeleton-loader/skeleton-loader";
 export { Switcher } from "./switcher/switcher";
 export { Table } from "./table/table";
+export { TablePagination } from "./table-pagination/table-pagination";
+export type { TablePaginationProps } from "./table-pagination/table-pagination";

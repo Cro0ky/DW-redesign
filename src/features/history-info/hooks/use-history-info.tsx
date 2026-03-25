@@ -35,11 +35,18 @@ export const useHistoryInfo = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const handleChangePage = (variant: "increment" | "decrement") => {
-    setPage((prev) =>
-      variant === "increment" ? prev + 1 : Math.max(1, prev - 1),
-    );
-  };
+  const totalPages = useMemo(
+    () => Math.max(1, Math.ceil(count / PAGE_SIZE)),
+    [count],
+  );
+
+  const goToPage = useCallback(
+    (n: number) => {
+      const safe = Math.min(Math.max(1, n), totalPages);
+      setPage(safe);
+    },
+    [totalPages],
+  );
 
   const load = useCallback(async () => {
     if (!isHydrated) return;
@@ -71,7 +78,9 @@ export const useHistoryInfo = () => {
     void load();
   }, [load]);
 
-  const totalPages = Math.max(1, Math.ceil(count / PAGE_SIZE));
+  useEffect(() => {
+    setPage((p) => Math.min(p, totalPages));
+  }, [totalPages]);
 
   const columns: TableColumn<ISessionHistoryItem>[] = useMemo(
     () => [
@@ -139,6 +148,6 @@ export const useHistoryInfo = () => {
     nextUrl,
     rows,
     columns,
-    handleChangePage,
+    goToPage,
   };
 };

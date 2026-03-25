@@ -1,0 +1,76 @@
+.root {
+  @include flex(center, flex-end, 0);
+  flex-wrap: wrap;
+}
+
+.bar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.pageArrow {
+  @include flex(center, center, 0);
+  flex-shrink: 0;
+  width: 40px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 6px;
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  &:not(:disabled):hover {
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.pageArrowIcon {
+  width: 22px;
+  height: 22px;
+}
+
+.pageNum {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 6px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 4px;
+  font-variant-numeric: tabular-nums;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.75;
+  }
+
+  &:not(:disabled):not(.pageNumActive):hover {
+    color: rgba(255, 255, 255, 0.88);
+  }
+}
+
+.pageNumActive {
+  background: #fff;
+  color: #000;
+
+  &:disabled {
+    opacity: 1;
+  }
+}

@@ -119,7 +119,9 @@
     "game_type": {
       "TEAM": "Команда",
       "RT_SINGLE": "Одиночная (RT)",
-      "RT_SOLO": "Соло (RT)"
+      "SINGLE": "Одиночная",
+      "RT_SOLO": "Соло (RT)",
+      "SOLO": "Соло"
     },
     "sub_type": {
       "common": "Обычный",
@@ -129,6 +131,8 @@
       "prev": "Назад",
       "next": "Вперёд",
       "page": "Страница {current} из {total}",
+      "page_n": "Страница {n}",
+      "nav_label": "Навигация по страницам истории",
       "total": "Всего: {count}"
     }
   },

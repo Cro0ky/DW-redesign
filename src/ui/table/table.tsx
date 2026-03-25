@@ -1,21 +1,23 @@
 "use client";
 
 import {
+  type ColumnDef,
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
-  useReactTable,
-  type ColumnDef,
   type SortingState,
+  useReactTable,
 } from "@tanstack/react-table";
 import cn from "classnames";
+import { Loader2 } from "lucide-react";
 import type { ReactNode } from "react";
 import { useCallback, useMemo, useState } from "react";
 
 import type { FilterConfig, FilterValues, TableColumn, TableProps } from "@/ui";
 
-import { TableFilter } from "./components/table-filter/table-filter";
+import { TablePagination } from "../table-pagination/table-pagination";
 import bodyStyles from "./components/table-body/table-body.module.scss";
+import { TableFilter } from "./components/table-filter/table-filter";
 import headStyles from "./components/table-head/table-head.module.scss";
 import styles from "./table.module.scss";
 
@@ -49,6 +51,10 @@ export function Table<T extends Record<string, unknown>>({
   filterValues: controlledFilterValues,
   onFilterChange,
   className,
+  isLoading = false,
+  loadingLabel,
+  paginationMeta,
+  pagination,
 }: TableProps<T>) {
   const [internalFilters, setInternalFilters] = useState<FilterValues>({});
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -100,8 +106,13 @@ export function Table<T extends Record<string, unknown>>({
     },
   });
 
+  const showPaginationBar = pagination != null || paginationMeta != null;
+
   return (
-    <div className={cn(styles.wrapper, className)}>
+    <div
+      className={cn(styles.wrapper, className)}
+      aria-busy={isLoading ? true : undefined}
+    >
       {(headerActions || filters.length > 0) && (
         <div className={styles.toolbar}>
           {headerActions && (
@@ -199,6 +210,36 @@ export function Table<T extends Record<string, unknown>>({
           </tbody>
         </table>
       </div>
+      {isLoading ? (
+        <div
+          className={styles.loadingOverlay}
+          role="status"
+          aria-live="polite"
+          aria-busy="true"
+        >
+          <Loader2
+            className={styles.loadingSpinner}
+            strokeWidth={2.5}
+            aria-hidden
+          />
+          {loadingLabel ? (
+            <span className={styles.srOnly}>{loadingLabel}</span>
+          ) : null}
+        </div>
+      ) : null}
+      {showPaginationBar ? (
+        <div
+          className={cn(
+            styles.topBar,
+            !paginationMeta && styles.topBarPagerEnd,
+          )}
+        >
+          {paginationMeta != null ? (
+            <div className={styles.paginationMeta}>{paginationMeta}</div>
+          ) : null}
+          {pagination != null ? <TablePagination {...pagination} /> : null}
+        </div>
+      ) : null}
     </div>
   );
 }
