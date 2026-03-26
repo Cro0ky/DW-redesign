@@ -20,3 +20,8 @@
     color: #aeaeae;
   }
 }
+
+.buttons {
+  @include flex(flex-end, space-between, 10px);
+  width: 100%;
+}

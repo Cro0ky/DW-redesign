@@ -40,7 +40,7 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
     try {
       console.log(data);
     } catch {
-      setError("Ошибка авторизации, проверьте введенные данные!");
+      setError(t("auth.registration.generic_error"));
     }
   };
 

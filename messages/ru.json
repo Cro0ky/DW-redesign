@@ -34,7 +34,8 @@
     },
     "registration": {
       "title": "Регистрация",
-      "button_text": "Зарегистрироваться"
+      "button_text": "Зарегистрироваться",
+      "generic_error": "Ошибка авторизации, проверьте введённые данные!"
     },
     "recover_password": {
       "title": "Восстановить пароль",
@@ -69,6 +70,7 @@
     "email": "ПОЧТА",
     "avatar": "АВАТАР",
     "frame": "РАМКА",
+    "rating_points": "очков рейтинга",
     "tabs": {
       "profile": "Профиль",
       "statistic": "Статистика",
@@ -204,7 +206,34 @@
     "filter_all": "Все"
   },
   "modals": {
-    "create_game_close": "ЗАКРЫТЬ"
+    "create_game_close": "ЗАКРЫТЬ",
+    "create_game": {
+      "back": "Назад",
+      "play": "Играть",
+      "title": "Режимы",
+      "modes": {
+        "solo": {
+          "title": "Соло",
+          "description": "Пошаговый режим: вы сражаетесь против ИИ одни."
+        },
+        "single": {
+          "title": "Одиночная",
+          "description": "Соревновательный режим один на один."
+        },
+        "player_solo": {
+          "title": "Соло против игрока",
+          "description": "Быстрый режим в реальном времени против другого игрока."
+        },
+        "player_team": {
+          "title": "Команда против игрока",
+          "description": "Командная игра в реальном времени."
+        }
+      }
+    },
+    "unit": {
+      "description": "Описание",
+      "peculiarities": "Особенности"
+    }
   },
   "tutorial": {
     "status": {

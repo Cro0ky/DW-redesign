@@ -12,14 +12,15 @@ import styles from "./modal.module.scss";
 const ANIMATION_DELAY = 200;
 
 export const Modal: FC<IModalProps> = ({
+  variant = "default",
+  zIndex = 100,
   size = "s",
-  buttons,
-  title,
   subtitle,
   children,
-  zIndex = 100,
+  buttons,
+  onClose,
+  title,
   name,
-  onClose = () => {},
 }) => {
   const handleClose = () => {
     onClose?.();
@@ -40,11 +41,12 @@ export const Modal: FC<IModalProps> = ({
         name={name}
         isClosing={isClosing}
         isAnimating={isAnimating}
+        variant={variant}
         zIndex={zIndex}
         size={size}
         onClose={() => {
           handleClose();
-          onClose();
+          onClose?.();
         }}
       >
         {(!!title || !!subtitle) && (
@@ -57,7 +59,7 @@ export const Modal: FC<IModalProps> = ({
         {!!children && <div className={styles.content}>{children}</div>}
 
         {buttons?.length && (
-          <div className={styles.btns}>
+          <div className={styles.buttons}>
             {buttons.map((props, index) => (
               <Button key={index} {...props} />
             ))}

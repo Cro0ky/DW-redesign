@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { TBaseTitle, TBaseTopic } from "@/types/knowledge-base-info.types";
 import { Size } from "@/types/types";
 import { IButtonProps } from "@/ui";
+import { TModalVariant } from "@/types/modal.types";
 
 export enum EModalName {
   CREATE_GAME_MODAL = "CREATE_GAME_MODAL",
@@ -21,6 +22,7 @@ export interface IModalProps extends IBaseModalProps {
   title?: string;
   subtitle?: string;
   buttons?: IButtonProps[];
+  variant?: TModalVariant;
 }
 
 /** Маппинг пропсов для каждого модального окна */

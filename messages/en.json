@@ -34,7 +34,8 @@
     },
     "registration": {
       "title": "Registration",
-      "button_text": "Register"
+      "button_text": "Register",
+      "generic_error": "Authorization failed. Please check your details."
     },
     "recover_password": {
       "title": "Recover Password",
@@ -69,6 +70,7 @@
     "email": "EMAIL",
     "avatar": "AVATAR",
     "frame": "FRAME",
+    "rating_points": "rating points",
     "tabs": {
       "profile": "Profile",
       "statistic": "Statistics",
@@ -204,7 +206,34 @@
     "filter_all": "All"
   },
   "modals": {
-    "create_game_close": "CLOSE"
+    "create_game_close": "CLOSE",
+    "create_game": {
+      "back": "Back",
+      "play": "Play",
+      "title": "Game modes",
+      "modes": {
+        "solo": {
+          "title": "Solo",
+          "description": "Turn-based mode against the AI, playing alone."
+        },
+        "single": {
+          "title": "Single",
+          "description": "Competitive head-to-head mode."
+        },
+        "player_solo": {
+          "title": "Solo vs player",
+          "description": "Real-time solo duel against another player."
+        },
+        "player_team": {
+          "title": "Team vs player",
+          "description": "Real-time team mode."
+        }
+      }
+    },
+    "unit": {
+      "description": "Description",
+      "peculiarities": "Features"
+    }
   },
   "HomePage": {
     "title": "Home"

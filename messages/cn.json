@@ -34,7 +34,8 @@
     },
     "registration": {
       "title": "注册",
-      "button_text": "注册"
+      "button_text": "注册",
+      "generic_error": "授权失败，请检查您输入的信息。"
     },
     "recover_password": {
       "title": "找回密码",
@@ -69,6 +70,7 @@
     "email": "邮箱",
     "avatar": "头像",
     "frame": "边框",
+    "rating_points": "排位分",
     "tabs": {
       "profile": "资料",
       "statistic": "统计",
@@ -204,7 +206,34 @@
     "filter_all": "全部"
   },
   "modals": {
-    "create_game_close": "关闭"
+    "create_game_close": "关闭",
+    "create_game": {
+      "back": "返回",
+      "play": "开始游戏",
+      "title": "游戏模式",
+      "modes": {
+        "solo": {
+          "title": "单人",
+          "description": "回合制模式，独自对抗 AI。"
+        },
+        "single": {
+          "title": "单挑",
+          "description": "竞技向一对一模式。"
+        },
+        "player_solo": {
+          "title": "实时单挑",
+          "description": "与其他玩家进行实时单人对抗。"
+        },
+        "player_team": {
+          "title": "团队对抗",
+          "description": "实时团队模式。"
+        }
+      }
+    },
+    "unit": {
+      "description": "说明",
+      "peculiarities": "特点"
+    }
   },
   "HomePage": {
     "title": "主页"

@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { Size } from "@/types/types";
 import { EModalName } from "@/ui";
 
-export type TModalVariant = "default";
+export type TModalVariant = "default" | "transparent";
 
 export interface IBaseModalProps {
   variant?: TModalVariant;

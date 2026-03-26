@@ -34,7 +34,7 @@ export const UnitModal = () => {
           )}
           {description && (
             <div>
-              <span className={styles.title}>Описание</span>
+              <span className={styles.title}>{t("modals.unit.description")}</span>
               <div className={styles.description}>
                 {t(`faq.${description}`, { ...data })}
               </div>
@@ -43,7 +43,9 @@ export const UnitModal = () => {
 
           {!!peculiarities?.length && (
             <div className={styles.peculiarities}>
-              <span className={styles.title}>Особенности</span>
+              <span className={styles.title}>
+                {t("modals.unit.peculiarities")}
+              </span>
               <div>peculiarities list</div>
             </div>
           )}

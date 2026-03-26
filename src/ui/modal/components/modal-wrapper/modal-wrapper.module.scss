@@ -58,6 +58,12 @@
     border: 1px solid #303034;
     box-shadow: 0 12px 12px rgba(0, 0, 0, 0.4);
   }
+
+  &_transparent {
+    background: unset;
+    border: 1px solid unset;
+    box-shadow: unset;
+  }
 }
 
 .size {

@@ -1,0 +1,67 @@
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  outline: 1px solid #8e8181;
+  cursor: pointer;
+  transition: 0.3s;
+  mix-blend-mode: luminosity;
+
+  &.active {
+    outline: 1px solid $error-70;
+    mix-blend-mode: unset;
+  }
+
+  &:hover .background {
+    transform: scale(1.1);
+  }
+
+  .background {
+    z-index: 1;
+    transition: 0.6s;
+
+    &_closed {
+      mix-blend-mode: luminosity;
+    }
+  }
+
+  .text {
+    @include flex(center, flex-start, 4px, column);
+    transform: translateX(-50%);
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 10px;
+    width: 100%;
+    padding: 0 16px;
+
+    .title {
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .description {
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+    }
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: 600;
+    color: $white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  }
+
+  .description {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  }
+}
