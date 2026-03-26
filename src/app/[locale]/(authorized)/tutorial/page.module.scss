@@ -1,3 +1,4 @@
 .wrapper {
   @include flex(flex-start, flex-start, 20px, column);
+  height: 100%;
 }
