@@ -28,12 +28,7 @@ export const GeneralStatistic = () => {
           <StatisticBlock {...item} key={item.subtitle} />
         ))}
       </div>
-      {chartData.length > 0 && (
-        <RatingChart
-          data={chartData}
-          title={t("statistic.rating_chart_title")}
-        />
-      )}
+      <RatingChart data={chartData} title={t("statistic.rating_chart_title")} />
     </div>
   );
 };

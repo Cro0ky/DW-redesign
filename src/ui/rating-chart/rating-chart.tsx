@@ -43,8 +43,6 @@ function xTicksForLength(n: number): number[] {
 }
 
 export const RatingChart = ({ data, title }: IRatingChartProps) => {
-  if (!data.length) return null;
-
   const values = data.map((d) => d.value);
   const yTicks = yTicksForData(values);
   const domainY: [number, number] = [yTicks[0], yTicks[yTicks.length - 1]];
