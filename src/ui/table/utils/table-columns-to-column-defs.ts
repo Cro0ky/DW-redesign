@@ -3,13 +3,18 @@ import type { ReactNode } from "react";
 
 import type { TableColumn } from "@/types/table.types";
 
+function columnHeaderToDefHeader(header: string | ReactNode) {
+  if (typeof header === "string") return header;
+  return () => header as ReactNode;
+}
+
 export function tableColumnsToColumnDefs<T extends Record<string, unknown>>(
   columns: TableColumn<T>[],
 ): ColumnDef<T>[] {
   return columns.map((col) => ({
     id: col.key,
     accessorKey: col.key,
-    header: col.header,
+    header: columnHeaderToDefHeader(col.header),
     enableSorting: col.sortable ?? false,
     meta: {
       width: col.width,

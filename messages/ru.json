@@ -155,6 +155,51 @@
       "total": "Всего в рейтинге: {count}"
     }
   },
+  "matches": {
+    "loading": "Загрузка…",
+    "load_error": "Не удалось загрузить список игр",
+    "empty": "Нет активных игр",
+    "columns": {
+      "index": "№",
+      "game_name": "Название игры",
+      "game_status": "Статус игры",
+      "game_mode": "Режим игры",
+      "opponent": "Противник",
+      "opponent_role": "Роль соперника",
+      "tick_time": "Время тика"
+    },
+    "actions": {
+      "create_game": "Создать игру",
+      "connect": "Подключиться",
+      "refresh_aria": "Обновить список",
+      "settings_aria": "Настройки игры"
+    },
+    "game_sub_type": {
+      "OPEN": "Открытая",
+      "CLOSED": "Закрытая",
+      "PRIVATE": "Приватная"
+    },
+    "game_type": {
+      "RT_SOLO": "Realtime",
+      "RT_SINGLE": "Realtime",
+      "SOLO": "Пошаговая",
+      "SINGLE": "Пошаговая",
+      "TEAM": "Команда",
+      "RATING": "Рейтинг",
+      "TUTORIAL": "Обучение"
+    },
+    "side_opponent": {
+      "russia": "Россия",
+      "nato": "НАТО"
+    },
+    "pagination": {
+      "prev": "Назад",
+      "next": "Вперёд",
+      "page_n": "Страница {n}",
+      "nav_label": "Навигация по страницам списка игр",
+      "total": "Всего: {count}"
+    }
+  },
   "table": {
     "filter_all": "Все"
   },

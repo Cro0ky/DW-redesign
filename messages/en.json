@@ -155,6 +155,51 @@
       "total": "Total players: {count}"
     }
   },
+  "matches": {
+    "loading": "Loading…",
+    "load_error": "Failed to load games",
+    "empty": "No active games",
+    "columns": {
+      "index": "#",
+      "game_name": "Game name",
+      "game_status": "Game status",
+      "game_mode": "Game mode",
+      "opponent": "Opponent",
+      "opponent_role": "Opponent side",
+      "tick_time": "Tick time"
+    },
+    "actions": {
+      "create_game": "Create game",
+      "connect": "Connect",
+      "refresh_aria": "Refresh list",
+      "settings_aria": "Game settings"
+    },
+    "game_sub_type": {
+      "OPEN": "Open",
+      "CLOSED": "Closed",
+      "PRIVATE": "Private"
+    },
+    "game_type": {
+      "RT_SOLO": "Realtime",
+      "RT_SINGLE": "Realtime",
+      "SOLO": "Turn-based",
+      "SINGLE": "Turn-based",
+      "TEAM": "Team",
+      "RATING": "Rated",
+      "TUTORIAL": "Tutorial"
+    },
+    "side_opponent": {
+      "russia": "Russia",
+      "nato": "NATO"
+    },
+    "pagination": {
+      "prev": "Previous",
+      "next": "Next",
+      "page_n": "Page {n}",
+      "nav_label": "Games list pagination",
+      "total": "Total: {count}"
+    }
+  },
   "table": {
     "filter_all": "All"
   },

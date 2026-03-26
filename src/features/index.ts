@@ -21,3 +21,4 @@ export {
 export { ProfileInfo } from "./profile-info/profile-info";
 export { TutorialBanner } from "./tutorial-banner/tutorial-banner";
 export { TutorialChapters } from "./tutorial-chapters/tutorial-chapters";
+export { MatchesInfo } from "./matches-info/matches-info";

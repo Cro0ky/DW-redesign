@@ -55,7 +55,7 @@ export type FilterValues = Record<
 
 export interface TableColumn<T> {
   key: string;
-  header: string;
+  header: string | ReactNode;
   /** Кастомный рендер ячейки. По умолчанию отображается row[key]. */
   render?: (row: T, value: unknown) => ReactNode;
   /** Ширина колонки (например "120px", "20%") */

@@ -155,6 +155,51 @@
       "total": "共 {count} 名玩家"
     }
   },
+  "matches": {
+    "loading": "加载中…",
+    "load_error": "加载游戏列表失败",
+    "empty": "暂无进行中的游戏",
+    "columns": {
+      "index": "序号",
+      "game_name": "游戏名称",
+      "game_status": "游戏状态",
+      "game_mode": "游戏模式",
+      "opponent": "对手",
+      "opponent_role": "对手阵营",
+      "tick_time": "回合时长"
+    },
+    "actions": {
+      "create_game": "创建游戏",
+      "connect": "加入",
+      "refresh_aria": "刷新列表",
+      "settings_aria": "游戏设置"
+    },
+    "game_sub_type": {
+      "OPEN": "公开",
+      "CLOSED": "关闭",
+      "PRIVATE": "私密"
+    },
+    "game_type": {
+      "RT_SOLO": "实时",
+      "RT_SINGLE": "实时",
+      "SOLO": "回合制",
+      "SINGLE": "回合制",
+      "TEAM": "团队",
+      "RATING": "排位",
+      "TUTORIAL": "教程"
+    },
+    "side_opponent": {
+      "russia": "俄罗斯",
+      "nato": "北约"
+    },
+    "pagination": {
+      "prev": "上一页",
+      "next": "下一页",
+      "page_n": "第 {n} 页",
+      "nav_label": "游戏列表分页",
+      "total": "共 {count} 条"
+    }
+  },
   "table": {
     "filter_all": "全部"
   },
