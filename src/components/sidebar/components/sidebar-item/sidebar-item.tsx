@@ -1,8 +1,9 @@
 import { FC, ReactNode } from "react";
 
-import { Link } from "@/i18n/routing";
+import { Link, usePathname } from "@/i18n/routing";
 
 import styles from "./sidebar-item.module.scss";
+import cn from "classnames";
 
 interface ISidebarItem {
   href: string;
@@ -11,8 +12,15 @@ interface ISidebarItem {
 }
 
 export const SidebarItem: FC<ISidebarItem> = ({ href, title, icon }) => {
+  const router = usePathname();
+  const url = router.slice(1);
   return (
-    <Link href={href} className={styles.item}>
+    <Link
+      href={href}
+      className={cn(styles.item, {
+        [styles.active]: href === url,
+      })}
+    >
       {icon}
       {title}
     </Link>
