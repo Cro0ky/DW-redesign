@@ -1,9 +1,9 @@
+import cn from "classnames";
 import { FC, ReactNode } from "react";
 
 import { Link, usePathname } from "@/i18n/routing";
 
 import styles from "./sidebar-item.module.scss";
-import cn from "classnames";
 
 interface ISidebarItem {
   href: string;

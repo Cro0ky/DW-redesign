@@ -1,15 +1,15 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useEffect } from "react";
 
 import { LeadersBanner } from "@/features";
+import { useStatisticStore, useUserStore } from "@/store";
 import { Table } from "@/ui";
+import { getUserUuid } from "@/utils/getUserUuid";
 
 import { useLeadersInfo } from "./hooks/use-leaders-info";
 import styles from "./leaders-info.module.scss";
-import { useStatisticStore, useUserStore } from "@/store";
-import { useEffect } from "react";
-import { getUserUuid } from "@/utils/getUserUuid";
 
 export const LeadersInfo = () => {
   const t = useTranslations();

@@ -1,8 +1,9 @@
-import { FC } from "react";
-import { useTranslations } from "next-intl";
 import cn from "classnames";
-import styles from "./mode-card.module.scss";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { FC } from "react";
+
+import styles from "./mode-card.module.scss";
 
 export type TGameModes = "solo" | "single" | "player_solo" | "player_team";
 
