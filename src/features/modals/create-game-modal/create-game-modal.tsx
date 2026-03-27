@@ -9,7 +9,6 @@ import { EModalName, Modal } from "@/ui";
 
 import styles from "./create-game-modal.module.scss";
 import { ModeCard, TGameModes } from "./mode-card/mode-card";
-import { IGameType } from "@/types/types";
 
 export const CreateGameModal = () => {
   const t = useTranslations();
@@ -21,14 +20,12 @@ export const CreateGameModal = () => {
 
   const handleCloseModal = () => {
     closeModal(EModalName.CREATE_GAME_MODAL);
+    setSelectedGameMode(null);
   };
 
   const handleOpenModal = () => {
     if (!selectedGameMode) return;
-    openModal({
-      name: EModalName.CHOOSE_SIDE_MODAL,
-      props: { game_type: IGameType.RT_SINGLE },
-    });
+    openModal({ name: EModalName.CHOOSE_GAME_TYPE_MODAL });
   };
 
   const mainModesArr: TGameModes[] = ["solo", "single"];

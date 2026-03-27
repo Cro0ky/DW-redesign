@@ -1,3 +1,5 @@
+import { GameSide, IGameType } from "@/types/types";
+
 export interface ISessionListItem extends Record<string, unknown> {
   id: string;
   name: string;
@@ -14,4 +16,10 @@ export interface IPaginatedSessions {
   next: string | null;
   previous: string | null;
   results: ISessionListItem[];
+}
+
+export interface ICreateSingleParams {
+  name: string;
+  game_side: GameSide;
+  game_type: IGameType;
 }

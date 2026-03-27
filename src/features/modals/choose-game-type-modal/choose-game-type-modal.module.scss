@@ -1,0 +1,45 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 450px;
+  height: 190px;
+  grid-gap: 10px;
+
+  .card {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    outline: 1px solid rgba(204, 204, 204, 0.29);
+    transition: 0.3s;
+
+    &.active {
+      outline: 1px solid rgba(255, 255, 255, 0.57);
+      mix-blend-mode: unset;
+    }
+
+    &:hover .background {
+      transform: scale(1.05);
+    }
+
+    &_title {
+      font-size: 16px;
+      font-weight: 500;
+      transform: translateX(-50%);
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      bottom: 10px;
+    }
+
+    .background {
+      z-index: 1;
+      transition: 0.6s;
+
+      &_closed {
+        mix-blend-mode: luminosity;
+      }
+    }
+  }
+}

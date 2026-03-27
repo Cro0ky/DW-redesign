@@ -1,33 +1,48 @@
 "use client";
 
-import { EModalName, Modal } from "@/ui";
-import { GameSide } from "@/types/types";
-import { useState } from "react";
-import { useModalStore } from "@/store/modal/modal.store";
-import styles from "./choose-side-modal.module.scss";
 import cn from "classnames";
 import { Swords, Undo2 } from "lucide-react";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+
+import { sessionService } from "@/lib/api/services/session/session.service";
+import { useUserStore } from "@/store";
+import { useModalStore } from "@/store/modal/modal.store";
+import { GameSide } from "@/types/types";
+import { EModalName, Modal } from "@/ui";
+import { getSimulationUrl } from "@/utils/getSimulationUrl";
+
+import styles from "./choose-side-modal.module.scss";
 
 export const ChooseSideModal = () => {
   const t = useTranslations();
   const [selectedSide, setSelectedSide] = useState<GameSide | null>(null);
   const SIDES: GameSide[] = [GameSide.RUSSIA, GameSide.NATO];
 
-  const {
-    closeModal,
-    // activeModal
-  } = useModalStore();
-
-  // const props = activeModal?.props;
+  const { closeModal, activeModal, resetModals } = useModalStore();
+  const { id } = useUserStore();
 
   const handleCloseModal = () => {
     closeModal(EModalName.CHOOSE_SIDE_MODAL);
+    setSelectedSide(null);
   };
 
-  const handleGameNavigate = () => {
-    console.log(13123);
+  const handleGameNavigate = async () => {
+    if (activeModal?.name !== EModalName.CHOOSE_SIDE_MODAL) return;
+    const gameType = activeModal.props?.game_type;
+    if (!selectedSide || !gameType) return;
+
+    const res = await sessionService.createSingle({
+      name: "SINGLE",
+      game_type: gameType,
+      game_side: selectedSide,
+    });
+
+    if (!res.id) return;
+
+    window.location.href = `${getSimulationUrl(gameType)}/init/${res.id}/${id}?gameType=${gameType}`;
+    resetModals();
   };
 
   return (

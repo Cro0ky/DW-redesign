@@ -9,6 +9,7 @@ export enum EModalName {
   CREATE_GAME_MODAL = "CREATE_GAME_MODAL",
   UNIT_MODAL = "UNIT_MODAL",
   CHOOSE_SIDE_MODAL = "CHOOSE_SIDE_MODAL",
+  CHOOSE_GAME_TYPE_MODAL = "CHOOSE_GAME_TYPE_MODAL",
 }
 
 export interface IBaseModalProps {
@@ -31,6 +32,7 @@ export interface IModalProps extends IBaseModalProps {
 export interface IModalParamsMap {
   [EModalName.CREATE_GAME_MODAL]: undefined;
   [EModalName.CHOOSE_SIDE_MODAL]: { game_type: IGameType };
+  [EModalName.CHOOSE_GAME_TYPE_MODAL]: undefined;
   [EModalName.UNIT_MODAL]: {
     topic: TBaseTopic;
     description: string;
@@ -62,5 +64,6 @@ export interface ModalState {
   activeModal: IActiveModal | null;
   openedModals: IActiveModal[];
   openModal: (modal: IActiveModal) => void;
+  resetModals: () => void;
   closeModal: (name: EModalName) => void;
 }

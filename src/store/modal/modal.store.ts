@@ -6,6 +6,14 @@ export const useModalStore = create<ModalState>((set) => ({
   activeModal: null,
   openedModals: [],
 
+  resetModals: () =>
+    set((state) => {
+      return {
+        ...state,
+        openedModals: [],
+      };
+    }),
+
   openModal: (modal) => {
     set((state) => {
       const openedModals = [modal, ...state.openedModals];

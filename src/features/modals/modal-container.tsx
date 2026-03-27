@@ -1,4 +1,9 @@
-import { CreateGameModal, UnitModal, ChooseSideModal } from "@/features";
+import {
+  ChooseGameTypeModal,
+  ChooseSideModal,
+  CreateGameModal,
+  UnitModal,
+} from "@/features";
 
 export const ModalContainer = () => {
   return (
@@ -6,6 +11,7 @@ export const ModalContainer = () => {
       <CreateGameModal />
       <UnitModal />
       <ChooseSideModal />
+      <ChooseGameTypeModal />
     </>
   );
 };
