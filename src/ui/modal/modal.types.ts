@@ -2,12 +2,13 @@ import { ReactNode } from "react";
 
 import { TBaseTitle, TBaseTopic } from "@/types/knowledge-base-info.types";
 import { TModalVariant } from "@/types/modal.types";
-import { Size } from "@/types/types";
+import { IGameType, Size } from "@/types/types";
 import { IButtonProps } from "@/ui";
 
 export enum EModalName {
   CREATE_GAME_MODAL = "CREATE_GAME_MODAL",
   UNIT_MODAL = "UNIT_MODAL",
+  CHOOSE_SIDE_MODAL = "CHOOSE_SIDE_MODAL",
 }
 
 export interface IBaseModalProps {
@@ -23,11 +24,13 @@ export interface IModalProps extends IBaseModalProps {
   subtitle?: string;
   buttons?: IButtonProps[];
   variant?: TModalVariant;
+  fullSize?: boolean;
 }
 
 /** Маппинг пропсов для каждого модального окна */
 export interface IModalParamsMap {
   [EModalName.CREATE_GAME_MODAL]: undefined;
+  [EModalName.CHOOSE_SIDE_MODAL]: { game_type: IGameType };
   [EModalName.UNIT_MODAL]: {
     topic: TBaseTopic;
     description: string;

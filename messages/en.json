@@ -214,19 +214,19 @@
       "modes": {
         "solo": {
           "title": "Solo",
-          "description": "Turn-based mode against the AI, playing alone."
+          "description": "You vs. bot"
         },
         "single": {
           "title": "Single",
-          "description": "Competitive head-to-head mode."
+          "description": "You vs. player"
         },
         "player_solo": {
-          "title": "Solo vs player",
-          "description": "Real-time solo duel against another player."
+          "title": "Rated",
+          "description": "You vs. player"
         },
         "player_team": {
-          "title": "Team vs player",
-          "description": "Real-time team mode."
+          "title": "Team",
+          "description": "Team vs. team"
         }
       }
     },

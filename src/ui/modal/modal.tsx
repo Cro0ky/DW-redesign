@@ -13,6 +13,7 @@ const ANIMATION_DELAY = 200;
 
 export const Modal: FC<IModalProps> = ({
   variant = "default",
+  fullSize = true,
   zIndex = 100,
   size = "s",
   subtitle,
@@ -43,11 +44,9 @@ export const Modal: FC<IModalProps> = ({
         isAnimating={isAnimating}
         variant={variant}
         zIndex={zIndex}
+        fullSize={fullSize}
         size={size}
-        onClose={() => {
-          handleClose();
-          onClose?.();
-        }}
+        onClose={handleClose}
       >
         {(!!title || !!subtitle) && (
           <div className={styles.head}>

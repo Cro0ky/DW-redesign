@@ -18,4 +18,5 @@ export interface ModalWrapperProps extends IBaseModalProps {
   isAnimating: boolean;
   isClosing: boolean;
   isCloseOnBackground?: boolean;
+  fullSize?: boolean;
 }

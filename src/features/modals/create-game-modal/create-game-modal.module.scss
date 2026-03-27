@@ -4,7 +4,7 @@
   height: 100%;
 
   .head {
-    @include flex(center, center, 4px, column);
+    @include flex(center, center, 15px, column);
     width: 100%;
 
     .title {

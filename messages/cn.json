@@ -214,19 +214,19 @@
       "modes": {
         "solo": {
           "title": "单人",
-          "description": "回合制模式，独自对抗 AI。"
+          "description": "你 vs 电脑"
         },
         "single": {
           "title": "单挑",
-          "description": "竞技向一对一模式。"
+          "description": "你 vs 玩家"
         },
         "player_solo": {
-          "title": "实时单挑",
-          "description": "与其他玩家进行实时单人对抗。"
+          "title": "排位",
+          "description": "你 vs 玩家"
         },
         "player_team": {
-          "title": "团队对抗",
-          "description": "实时团队模式。"
+          "title": "团队",
+          "description": "队伍 vs 队伍"
         }
       }
     },

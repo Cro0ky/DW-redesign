@@ -34,7 +34,8 @@ export function useModal({ animationDelay, isOpen, onClose }: IUseModalProps) {
     }
   }, [animationDelay]);
 
-  // Логика открытия (установка анимации)
+  // Открытие / снятие фокуса без вызова onClose: когда сверху другая МО,
+  // isOpen становится false — только прячем оверлей, стек в сторе не трогаем.
   useEffect(() => {
     if (isOpen) {
       const id = setTimeout(() => {
@@ -42,25 +43,33 @@ export function useModal({ animationDelay, isOpen, onClose }: IUseModalProps) {
         setTimeout(() => setIsAnimating(true), 30);
       }, 0);
       return () => clearTimeout(id);
-    } else if (!isOpen) {
-      const id = setTimeout(() => {
-        setIsAnimating(false);
-        close();
-      }, 0);
-      return () => clearTimeout(id);
     }
-  }, [isOpen, close]);
+
+    if (timeRef.current) {
+      clearTimeout(timeRef.current);
+      timeRef.current = null;
+    }
+    setIsClosing(false);
+    setIsAnimating(false);
+    return undefined;
+  }, [isOpen]);
 
   useEffect(() => {
+    if (!isOpen) return;
+
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
     };
 
+    window.addEventListener("keydown", onKeyDown);
     return () => {
-      if (timeRef.current) clearTimeout(timeRef.current);
       window.removeEventListener("keydown", onKeyDown);
+      if (timeRef.current) {
+        clearTimeout(timeRef.current);
+        timeRef.current = null;
+      }
     };
-  }, [close]);
+  }, [isOpen, close]);
 
   return {
     isClosing,

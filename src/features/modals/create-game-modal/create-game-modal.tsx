@@ -9,10 +9,11 @@ import { EModalName, Modal } from "@/ui";
 
 import styles from "./create-game-modal.module.scss";
 import { ModeCard, TGameModes } from "./mode-card/mode-card";
+import { IGameType } from "@/types/types";
 
 export const CreateGameModal = () => {
   const t = useTranslations();
-  const { closeModal } = useModalStore();
+  const { closeModal, openModal } = useModalStore();
 
   const [selectedGameMode, setSelectedGameMode] = useState<TGameModes | null>(
     null,
@@ -20,6 +21,14 @@ export const CreateGameModal = () => {
 
   const handleCloseModal = () => {
     closeModal(EModalName.CREATE_GAME_MODAL);
+  };
+
+  const handleOpenModal = () => {
+    if (!selectedGameMode) return;
+    openModal({
+      name: EModalName.CHOOSE_SIDE_MODAL,
+      props: { game_type: IGameType.RT_SINGLE },
+    });
   };
 
   const mainModesArr: TGameModes[] = ["solo", "single"];
@@ -41,26 +50,20 @@ export const CreateGameModal = () => {
         {
           iconRight: <Swords />,
           children: t("modals.create_game.play"),
-          // onClick: handleCloseModal,
+          onClick: handleOpenModal,
+          disabled: !selectedGameMode,
         },
       ]}
-    >
-      <div className={styles.wrapper}>
-        <div className={styles.head}>
-          <span className={styles.title}>{t("modals.create_game.title")}</span>
-          <div className={styles.line} />
-        </div>
-        <div className={styles.content}>
-          {mainModesArr.map((mode) => (
-            <ModeCard
-              mode={mode}
-              key={mode}
-              isSelected={mode === selectedGameMode}
-              changeGameMode={() => setSelectedGameMode(mode)}
-            />
-          ))}
-          <div className={styles.vsPlayer}>
-            {subModesArr.map((mode) => (
+      children={
+        <div className={styles.wrapper}>
+          <div className={styles.head}>
+            <span className={styles.title}>
+              {t("modals.create_game.title")}
+            </span>
+            <div className={styles.line} />
+          </div>
+          <div className={styles.content}>
+            {mainModesArr.map((mode) => (
               <ModeCard
                 mode={mode}
                 key={mode}
@@ -68,9 +71,19 @@ export const CreateGameModal = () => {
                 changeGameMode={() => setSelectedGameMode(mode)}
               />
             ))}
+            <div className={styles.vsPlayer}>
+              {subModesArr.map((mode) => (
+                <ModeCard
+                  mode={mode}
+                  key={mode}
+                  isSelected={mode === selectedGameMode}
+                  changeGameMode={() => setSelectedGameMode(mode)}
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </Modal>
+      }
+    />
   );
 };

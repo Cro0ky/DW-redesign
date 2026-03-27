@@ -12,11 +12,13 @@ export const ModalWrapper: FC<ModalWrapperProps> = ({
   size,
   onClose,
   variant = "default",
+  fullSize = true,
   children,
 }) => {
   const mods = {
     [styles.isOpened]: isAnimating && !isClosing,
     [styles.isClosing]: isClosing,
+    [styles.content_fullSize]: fullSize,
   };
   return (
     <div
