@@ -1,10 +1,12 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
-import { useEffect } from "react";
 
 import { LeadersBanner } from "@/features";
-import { useStatisticStore, useUserStore } from "@/store";
+import { userService } from "@/lib/api/services/user/user.service";
+import { queryKeys } from "@/lib/query/query-keys";
+import { useUserStore } from "@/store";
 import { Table } from "@/ui";
 import { getUserUuid } from "@/utils/getUserUuid";
 
@@ -28,20 +30,21 @@ export const LeadersInfo = () => {
   } = useLeadersInfo();
 
   const { username, rank, experience } = useUserStore();
-  const { statistic, fetchStatistic } = useStatisticStore();
   const userId = getUserUuid();
+  const statisticUid = userId?.user_id ?? "";
 
-  useEffect(() => {
-    if (!userId?.user_id) return;
-    void fetchStatistic(userId.user_id);
-  }, [userId?.user_id, fetchStatistic]);
+  const { data: statistic } = useQuery({
+    queryKey: queryKeys.user.statistic(statisticUid),
+    queryFn: () => userService.getStatistic(statisticUid),
+    enabled: !!statisticUid && isHydrated,
+  });
 
   const me = [
     myPosition,
     `${username} (Вы)`,
     t(`ranks.${rank}`),
     experience,
-    `${statistic?.rating_statistic.total_wins_percentage}%`,
+    `${statistic?.rating_statistic.total_wins_percentage ?? "—"}%`,
   ];
 
   if (!isHydrated) {

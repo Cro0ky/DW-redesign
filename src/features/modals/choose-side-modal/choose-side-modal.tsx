@@ -1,5 +1,6 @@
 "use client";
 
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import cn from "classnames";
 import { Swords, Undo2 } from "lucide-react";
 import Image from "next/image";
@@ -7,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { sessionService } from "@/lib/api/services/session/session.service";
+import { queryKeys } from "@/lib/query/query-keys";
 import { useUserStore } from "@/store";
 import { useModalStore } from "@/store/modal/modal.store";
 import { GameSide } from "@/types/types";
@@ -22,6 +24,14 @@ export const ChooseSideModal = () => {
 
   const { closeModal, activeModal, resetModals } = useModalStore();
   const { id } = useUserStore();
+  const queryClient = useQueryClient();
+
+  const createSingleMutation = useMutation({
+    mutationFn: sessionService.createSingle,
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: queryKeys.sessions.all });
+    },
+  });
 
   const handleCloseModal = () => {
     closeModal(EModalName.CHOOSE_SIDE_MODAL);
@@ -33,7 +43,7 @@ export const ChooseSideModal = () => {
     const gameType = activeModal.props?.game_type;
     if (!selectedSide || !gameType) return;
 
-    const res = await sessionService.createSingle({
+    const res = await createSingleMutation.mutateAsync({
       name: "SINGLE",
       game_type: gameType,
       game_side: selectedSide,
@@ -64,7 +74,7 @@ export const ChooseSideModal = () => {
           children: t("modals.create_game.play"),
           onClick: handleGameNavigate,
           fullWidth: true,
-          disabled: !selectedSide,
+          disabled: !selectedSide || createSingleMutation.isPending,
         },
       ]}
       children={

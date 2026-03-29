@@ -1,33 +1,38 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
 import { List, Trophy } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useEffect } from "react";
+import { useMemo } from "react";
 
 import { useRouter } from "@/i18n/routing";
-import { useRanksStore, useStatisticStore } from "@/store";
+import { userService } from "@/lib/api/services/user/user.service";
+import { queryKeys } from "@/lib/query/query-keys";
 import { getUserUuid } from "@/utils/getUserUuid";
 
 import { IStatisticBlockProps } from "../components";
 
 export const useStatisticInfo = () => {
   const t = useTranslations();
-  const { fetchStatistic, statistic } = useStatisticStore();
-  const { fetchRanks, ranks } = useRanksStore();
-  const userId = getUserUuid();
   const router = useRouter();
+  const userId = getUserUuid();
+  const uid = userId?.user_id ?? "";
 
-  useEffect(() => {
-    if (!userId?.user_id) return;
-    void fetchStatistic(userId.user_id);
-  }, [userId?.user_id, fetchStatistic]);
+  const { data: statistic } = useQuery({
+    queryKey: queryKeys.user.statistic(uid),
+    queryFn: () => userService.getStatistic(uid),
+    enabled: !!uid,
+  });
 
-  useEffect(() => {
-    if (!userId?.user_id) return;
-    void fetchRanks(userId.user_id);
-  }, [userId?.user_id, fetchRanks]);
+  const { data: ranks } = useQuery({
+    queryKey: queryKeys.user.ranks(uid),
+    queryFn: () => userService.getRanks(uid),
+    enabled: !!uid,
+  });
 
-  const getBlocks = (): IStatisticBlockProps[] | undefined => {
+  const last20Ratings = statistic?.rating_statistic?.last_20_ratings;
+
+  const STATISTIC_BLOCKS = useMemo((): IStatisticBlockProps[] | undefined => {
     if (!statistic || !ranks) return;
 
     const { rating_statistic } = statistic;
@@ -100,9 +105,7 @@ export const useStatisticInfo = () => {
           ],
         },
       ];
-  };
+  }, [statistic, ranks, t, router]);
 
-  const STATISTIC_BLOCKS = getBlocks();
-
-  return { STATISTIC_BLOCKS };
+  return { STATISTIC_BLOCKS, last20Ratings };
 };

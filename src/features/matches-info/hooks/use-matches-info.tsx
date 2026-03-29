@@ -1,19 +1,18 @@
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import cn from "classnames";
 import { RefreshCw, Settings } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useCallback, useEffect, useMemo, useReducer, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
+import { useIsHydrated } from "@/lib/hooks/use-is-hydrated";
+import { queryKeys } from "@/lib/query/query-keys";
 import type { ISessionListItem } from "@/types/session.types";
 import type { TableColumn } from "@/types/table.types";
 import { GameSide } from "@/types/types";
 import { Button } from "@/ui";
 
 import tableStyles from "../matches-info.module.scss";
-import {
-  fetchSessionsPage,
-  initialMatchesSessionState,
-  matchesSessionReducer,
-} from "../matches-session-fetch";
+import { fetchSessionsPage } from "../matches-session-fetch";
 
 const PAGE_SIZE = 20;
 
@@ -49,76 +48,73 @@ function opponentRoleLabel(
 
 export const useMatchesInfo = () => {
   const t = useTranslations();
-
-  const [isHydrated, setIsHydrated] = useState(false);
-  useEffect(() => {
-    queueMicrotask(() => setIsHydrated(true));
-  }, []);
+  const isHydrated = useIsHydrated();
 
   const [page, setPage] = useState(1);
-  const [state, dispatch] = useReducer(
-    matchesSessionReducer,
-    initialMatchesSessionState,
-  );
 
-  const { rows, count, loading, error } = state;
+  const {
+    data,
+    isFetching,
+    isPending,
+    isError,
+    refetch,
+  } = useQuery({
+    queryKey: queryKeys.sessions.list(page, PAGE_SIZE),
+    queryFn: async () => {
+      const result = await fetchSessionsPage(page, PAGE_SIZE);
+      if (!result) throw new Error("sessions fetch failed");
+      return result;
+    },
+    enabled: isHydrated,
+    placeholderData: keepPreviousData,
+  });
 
+  const count = data?.count ?? 0;
   const totalPages = useMemo(
     () => Math.max(1, Math.ceil(count / PAGE_SIZE)),
     [count],
   );
 
-  const currentPage = Math.min(page, totalPages);
-
-  const goToPage = useCallback(
-    (n: number) => {
-      setPage(Math.min(Math.max(1, n), totalPages));
-    },
-    [totalPages],
-  );
-
-  const load = useCallback(async () => {
-    if (!isHydrated) return;
-    dispatch({ type: "fetch_start" });
-    const data = await fetchSessionsPage(currentPage, PAGE_SIZE);
-    if (data) {
-      dispatch({ type: "fetch_ok", data });
-    } else {
-      dispatch({ type: "fetch_err" });
-    }
-  }, [isHydrated, currentPage]);
-
+  // Страница из стейта может оказаться больше числа страниц после смены данных — поджимаем.
   useEffect(() => {
-    void load();
-  }, [load]);
+    queueMicrotask(() => {
+      setPage((p) => Math.min(p, totalPages));
+    });
+  }, [totalPages]);
+
+  const goToPage = (n: number) => {
+    setPage(Math.min(Math.max(1, n), totalPages));
+  };
+
+  const currentPage = Math.min(page, totalPages);
+  const loading = isFetching || isPending;
+  const error = isError;
 
   const formatGameSubType = useCallback(
     (code: string) => translateCode(t, "matches.game_sub_type", code),
     [t],
   );
-
   const formatGameType = useCallback(
     (code: string) => translateCode(t, "matches.game_type", code),
     [t],
   );
 
-  const displayRows: MatchesTableRow[] = useMemo(
-    () =>
-      rows.map((row, idx) => ({
-        ...row,
-        rowIndex: (currentPage - 1) * PAGE_SIZE + idx + 1,
-        statusLabel: formatGameSubType(row.game_sub_type),
-        modeLabel: formatGameType(row.game_type),
-        opponentRole: opponentRoleLabel(t, row.available_game_side),
-        opponentDisplay:
-          row.opponent_name && String(row.opponent_name).trim()
-            ? row.opponent_name
-            : "—",
-        connectAction: "",
-        settingsAction: "",
-      })),
-    [rows, currentPage, formatGameSubType, formatGameType, t],
-  );
+  const displayRows: MatchesTableRow[] = useMemo(() => {
+    const list = data?.results ?? [];
+    return list.map((row, idx) => ({
+      ...row,
+      rowIndex: (currentPage - 1) * PAGE_SIZE + idx + 1,
+      statusLabel: formatGameSubType(row.game_sub_type),
+      modeLabel: formatGameType(row.game_type),
+      opponentRole: opponentRoleLabel(t, row.available_game_side),
+      opponentDisplay:
+        row.opponent_name && String(row.opponent_name).trim()
+          ? row.opponent_name
+          : "—",
+      connectAction: "",
+      settingsAction: "",
+    }));
+  }, [data?.results, currentPage, formatGameSubType, formatGameType, t]);
 
   const columns: TableColumn<MatchesTableRow>[] = useMemo(
     () => [
@@ -185,7 +181,7 @@ export const useMatchesInfo = () => {
             className={tableStyles.iconBtn}
             aria-label={t("matches.actions.refresh_aria")}
             disabled={loading}
-            onClick={() => void load()}
+            onClick={() => void refetch()}
             iconLeft={
               <RefreshCw
                 className={cn(
@@ -212,7 +208,7 @@ export const useMatchesInfo = () => {
         ),
       },
     ],
-    [t, loading, load],
+    [t, loading, refetch],
   );
 
   return {
@@ -225,7 +221,7 @@ export const useMatchesInfo = () => {
     displayRows,
     columns,
     goToPage,
-    refetch: load,
+    refetch,
     pageSize: PAGE_SIZE,
   };
 };

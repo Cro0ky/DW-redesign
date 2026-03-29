@@ -1,76 +1,60 @@
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
-import { useCallback, useEffect, useMemo, useReducer, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
+import { useIsHydrated } from "@/lib/hooks/use-is-hydrated";
+import { queryKeys } from "@/lib/query/query-keys";
 import type { ISessionHistoryItem } from "@/types/history.types";
 import type { TableColumn } from "@/types/table.types";
 import { Tooltip } from "@/ui";
 import { getUserUuid } from "@/utils/getUserUuid";
 
-import {
-  fetchSessionHistoryPage,
-  historySessionReducer,
-  initialHistorySessionState,
-} from "../history-session-fetch";
+import { fetchSessionHistoryPage } from "../history-session-fetch";
 
 const PAGE_SIZE = 20;
 
 export const useHistoryInfo = () => {
   const t = useTranslations();
-
-  const [isHydrated, setIsHydrated] = useState(false);
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
+  const isHydrated = useIsHydrated();
 
   const user = isHydrated ? getUserUuid() : null;
   const sessionId = user?.user_id ?? "";
 
   const [page, setPage] = useState(1);
-  const [state, dispatch] = useReducer(
-    historySessionReducer,
-    initialHistorySessionState,
-  );
 
-  const { rows, count, nextUrl, loading, error } = state;
+  const { data, isFetching, isPending, isError } = useQuery({
+    queryKey: queryKeys.sessionHistory(sessionId, page),
+    queryFn: async () => {
+      const result = await fetchSessionHistoryPage(sessionId, page);
+      if (!result) throw new Error("history fetch failed");
+      return result;
+    },
+    enabled: isHydrated && !!sessionId,
+    placeholderData: keepPreviousData,
+  });
+
+  const rows = data?.results ?? [];
+  const count = data?.count ?? 0;
+  const nextUrl = data?.next ?? null;
 
   const totalPages = useMemo(
     () => Math.max(1, Math.ceil(count / PAGE_SIZE)),
     [count],
   );
 
-  const goToPage = useCallback(
-    (n: number) => {
-      const safe = Math.min(Math.max(1, n), totalPages);
-      setPage(safe);
-    },
-    [totalPages],
-  );
-
-  const load = useCallback(async () => {
-    if (!isHydrated) return;
-
-    if (!sessionId) {
-      dispatch({ type: "no_session" });
-      return;
-    }
-
-    dispatch({ type: "fetch_start" });
-    const data = await fetchSessionHistoryPage(sessionId, page);
-
-    if (data) {
-      dispatch({ type: "fetch_ok", data });
-    } else {
-      dispatch({ type: "fetch_err" });
-    }
-  }, [isHydrated, sessionId, page]);
-
   useEffect(() => {
-    void load();
-  }, [load]);
-
-  useEffect(() => {
-    setPage((p) => Math.min(p, totalPages));
+    queueMicrotask(() => {
+      setPage((p) => Math.min(p, totalPages));
+    });
   }, [totalPages]);
+
+  const goToPage = (n: number) => {
+    setPage(Math.min(Math.max(1, n), totalPages));
+  };
+
+  const currentPage = Math.min(page, totalPages);
+  const loading = isFetching || isPending;
+  const error = !sessionId ? false : isError;
 
   const columns: TableColumn<ISessionHistoryItem>[] = useMemo(
     () => [
@@ -119,13 +103,14 @@ export const useHistoryInfo = () => {
     ],
     [t],
   );
+
   return {
     isHydrated,
     sessionId,
     error,
     count,
     loading,
-    page,
+    page: currentPage,
     totalPages,
     nextUrl,
     rows,

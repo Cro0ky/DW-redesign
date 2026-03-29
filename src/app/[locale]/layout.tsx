@@ -7,6 +7,7 @@ import { Header, Sidebar } from "@/components";
 import { ModalContainer } from "@/features";
 import { routing } from "@/i18n/routing";
 import { isAuthenticated } from "@/lib/auth";
+import { QueryProvider } from "@/providers/query-provider";
 
 import styles from "./layout.module.scss";
 
@@ -31,20 +32,22 @@ export default async function RootLayout({
 
   return (
     <NextIntlClientProvider>
-      <div className={styles.wrapper}>
-        {!isAuth ? (
-          <>{children}</>
-        ) : (
-          <>
-            <Sidebar />
-            <div className={styles.content}>
-              <Header />
-              <div className={styles.content_wrapper}>{children}</div>
-              <ModalContainer />
-            </div>
-          </>
-        )}
-      </div>
+      <QueryProvider>
+        <div className={styles.wrapper}>
+          {!isAuth ? (
+            <>{children}</>
+          ) : (
+            <>
+              <Sidebar />
+              <div className={styles.content}>
+                <Header />
+                <div className={styles.content_wrapper}>{children}</div>
+                <ModalContainer />
+              </div>
+            </>
+          )}
+        </div>
+      </QueryProvider>
     </NextIntlClientProvider>
   );
 }

@@ -7,6 +7,7 @@
 
   &:hover {
     background: rgba(80, 91, 156, 0.11);
+    padding-left: 16px;
   }
 
   &:active {
@@ -15,5 +16,6 @@
 
   &.active {
     background: rgba(79, 96, 191, 0.15);
+    padding-left: 20px;
   }
 }

@@ -8,6 +8,7 @@ import {
   type ILoginPayload,
   type IRegisterPayload,
 } from "@/lib/api/services/auth/auth.types";
+import { getQueryClient } from "@/lib/query/query-client";
 import { useRanksStore } from "@/store/ranks/ranks.store";
 import { useStatisticStore } from "@/store/statistic/statistic.store";
 import { getDomain } from "@/utils/getDomain";
@@ -135,6 +136,7 @@ export const useAuthStore = create<IAuthState>((set) => ({
         : { domain };
       deleteCookie(COOKIE_ACCESS, opts);
       deleteCookie(COOKIE_REFRESH, opts);
+      getQueryClient().clear();
       useStatisticStore.getState().clearStatistic();
       useRanksStore.getState().clearRanks();
       set({ user: null, isLoading: false, error: null });

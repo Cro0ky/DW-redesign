@@ -1,3 +1,7 @@
+"use client";
+
+import { useMutation } from "@tanstack/react-query";
+
 import { userService } from "@/lib/api/services/user/user.service";
 import { useUserStore } from "@/store";
 import { ETutorialType, GameSide, IGameType } from "@/types/types";
@@ -8,7 +12,10 @@ export type TChapterStatus = "completed" | "in_progress" | "closed";
 export const useTutorialChapter = () => {
   const { rt_tutorial_unit, id, username } = useUserStore();
 
-  const { createTutorialPractice } = userService;
+  const createPractice = useMutation({
+    mutationFn: userService.createTutorialPractice,
+  });
+
   const availableChapter = Number(rt_tutorial_unit.split("_")[1]);
   const availableChapterType = rt_tutorial_unit.split("_")[2] as ETutorialType;
 
@@ -28,7 +35,7 @@ export const useTutorialChapter = () => {
 
   const redirectToChapter = async (chapter: number, variant: ETutorialType) => {
     if (variant === ETutorialType.PRACTICE && id && username) {
-      const res = await createTutorialPractice({
+      const res = await createPractice.mutateAsync({
         chapter: `CHAPTER_${chapter}_${ETutorialType.PRACTICE.toUpperCase()}`,
         player: {
           uid: id,
