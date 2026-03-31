@@ -1,19 +1,36 @@
-import { api } from "@/lib/api";
+import { apiRequest } from "@/lib/api/client";
 
 import {
   IAuthResponse,
   ILoginPayload,
   ILoginResponse,
   ILogoutRequest,
+  IRefreshResponse,
   IRegisterPayload,
-} from "./auth.types";
+} from "@/types/auth.types";
 
 export const authService = {
   login: (payload: ILoginPayload) =>
-    api.post<ILoginResponse>("/auth/login/", payload),
+    apiRequest<ILoginResponse>("/auth/login/", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }),
 
   register: (payload: IRegisterPayload) =>
-    api.post<IAuthResponse>("/auth/register/", payload),
+    apiRequest<IAuthResponse>("/auth/register/", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }),
 
-  logout: (payload: ILogoutRequest) => api.post("/auth/logout/", payload),
+  tokenRefresh: (payload: { refresh: string }) =>
+    apiRequest<IRefreshResponse>("/auth/refresh/", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }),
+
+  logout: (payload: ILogoutRequest) =>
+    apiRequest("/auth/logout/", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }),
 };

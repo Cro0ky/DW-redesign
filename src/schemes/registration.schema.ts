@@ -3,11 +3,14 @@ import { z } from "zod";
 export const useRegistrationSchema = () => {
   const registrationSchema = z
     .object({
-      username: z.string().nonempty({ message: "auth.write_username" }).max(16),
+      username: z
+        .string()
+        .nonempty({ message: "auth.write_username" })
+        .max(16, { message: "errors.max_length" }),
       email: z
         .email({ message: "auth.errors.incorrect_mail_format" })
         .nonempty({ message: "auth.write_email" })
-        .max(254),
+        .max(254, { message: "errors.max_length" }),
       password: z
         .string()
         .nonempty({ message: "auth.write_password" })

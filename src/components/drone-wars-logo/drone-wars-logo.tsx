@@ -33,7 +33,6 @@ export const DroneWarsLogo: FC<DroneWarsLogoProps> = ({ fullWidth = true }) => {
       </div>
       <div className={styles.text}>
         <span className={styles.title}>{t("banner.title").toUpperCase()}</span>
-        <span className={styles.subtitle}>{t("banner.subtitle")}</span>
       </div>
     </div>
   );

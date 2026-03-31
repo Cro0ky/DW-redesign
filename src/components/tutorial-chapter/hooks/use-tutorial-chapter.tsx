@@ -35,17 +35,19 @@ export const useTutorialChapter = () => {
 
   const redirectToChapter = async (chapter: number, variant: ETutorialType) => {
     if (variant === ETutorialType.PRACTICE && id && username) {
-      const res = await createPractice.mutateAsync({
-        chapter: `CHAPTER_${chapter}_${ETutorialType.PRACTICE.toUpperCase()}`,
-        player: {
-          uid: id,
-          name: username,
-          side: GameSide.RUSSIA,
-        },
-      });
+      try {
+        const res = await createPractice.mutateAsync({
+          chapter: `CHAPTER_${chapter}_${ETutorialType.PRACTICE.toUpperCase()}`,
+          player: {
+            uid: id,
+            name: username,
+            side: GameSide.RUSSIA,
+          },
+        });
 
-      if (res) {
         window.location.href = `${getSimulationUrl(IGameType.TUTORIAL, chapter)}/tutorial/${variant}/${chapter}?gameId=${res.game_id}&userId=${id}&gameType=${IGameType.TUTORIAL}`;
+      } catch {
+        // сеть / API
       }
       return;
     }

@@ -3,7 +3,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { List, Trophy } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useMemo } from "react";
 
 import { useRouter } from "@/i18n/routing";
 import { userService } from "@/lib/api/services/user/user.service";
@@ -14,25 +13,26 @@ import { IStatisticBlockProps } from "../components";
 
 export const useStatisticInfo = () => {
   const t = useTranslations();
+  const userId = getUserUuid()?.user_id ?? "";
   const router = useRouter();
-  const userId = getUserUuid();
-  const uid = userId?.user_id ?? "";
 
-  const { data: statistic } = useQuery({
-    queryKey: queryKeys.user.statistic(uid),
-    queryFn: () => userService.getStatistic(uid),
-    enabled: !!uid,
+  const statisticQuery = useQuery({
+    queryKey: queryKeys.userStatistic(userId),
+    queryFn: () => userService.getStatistic(userId),
+    enabled: Boolean(userId),
   });
 
-  const { data: ranks } = useQuery({
-    queryKey: queryKeys.user.ranks(uid),
-    queryFn: () => userService.getRanks(uid),
-    enabled: !!uid,
+  const ranksQuery = useQuery({
+    queryKey: queryKeys.userRanks(userId),
+    queryFn: () => userService.getRanks(userId),
+    enabled: Boolean(userId),
   });
 
+  const statistic = statisticQuery.data ?? null;
+  const ranks = ranksQuery.data ?? null;
   const last20Ratings = statistic?.rating_statistic?.last_20_ratings;
 
-  const STATISTIC_BLOCKS = useMemo((): IStatisticBlockProps[] | undefined => {
+  const getBlocks = (): IStatisticBlockProps[] | undefined => {
     if (!statistic || !ranks) return;
 
     const { rating_statistic } = statistic;
@@ -105,7 +105,9 @@ export const useStatisticInfo = () => {
           ],
         },
       ];
-  }, [statistic, ranks, t, router]);
+  };
+
+  const STATISTIC_BLOCKS = getBlocks();
 
   return { STATISTIC_BLOCKS, last20Ratings };
 };

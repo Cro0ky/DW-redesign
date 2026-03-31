@@ -6,6 +6,13 @@ export { Button } from "./button/button";
 export * from "./button/button.types";
 export { Input } from "./input/input";
 export * from "./input/input.types";
+export { Checkbox } from "@/ui/checkbox/checkbox";
+export type {
+  CheckboxProps,
+  CheckboxVariant,
+  LabeledCheckboxProps,
+  LabeledCheckboxVariant,
+} from "@/ui/checkbox/checkbox.types";
 export { Modal } from "./modal/modal";
 export * from "./modal/modal.types";
 export { Portal } from "./portal/portal";

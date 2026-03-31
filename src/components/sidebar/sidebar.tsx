@@ -2,8 +2,8 @@
 
 import { DroneWarsLogo } from "@/components";
 
-import { SidebarItem, SupportComponent } from "./components";
-import { useSidebar } from "./hooks/useSidebar";
+import { SidebarItem } from "./components";
+import { useSidebar } from "./hooks/use-sidebar";
 import styles from "./sidebar.module.scss";
 
 export const Sidebar = () => {
@@ -16,7 +16,7 @@ export const Sidebar = () => {
           <SidebarItem {...item} key={item.href} />
         ))}
       </div>
-      <SupportComponent />
+      {/*<SupportComponent />*/}
     </div>
   );
 };

@@ -11,9 +11,8 @@ export const MatchesInfo = () => {
   const t = useTranslations();
 
   const {
-    isHydrated,
-    error,
-    loading,
+    isLoading,
+    isError,
     displayRows,
     columns,
     count,
@@ -22,7 +21,7 @@ export const MatchesInfo = () => {
     goToPage,
   } = useMatchesInfo();
 
-  if (!isHydrated) {
+  if (isLoading) {
     return (
       <div className={styles.root}>
         <div className={styles.empty}>{t("matches.loading")}</div>
@@ -30,11 +29,11 @@ export const MatchesInfo = () => {
     );
   }
 
-  if (error) {
+  if (isError) {
     return <div className={styles.error}>{t("matches.load_error")}</div>;
   }
 
-  const tableLoading = loading && displayRows.length > 0;
+  const tableLoading = isLoading && displayRows.length > 0;
 
   const paginationMeta = (
     <span className={styles.metaRow}>
@@ -46,7 +45,7 @@ export const MatchesInfo = () => {
 
   return (
     <div className={styles.root}>
-      {loading && displayRows.length === 0 ? (
+      {isLoading && displayRows.length === 0 ? (
         <div className={styles.empty}>{t("matches.loading")}</div>
       ) : (
         <Table
@@ -61,7 +60,7 @@ export const MatchesInfo = () => {
             page,
             totalPages,
             onPageChange: goToPage,
-            isLoading: loading,
+            isLoading,
             ariaNavLabel: t("matches.pagination.nav_label"),
             ariaPrevLabel: t("matches.pagination.prev"),
             ariaNextLabel: t("matches.pagination.next"),

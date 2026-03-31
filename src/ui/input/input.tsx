@@ -13,6 +13,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
     {
       label,
       error,
+      hint,
       fullWidth = true,
       withoutBorder = false,
       iconLeft,
@@ -21,11 +22,15 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
       disabled,
       type,
       value,
+      defaultValue,
       ...otherProps
     },
     ref,
   ) => {
     const [localType, setLocalType] = useState(type);
+    const uncontrolledWithDefault =
+      value === undefined && defaultValue !== undefined;
+
     return (
       <div
         className={cn(styles.container, {
@@ -49,7 +54,9 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
               disabled={disabled}
               aria-invalid={!!error}
               {...otherProps}
-              {...(value !== undefined && { value: value ?? "" })}
+              {...(uncontrolledWithDefault
+                ? { defaultValue }
+                : { value: value ?? "" })}
             />
           </div>
           {(iconRight || type === "password") && (
@@ -69,6 +76,11 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
         {error && (
           <span className={styles.error} role="alert">
             {error}
+          </span>
+        )}
+        {hint && (
+          <span className={styles.hint} role="alert">
+            {hint}
           </span>
         )}
       </div>

@@ -1,0 +1,48 @@
+.filled {
+  path {
+    fill: #e0e0e0;
+  }
+}
+
+.empty {
+  path {
+    fill: rgba(255, 255, 255, 0.1);
+  }
+}
+.content_icon {
+  position: relative;
+  width: 280px;
+  height: 235px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.icon {
+  position: absolute;
+  transition: opacity 0.5s ease;
+}
+
+@for $i from 0 through 9 {
+  .icon-#{$i} {
+    path {
+      fill: rgba(255, 255, 255, 0.1);
+      animation: fillAnimation 10s infinite;
+      animation-delay: calc(#{$i} * 1s);
+    }
+  }
+}
+
+@keyframes fillAnimation {
+  0% {
+    fill: rgba(255, 255, 255, 0.1);
+  }
+  10% {
+    fill: #e0e0e0;
+  }
+  90% {
+    fill: #e0e0e0;
+  }
+  100% {
+    fill: rgba(255, 255, 255, 0.1);
+  }
+}

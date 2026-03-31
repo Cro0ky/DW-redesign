@@ -4,8 +4,8 @@ import { Binary, ChevronDown, Swords } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { HeaderDropDown, MiniProfile } from "@/features";
-import { useGetUserInfo } from "@/hooks/useGetUserInfo";
-import { useToggleWithCloseAnimation } from "@/hooks/useToggleWithCloseAnimation";
+import { useGetUserInfo } from "@/hooks/use-get-user-info";
+import { useToggleWithCloseAnimation } from "@/hooks/use-toggle-with-close-animation";
 import { useModalStore } from "@/store/modal/modal.store";
 import { Button, EModalName, IButtonProps } from "@/ui";
 

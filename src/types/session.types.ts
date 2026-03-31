@@ -18,8 +18,22 @@ export interface IPaginatedSessions {
   results: ISessionListItem[];
 }
 
-export interface ICreateSingleParams {
-  name: string;
-  game_side: GameSide;
+export interface IGameParameters {
   game_type: IGameType;
+  game_side: GameSide;
+  raas_enabled: boolean;
+  enable_weather: boolean;
+  day_count: number;
+  tick_time: number;
+  preparation_turn_duration?: number;
+  inactivity_limit: number;
+  name?: string;
+
+  //SOLO
+  turns_count: number;
+  sub_turn_duration: number;
+
+  // TEAM
+  arrangement_turn_duration?: number;
+  destribution_turn_duration?: number;
 }

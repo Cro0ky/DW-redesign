@@ -1,4 +1,4 @@
-import { api } from "@/lib/api";
+import { apiRequest } from "@/lib/api/client";
 import type { IPaginatedSessionHistory } from "@/types/history.types";
 import type { IPaginatedRanking } from "@/types/ranking.types";
 import {
@@ -11,21 +11,35 @@ import {
 
 export const userService = {
   getUserInfo: (uid: string) =>
-    api.get<IUser | "user_not_found">(`/user/${uid}`),
+    apiRequest<IUser | "user_not_found">(`/user/${uid}`, {
+      method: "GET",
+    }),
 
   createTutorialPractice: (chapter: CreateTutorialPracticeRequest) =>
-    api.post<CreateTutorialPracticeResponse>(`/create`, chapter, true),
+    apiRequest<CreateTutorialPracticeResponse>(
+      `/create`,
+      {
+        method: "POST",
+        body: JSON.stringify(chapter),
+      },
+      true,
+    ),
 
-  getStatistic: (uid: string) => api.get<IStatistic>(`/user/${uid}/statistic/`),
-  getRanks: (uid: string) => api.get<IUserRanks>(`/user/${uid}/ranks/`),
+  getStatistic: (uid: string) =>
+    apiRequest<IStatistic>(`/user/${uid}/statistic/`, { method: "GET" }),
+
+  getRanks: (uid: string) =>
+    apiRequest<IUserRanks>(`/user/${uid}/ranks/`, { method: "GET" }),
 
   getSessionHistory: (sessionId: string, page: number = 1) =>
-    api.get<IPaginatedSessionHistory>(`/session/${sessionId}/history/`, {
+    apiRequest<IPaginatedSessionHistory>(`/session/${sessionId}/history/`, {
+      method: "GET",
       params: { page },
     }),
 
   getRanking: (page: number = 1, pageSize: number = 50) =>
-    api.get<IPaginatedRanking>(`/user/ranking/`, {
+    apiRequest<IPaginatedRanking>(`/user/ranking/`, {
+      method: "GET",
       params: { page, page_size: pageSize },
     }),
 };

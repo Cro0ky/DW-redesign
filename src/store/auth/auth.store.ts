@@ -2,15 +2,14 @@ import { deleteCookie } from "cookies-next";
 import Cookies from "js-cookie";
 import { create } from "zustand";
 
+import { JWT_ACCESS_COOKIE, JWT_REFRESH_COOKIE } from "@/lib/auth-cookies";
 import { authService } from "@/lib/api/services/auth/auth.service";
 import {
   type IAccount,
   type ILoginPayload,
   type IRegisterPayload,
-} from "@/lib/api/services/auth/auth.types";
-import { getQueryClient } from "@/lib/query/query-client";
-import { useRanksStore } from "@/store/ranks/ranks.store";
-import { useStatisticStore } from "@/store/statistic/statistic.store";
+} from "@/types/auth.types";
+import { getQueryClientRef } from "@/providers/query-provider";
 import { getDomain } from "@/utils/getDomain";
 
 export type TAuthPage = "login" | "account_selection" | "verify_email";
@@ -41,9 +40,6 @@ interface IAuthState {
   logout: () => Promise<void>;
   clearError: () => void;
 }
-
-const COOKIE_ACCESS = "jwt-access";
-const COOKIE_REFRESH = "jwt-refresh";
 
 export const useAuthStore = create<IAuthState>((set) => ({
   user: null,
@@ -79,8 +75,8 @@ export const useAuthStore = create<IAuthState>((set) => ({
         domain && !["localhost", "127.0.0.1"].includes(domain)
           ? { domain }
           : {};
-      Cookies.set(COOKIE_ACCESS, res.access, cookieOpts);
-      Cookies.set(COOKIE_REFRESH, res.refresh, cookieOpts);
+      Cookies.set(JWT_ACCESS_COOKIE, res.access, cookieOpts);
+      Cookies.set(JWT_REFRESH_COOKIE, res.refresh, cookieOpts);
 
       set({ isLoading: false });
       onSuccess?.("/home");
@@ -125,7 +121,7 @@ export const useAuthStore = create<IAuthState>((set) => ({
   logout: async () => {
     set({ isLoading: true });
     try {
-      const refresh = Cookies.get(COOKIE_REFRESH);
+      const refresh = Cookies.get(JWT_REFRESH_COOKIE);
       await authService.logout({ refresh: refresh ?? "" });
     } catch {
       // ignore
@@ -134,11 +130,9 @@ export const useAuthStore = create<IAuthState>((set) => ({
       const opts = ["localhost", "127.0.0.1"].includes(domain)
         ? {}
         : { domain };
-      deleteCookie(COOKIE_ACCESS, opts);
-      deleteCookie(COOKIE_REFRESH, opts);
-      getQueryClient().clear();
-      useStatisticStore.getState().clearStatistic();
-      useRanksStore.getState().clearRanks();
+      deleteCookie(JWT_ACCESS_COOKIE, opts);
+      deleteCookie(JWT_REFRESH_COOKIE, opts);
+      getQueryClientRef()?.clear();
       set({ user: null, isLoading: false, error: null });
     }
   },

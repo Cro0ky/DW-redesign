@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 import { TBaseTitle, TBaseTopic } from "@/types/knowledge-base-info.types";
 import { TModalVariant } from "@/types/modal.types";
+import type { IGameParameters } from "@/types/session.types";
 import { IGameType, Size } from "@/types/types";
 import { IButtonProps } from "@/ui";
 
@@ -10,6 +11,8 @@ export enum EModalName {
   UNIT_MODAL = "UNIT_MODAL",
   CHOOSE_SIDE_MODAL = "CHOOSE_SIDE_MODAL",
   CHOOSE_GAME_TYPE_MODAL = "CHOOSE_GAME_TYPE_MODAL",
+  CREATE_SINGLE_SESSION_MODAL = "CREATE_SINGLE_SESSION_MODAL",
+  WAITING_OPPONENT_MODAL = "WAITING_OPPONENT_MODAL",
 }
 
 export interface IBaseModalProps {
@@ -31,8 +34,16 @@ export interface IModalProps extends IBaseModalProps {
 /** Маппинг пропсов для каждого модального окна */
 export interface IModalParamsMap {
   [EModalName.CREATE_GAME_MODAL]: undefined;
-  [EModalName.CHOOSE_SIDE_MODAL]: { game_type: IGameType };
+  [EModalName.CHOOSE_SIDE_MODAL]: {
+    game_type: IGameType;
+    createSessionPayload?: Omit<IGameParameters, "game_side">;
+  };
   [EModalName.CHOOSE_GAME_TYPE_MODAL]: undefined;
+  [EModalName.CREATE_SINGLE_SESSION_MODAL]: undefined;
+  [EModalName.WAITING_OPPONENT_MODAL]: {
+    game_id: string;
+    game_type: IGameType;
+  };
   [EModalName.UNIT_MODAL]: {
     topic: TBaseTopic;
     description: string;

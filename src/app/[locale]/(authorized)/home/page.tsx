@@ -3,7 +3,6 @@
 import { BookOpenText } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { NewsList } from "@/features";
 import { useRouter } from "@/i18n/routing";
 import { Button } from "@/ui";
 
@@ -28,7 +27,7 @@ export default function Home() {
           color={"gray"}
         />
       </div>
-      <NewsList />
+      {/*<NewsList />*/}
     </div>
   );
 }

@@ -17,11 +17,10 @@ export const LeadersInfo = () => {
   const t = useTranslations();
 
   const {
-    isHydrated,
-    error,
+    isError,
     count,
     myPosition,
-    loading,
+    isLoading,
     page,
     totalPages,
     rows,
@@ -30,13 +29,12 @@ export const LeadersInfo = () => {
   } = useLeadersInfo();
 
   const { username, rank, experience } = useUserStore();
-  const userId = getUserUuid();
-  const statisticUid = userId?.user_id ?? "";
+  const userId = getUserUuid()?.user_id ?? "";
 
   const { data: statistic } = useQuery({
-    queryKey: queryKeys.user.statistic(statisticUid),
-    queryFn: () => userService.getStatistic(statisticUid),
-    enabled: !!statisticUid && isHydrated,
+    queryKey: queryKeys.userStatistic(userId),
+    queryFn: () => userService.getStatistic(userId),
+    enabled: !!userId,
   });
 
   const me = [
@@ -47,7 +45,7 @@ export const LeadersInfo = () => {
     `${statistic?.rating_statistic.total_wins_percentage ?? "—"}%`,
   ];
 
-  if (!isHydrated) {
+  if (isLoading) {
     return (
       <div className={styles.root}>
         <div className={styles.empty}>{t("leaders.loading")}</div>
@@ -55,11 +53,11 @@ export const LeadersInfo = () => {
     );
   }
 
-  if (error) {
+  if (isError) {
     return <div className={styles.error}>{t("leaders.load_error")}</div>;
   }
 
-  const tableLoading = loading && rows.length > 0;
+  const tableLoading = isLoading && rows.length > 0;
 
   const paginationMeta = (
     <span className={styles.metaRow}>
@@ -72,9 +70,9 @@ export const LeadersInfo = () => {
   return (
     <div className={styles.root}>
       <LeadersBanner />
-      {loading && rows.length === 0 ? (
+      {isLoading && rows.length === 0 ? (
         <div className={styles.empty}>{t("leaders.loading")}</div>
-      ) : !loading && rows.length === 0 ? (
+      ) : !isLoading && rows.length === 0 ? (
         <div className={styles.empty}>{t("leaders.empty")}</div>
       ) : (
         <Table
@@ -88,7 +86,7 @@ export const LeadersInfo = () => {
             page,
             totalPages,
             onPageChange: goToPage,
-            isLoading: loading,
+            isLoading,
             ariaNavLabel: t("leaders.pagination.nav_label"),
             ariaPrevLabel: t("leaders.pagination.prev"),
             ariaNextLabel: t("leaders.pagination.next"),

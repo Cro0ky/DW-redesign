@@ -1,18 +1,17 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import cn from "classnames";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { RefreshCw, Settings } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { useIsHydrated } from "@/lib/hooks/use-is-hydrated";
+import { sessionService } from "@/lib/api/services/session/session.service";
 import { queryKeys } from "@/lib/query/query-keys";
 import type { ISessionListItem } from "@/types/session.types";
 import type { TableColumn } from "@/types/table.types";
-import { GameSide } from "@/types/types";
-import { Button } from "@/ui";
+import { Button, EModalName } from "@/ui";
 
 import tableStyles from "../matches-info.module.scss";
-import { fetchSessionsPage } from "../matches-session-fetch";
+import { useModalStore } from "@/store/modal/modal.store";
 
 const PAGE_SIZE = 20;
 
@@ -26,95 +25,55 @@ type MatchesTableRow = ISessionListItem & {
   settingsAction: string;
 };
 
-function translateCode(
-  t: ReturnType<typeof useTranslations>,
-  prefix: string,
-  code: string,
-) {
-  const key = `${prefix}.${code}`;
-  const out = t(key);
-  return out === key ? code : out;
-}
-
-function opponentRoleLabel(
-  t: ReturnType<typeof useTranslations>,
-  availableSide: string,
-) {
-  const side = availableSide?.toUpperCase?.() ?? "";
-  if (side === GameSide.NATO) return t("matches.side_opponent.russia");
-  if (side === GameSide.RUSSIA) return t("matches.side_opponent.nato");
-  return availableSide || "—";
-}
-
 export const useMatchesInfo = () => {
   const t = useTranslations();
-  const isHydrated = useIsHydrated();
+  const { openModal } = useModalStore();
 
   const [page, setPage] = useState(1);
 
-  const {
-    data,
-    isFetching,
-    isPending,
-    isError,
-    refetch,
-  } = useQuery({
-    queryKey: queryKeys.sessions.list(page, PAGE_SIZE),
-    queryFn: async () => {
-      const result = await fetchSessionsPage(page, PAGE_SIZE);
-      if (!result) throw new Error("sessions fetch failed");
-      return result;
-    },
-    enabled: isHydrated,
+  const { data, isError, isLoading, refetch } = useQuery({
+    queryKey: queryKeys.sessions(page, PAGE_SIZE),
+    queryFn: () => sessionService.list(page, PAGE_SIZE),
     placeholderData: keepPreviousData,
   });
 
+  const rows = data?.results ?? [];
   const count = data?.count ?? 0;
+
   const totalPages = useMemo(
     () => Math.max(1, Math.ceil(count / PAGE_SIZE)),
     [count],
   );
 
-  // Страница из стейта может оказаться больше числа страниц после смены данных — поджимаем.
+  const currentPage = Math.min(page, totalPages);
+
+  const goToPage = useCallback(
+    (n: number) => {
+      setPage(Math.min(Math.max(1, n), totalPages));
+    },
+    [totalPages],
+  );
+
   useEffect(() => {
-    queueMicrotask(() => {
-      setPage((p) => Math.min(p, totalPages));
-    });
+    setPage((p) => Math.min(p, totalPages));
   }, [totalPages]);
 
-  const goToPage = (n: number) => {
-    setPage(Math.min(Math.max(1, n), totalPages));
-  };
-
-  const currentPage = Math.min(page, totalPages);
-  const loading = isFetching || isPending;
-  const error = isError;
-
-  const formatGameSubType = useCallback(
-    (code: string) => translateCode(t, "matches.game_sub_type", code),
-    [t],
+  const displayRows: MatchesTableRow[] = useMemo(
+    () =>
+      rows.map((row, idx) => ({
+        ...row,
+        rowIndex: (currentPage - 1) * PAGE_SIZE + idx + 1,
+        statusLabel: t(`matches.game_sub_type.${row.game_sub_type}`),
+        modeLabel: t(`matches.game_type.${row.game_type}`),
+        opponentRole: row.available_game_side
+          ? t(`matches.side_opponent.${row.available_game_side.toUpperCase()}`)
+          : "-",
+        opponentDisplay: String(row.opponent_name).trim() ?? "—",
+        connectAction: "",
+        settingsAction: "",
+      })),
+    [rows, currentPage, t],
   );
-  const formatGameType = useCallback(
-    (code: string) => translateCode(t, "matches.game_type", code),
-    [t],
-  );
-
-  const displayRows: MatchesTableRow[] = useMemo(() => {
-    const list = data?.results ?? [];
-    return list.map((row, idx) => ({
-      ...row,
-      rowIndex: (currentPage - 1) * PAGE_SIZE + idx + 1,
-      statusLabel: formatGameSubType(row.game_sub_type),
-      modeLabel: formatGameType(row.game_type),
-      opponentRole: opponentRoleLabel(t, row.available_game_side),
-      opponentDisplay:
-        row.opponent_name && String(row.opponent_name).trim()
-          ? row.opponent_name
-          : "—",
-      connectAction: "",
-      settingsAction: "",
-    }));
-  }, [data?.results, currentPage, formatGameSubType, formatGameType, t]);
 
   const columns: TableColumn<MatchesTableRow>[] = useMemo(
     () => [
@@ -155,6 +114,9 @@ export const useMatchesInfo = () => {
             type="button"
             variant="filled"
             className={tableStyles.headerCta}
+            onClick={() =>
+              openModal({ name: EModalName.CREATE_SINGLE_SESSION_MODAL })
+            }
           >
             {t("matches.actions.create_game")}
           </Button>
@@ -180,13 +142,13 @@ export const useMatchesInfo = () => {
             withoutBorder
             className={tableStyles.iconBtn}
             aria-label={t("matches.actions.refresh_aria")}
-            disabled={loading}
+            disabled={isLoading}
             onClick={() => void refetch()}
             iconLeft={
               <RefreshCw
                 className={cn(
                   tableStyles.headerRefreshIcon,
-                  loading && tableStyles.headerRefreshIconSpin,
+                  isLoading && tableStyles.headerRefreshIconSpin,
                 )}
                 strokeWidth={2}
                 aria-hidden
@@ -208,14 +170,13 @@ export const useMatchesInfo = () => {
         ),
       },
     ],
-    [t, loading, refetch],
+    [t, isLoading, refetch],
   );
 
   return {
-    isHydrated,
-    error,
+    isError,
+    isLoading,
     count,
-    loading,
     page: currentPage,
     totalPages,
     displayRows,

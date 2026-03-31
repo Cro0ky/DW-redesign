@@ -73,7 +73,9 @@ export const ChooseGameTypeModal = () => {
                 alt={game_type}
                 fill
               />
-              <span className={styles.card_title}>{game_type}</span>
+              <span className={styles.card_title}>
+                {t(`matches.game_type.${game_type}`).toUpperCase()}
+              </span>
             </div>
           ))}
         </div>

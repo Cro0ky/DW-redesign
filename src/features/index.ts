@@ -1,7 +1,7 @@
 export { AuthComponent } from "./auth-component/auth-component";
 export * from "./auth-component/auth-component";
 export * from "./auth-component/components";
-export * from "./auth-component/hooks/useAuthComponent";
+export * from "./auth-component/hooks/use-auth-component";
 export { FaqInfo } from "./faq-info/faq-info";
 export { HeaderDropDown } from "./header-drop-down/header-drop-down";
 export { HistoryInfo } from "./history-info/history-info";

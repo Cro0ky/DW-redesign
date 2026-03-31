@@ -1,37 +1,23 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { useIsHydrated } from "@/lib/hooks/use-is-hydrated";
+import { userService } from "@/lib/api/services/user/user.service";
 import { queryKeys } from "@/lib/query/query-keys";
 import type { IRankingRow } from "@/types/ranking.types";
 import type { TableColumn } from "@/types/table.types";
 import { Tooltip } from "@/ui";
 
-import { fetchRankingPage } from "../leaders-ranking-fetch";
-
 const PAGE_SIZE = 50;
-
-function translateRank(t: ReturnType<typeof useTranslations>, code: string) {
-  const key = `ranks.${code}`;
-  const out = t(key);
-  return out === key ? code : out;
-}
 
 export const useLeadersInfo = () => {
   const t = useTranslations();
-  const isHydrated = useIsHydrated();
 
   const [page, setPage] = useState(1);
 
-  const { data, isFetching, isPending, isError } = useQuery({
-    queryKey: queryKeys.ranking.list(page, PAGE_SIZE),
-    queryFn: async () => {
-      const result = await fetchRankingPage(page, PAGE_SIZE);
-      if (!result) throw new Error("ranking fetch failed");
-      return result;
-    },
-    enabled: isHydrated,
+  const { data, isError, isLoading } = useQuery({
+    queryKey: queryKeys.ranking(page, PAGE_SIZE),
+    queryFn: () => userService.getRanking(page, PAGE_SIZE),
     placeholderData: keepPreviousData,
   });
 
@@ -44,19 +30,16 @@ export const useLeadersInfo = () => {
     [count],
   );
 
+  const goToPage = useCallback(
+    (n: number) => {
+      setPage(Math.min(Math.max(1, n), totalPages));
+    },
+    [totalPages],
+  );
+
   useEffect(() => {
-    queueMicrotask(() => {
-      setPage((p) => Math.min(p, totalPages));
-    });
+    setPage((p) => Math.min(p, totalPages));
   }, [totalPages]);
-
-  const goToPage = (n: number) => {
-    setPage(Math.min(Math.max(1, n), totalPages));
-  };
-
-  const currentPage = Math.min(page, totalPages);
-  const loading = isFetching || isPending;
-  const error = isError;
 
   const columns: TableColumn<IRankingRow>[] = useMemo(
     () => [
@@ -77,7 +60,7 @@ export const useLeadersInfo = () => {
         key: "rank",
         header: t("leaders.columns.rank"),
         width: "160px",
-        render: (row) => <>{translateRank(t, String(row.rank))}</>,
+        render: (row) => <>{t(`ranks.${row.rank}`)}</>,
       },
       {
         key: "experience",
@@ -95,12 +78,11 @@ export const useLeadersInfo = () => {
   );
 
   return {
-    isHydrated,
-    error,
+    isLoading,
+    isError,
     count,
     myPosition,
-    loading,
-    page: currentPage,
+    page,
     totalPages,
     rows,
     columns,

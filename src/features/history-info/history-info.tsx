@@ -11,11 +11,9 @@ export const HistoryInfo = () => {
   const t = useTranslations();
 
   const {
-    isHydrated,
-    sessionId,
-    error,
+    isLoading,
+    isError,
     count,
-    loading,
     page,
     totalPages,
     rows,
@@ -23,7 +21,7 @@ export const HistoryInfo = () => {
     goToPage,
   } = useHistoryInfo();
 
-  if (!isHydrated) {
+  if (isLoading) {
     return (
       <div className={styles.root}>
         <div className={styles.empty}>{t("history.loading")}</div>
@@ -31,25 +29,17 @@ export const HistoryInfo = () => {
     );
   }
 
-  if (!sessionId) {
-    return (
-      <div className={styles.root}>
-        <div className={styles.empty}>{t("history.empty")}</div>
-      </div>
-    );
-  }
-
-  if (error) {
+  if (isError) {
     return <div className={styles.error}>{t("history.load_error")}</div>;
   }
 
-  const tableLoading = loading && rows.length > 0;
+  const tableLoading = isLoading && rows.length > 0;
 
   return (
     <div className={styles.root}>
-      {loading && rows.length === 0 ? (
+      {isLoading && rows.length === 0 ? (
         <div className={styles.empty}>{t("history.loading")}</div>
-      ) : !loading && rows.length === 0 ? (
+      ) : !isLoading && rows.length === 0 ? (
         <div className={styles.empty}>{t("history.empty")}</div>
       ) : (
         <Table
@@ -63,7 +53,7 @@ export const HistoryInfo = () => {
             page,
             totalPages,
             onPageChange: goToPage,
-            isLoading: loading,
+            isLoading,
             ariaNavLabel: t("history.pagination.nav_label"),
             ariaPrevLabel: t("history.pagination.prev"),
             ariaNextLabel: t("history.pagination.next"),

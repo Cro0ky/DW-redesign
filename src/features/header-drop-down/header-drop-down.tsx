@@ -4,8 +4,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { FC } from "react";
 
 import { MiniProfile, useAuthComponent } from "@/features";
-import { useChangeLocale } from "@/hooks/useChageLocale";
-import { useClearCookiesAndRedirect } from "@/hooks/useClearCookiesAndRedirect";
+import { useChangeLocale } from "@/hooks/use-change-locale";
+import { useClearCookiesAndRedirect } from "@/hooks/use-clear-cookies-and-redirect";
 import { useRouter } from "@/i18n/routing";
 import type { TLanguage } from "@/i18n/types";
 import { useUserStore } from "@/store";

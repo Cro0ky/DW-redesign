@@ -25,7 +25,19 @@ export const CreateGameModal = () => {
 
   const handleOpenModal = () => {
     if (!selectedGameMode) return;
-    openModal({ name: EModalName.CHOOSE_GAME_TYPE_MODAL });
+
+    switch (selectedGameMode) {
+      case "solo":
+        openModal({ name: EModalName.CHOOSE_GAME_TYPE_MODAL });
+        break;
+      case "single":
+        openModal({ name: EModalName.CREATE_SINGLE_SESSION_MODAL });
+        break;
+
+      default:
+        console.log(selectedGameMode);
+        break;
+    }
   };
 
   const mainModesArr: TGameModes[] = ["solo", "single"];

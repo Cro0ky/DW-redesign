@@ -34,13 +34,7 @@ export interface IUser {
 }
 
 export interface IUserState extends IUser {
-  isLoading: boolean;
-  isError: boolean;
   setUserInfo: (newState: IUser) => void;
-  userFulfilled: (data: IUser) => void;
-  userRejected: () => void;
-  setUserLoading: (value: boolean) => void;
-  fetchUser: (uid: string) => Promise<{ userNotFound?: boolean } | void>;
 }
 
 export interface IPlayer {

@@ -1,0 +1,3 @@
+.timer {
+  @include position($position: absolute, $bottom: 42%, $left: 37.5%);
+}

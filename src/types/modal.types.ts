@@ -6,7 +6,7 @@ import { EModalName } from "@/ui";
 export type TModalVariant = "default" | "transparent";
 
 export interface IBaseModalProps {
-  variant?: TModalVariant;
+   variant?: TModalVariant;
   children?: ReactNode;
   onClose?: () => void;
   zIndex?: number;

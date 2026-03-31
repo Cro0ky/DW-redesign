@@ -3,12 +3,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SmartCaptcha } from "@yandex/smart-captcha";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import type { TAuthStep } from "@/features";
 import { useRegistrationSchema } from "@/schemes";
+import { useAuthStore } from "@/store";
 import { Button, Input } from "@/ui";
 
 import styles from "./registration.module.scss";
@@ -23,7 +24,16 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
   const t = useTranslations();
 
   const [token, setToken] = useState("");
-  const [error, setError] = useState("");
+  const {
+    register: registerUser,
+    error,
+    clearError,
+    isLoading,
+  } = useAuthStore();
+
+  useEffect(() => {
+    return () => clearError();
+  }, [clearError]);
 
   const {
     control,
@@ -37,24 +47,30 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
   });
 
   const onSubmit = async (data: RegistrationSchema) => {
-    try {
-      console.log(data);
-    } catch {
-      setError(t("auth.registration.generic_error"));
-    }
+    await registerUser(
+      {
+        email: data.email,
+        password: data.password,
+        username: data.username,
+      },
+      token,
+    );
+    onStepChange("login");
   };
 
-  const isDisabled = [
-    "http://localhost:3000",
-    "https://dev.lobby.dronewars.su",
-  ].includes(window.location.origin)
-    ? false
-    : !token;
+  const isDisabled =
+    typeof window === "undefined"
+      ? true
+      : ["http://localhost:3000", "https://dev.lobby.dronewars.su"].includes(
+            window.location.origin,
+          )
+        ? false
+        : !token;
 
   return (
     <form
       className={styles.form}
-      onFocus={() => setError("")}
+      onFocus={() => clearError()}
       onSubmit={handleSubmit(onSubmit)}
     >
       <Controller
@@ -67,7 +83,9 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
             type={"email"}
             placeholder={t("auth.write_email")}
             value={field.value}
-            error={errors.email?.message && t(errors.email?.message)}
+            error={
+              errors.email?.message && t(errors.email?.message, { length: 254 })
+            }
           />
         )}
       />
@@ -80,7 +98,10 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
             label={t("auth.username")}
             placeholder={t("auth.write_username")}
             value={field.value}
-            error={errors.username?.message && t(errors.username?.message)}
+            error={
+              errors.username?.message &&
+              t(errors.username?.message, { length: 16 })
+            }
           />
         )}
       />
@@ -130,7 +151,7 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
         </div>
         <Button
           children={t("auth.registration.button_text")}
-          disabled={!isValid || isDisabled}
+          disabled={!isValid || isDisabled || isLoading}
           fullWidth
           type={"submit"}
         />

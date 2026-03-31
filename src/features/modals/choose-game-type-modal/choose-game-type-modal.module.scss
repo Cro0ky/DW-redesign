@@ -1,8 +1,8 @@
 .wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  width: 450px;
-  height: 190px;
+  width: 600px;
+  height: 250px;
   grid-gap: 10px;
 
   .card {
@@ -12,7 +12,8 @@
     position: relative;
     overflow: hidden;
     outline: 1px solid rgba(204, 204, 204, 0.29);
-    transition: 0.3s;
+    transition: 0.25s;
+    cursor: pointer;
 
     &.active {
       outline: 1px solid rgba(255, 255, 255, 0.57);
@@ -29,6 +30,8 @@
       transform: translateX(-50%);
       position: absolute;
       z-index: 2;
+      width: 100%;
+      text-align: center;
       left: 50%;
       bottom: 10px;
     }

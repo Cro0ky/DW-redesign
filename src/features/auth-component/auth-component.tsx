@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { DroneWarsLogo } from "@/components";
 import { AuthFormTransition, SUPPORT_MAIL, useAuthComponent } from "@/features";
-import { useChangeLocale } from "@/hooks/useChageLocale";
+import { useChangeLocale } from "@/hooks/use-change-locale";
 import type { TLanguage } from "@/i18n/types";
 import { Switcher } from "@/ui";
 

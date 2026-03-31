@@ -6,7 +6,7 @@ export interface TooltipProps {
   /** Текст или разметка подсказки */
   content: ReactNode;
   children: ReactNode;
-  /** @deprecated Подсказка всегда показывается над триггером (через portal) */
+  /** Сторона относительно триггера */
   side?: TooltipSide;
   /** Задержка перед показом, мс */
   delayMs?: number;

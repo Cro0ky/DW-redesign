@@ -6,4 +6,6 @@ export interface IApiError {
 
 export interface IRequestConfig extends RequestInit {
   params?: Record<string, string | number | boolean>;
+  /** Не вызывать refresh/retry (редко нужно для служебных запросов). */
+  skipAuthRefresh?: boolean;
 }

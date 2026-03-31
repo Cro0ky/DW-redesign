@@ -3,3 +3,5 @@ export { ChooseSideModal } from "./choose-side-modal/choose-side-modal";
 export { CreateGameModal } from "./create-game-modal/create-game-modal";
 export { ModalContainer } from "./modal-container";
 export { UnitModal } from "./unit-modal/unit-modal";
+export { CreateSingleSession } from "./create-single-session/create-single-session";
+export { WaitingOpponentModal } from "./waiting-opponent-modal/waiting-opponent-modal";
