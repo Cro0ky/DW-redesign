@@ -1,23 +1,18 @@
 "use client";
 
-import { Swords, Undo2 } from "lucide-react";
-import { useTranslations } from "next-intl";
-
-import { GameSide, IGameType } from "@/types/types";
 import { EModalName, Input, Modal, Select, Switcher } from "@/ui";
+import { Swords, Undo2 } from "lucide-react";
+import styles from "./create-team-session.module.scss";
+import { GameSide, IGameType } from "@/types/types";
+import { useTranslations } from "next-intl";
+import { useCreateSingleSession } from "@/features/modals/create-single-session/hooks/use-create-single-session";
 
-import styles from "./create-single-session.module.scss";
-import { useCreateSingleSession } from "./hooks/use-create-single-session";
-
-export const CreateSingleSession = () => {
+export const CreateTeamSession = () => {
   const t = useTranslations();
-
   const {
     visibleParameterConfigs,
     gameSideOptions,
-    gameTypeOptions,
     setSessionTab,
-    setGameType,
     setGameSide,
     isValidForm,
     parameters,
@@ -26,15 +21,15 @@ export const CreateSingleSession = () => {
     handleClose,
     handlePlay,
     renderParameter,
-  } = useCreateSingleSession();
+  } = useCreateSingleSession(IGameType.TEAM);
 
   return (
     <Modal
-      name={EModalName.CREATE_SINGLE_SESSION_MODAL}
+      name={EModalName.CREATE_TEAM_SESSION_MODAL}
       fullSize={false}
       onClose={handleClose}
       size="xl"
-      title={t("modals.create_single_session.title")}
+      title={"Создание командной сессии"}
       buttons={[
         {
           children: t("modals.create_game.back"),
@@ -88,17 +83,6 @@ export const CreateSingleSession = () => {
             selectedValue={{
               title: t(`side.${parameters.game_side.toLowerCase()}`),
               value: parameters.game_side,
-            }}
-          />
-
-          <Select
-            items={gameTypeOptions}
-            placeholder={t("modals.create_single_session.fields.game_type")}
-            label={t("modals.create_single_session.fields.game_type")}
-            onChangeValue={(v) => setGameType(v.value as IGameType)}
-            selectedValue={{
-              title: t(`matches.game_type.${parameters.game_type}`),
-              value: parameters.game_type,
             }}
           />
 

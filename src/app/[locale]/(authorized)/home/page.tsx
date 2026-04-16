@@ -7,6 +7,7 @@ import { useRouter } from "@/i18n/routing";
 import { Button } from "@/ui";
 
 import styles from "./page.module.scss";
+import { NewsList } from "@/features";
 
 export default function Home() {
   const t = useTranslations();
@@ -27,7 +28,7 @@ export default function Home() {
           color={"gray"}
         />
       </div>
-      {/*<NewsList />*/}
+      <NewsList />
     </div>
   );
 }

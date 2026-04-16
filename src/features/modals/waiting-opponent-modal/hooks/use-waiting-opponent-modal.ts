@@ -65,5 +65,5 @@ export const useWaitingOpponentModal = () => {
     deleteSessionMutation.mutate();
   };
 
-  return { handleClose, game_id, game_type };
+  return { handleClose, game_id, game_type, isWaitingModal };
 };

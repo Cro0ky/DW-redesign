@@ -23,8 +23,23 @@
     "support": "Техническая поддержка",
     "errors": {
       "incorrect_mail_format": "Неправильный формат почты",
+      "icloud_domain_not_allowed": "Почта с доменом iCloud не поддерживается",
       "password_must_be_least_8_characters": "Пароль должен быть не менее 8 символов",
-      "passwords_dont_match": "Пароли не совпадают"
+      "passwords_dont_match": "Пароли не совпадают",
+      "password_invalid_characters": "Пароль может содержать латинские буквы, цифры и спецсимволы",
+      "password_requirements": "Пароль должен содержать латинские буквы и спецсимволы, без пробелов",
+      "username_no_spaces": "Никнейм не должен содержать пробелы",
+      "username_min_length": "Минимальная длина никнейма 3 символа",
+      "username_max_length": "Максимальная длина никнейма 30 символов",
+      "user_already_exists": "Пользователь уже существует",
+      "credentials_invalid": "Неверные учетные данные",
+      "user_not_found": "Пользователь не найден",
+      "email_taken": "Данная почта уже зарегистрирована",
+      "username_taken": "Данное имя пользователя уже зарегистрировано",
+      "invalid_password": "Неверный пароль",
+      "verify_account": "Подтвердите адрес электронной почты",
+      "authorization_failed": "Ошибка авторизации",
+      "registration_failed": "Ошибка регистрации"
     },
     "login": {
       "title": "Войти в аккаунт",
@@ -230,6 +245,33 @@
         }
       }
     },
+    "create_single_session": {
+      "title": "Создание одиночной сессии",
+      "tabs": {
+        "open": "Открытая",
+        "private": "Приватная"
+      },
+      "fields": {
+        "name": "Название",
+        "game_side": "Сторона",
+        "game_type": "Тип игры",
+        "day_count": "Кол-во дней",
+        "tick_time": "Время тика",
+        "turns_count": "Кол-во дней",
+        "preparation_turn_duration": "Время подготовительного хода",
+        "sub_turn_duration": "Длительность шага",
+        "inactivity_limit": "Шагов бездействия до авто-завершения игры (0 для отключения)",
+        "inactivity_limit_rt": "Тики бездействия до авто-завершения игры (от 0 до 8, 0 для отключения)",
+        "arrangement_turn_duration": "Время расстановки",
+        "destribution_turn_duration": "Время распределения",
+        "enable_weather": "Погода"
+      },
+      "placeholders": {
+        "name": "Введите название сессии"
+      },
+      "weather_caption": "Включить погодные условия в матче",
+      "hint_range": "(от {min} до {max})"
+    },
     "unit": {
       "description": "Описание",
       "peculiarities": "Особенности"
@@ -427,5 +469,9 @@
   "sub_type": {
     "common": "Обычный",
     "single": "Одиночный"
+  },
+  "side": {
+    "russia": "Россия",
+    "nato": "НАТО"
   }
 }

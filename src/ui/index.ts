@@ -25,3 +25,5 @@ export { Switcher } from "./switcher/switcher";
 export { Table } from "./table/table";
 export { TablePagination } from "./table-pagination/table-pagination";
 export { Tooltip } from "./tooltip/tooltip";
+export { Select } from "./select/select";
+export * from "./select/select.types";

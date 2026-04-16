@@ -79,10 +79,13 @@ export const Login = ({ onStepChange }: ILoginProps) => {
         render={({ field }) => (
           <Input
             {...field}
+            isClearSpaces
             label={t("auth.email")}
             placeholder={t("auth.write_email")}
             value={field.value}
-            error={errors.email?.message && t(errors.email?.message)}
+            error={
+              errors.email?.message && t(errors.email?.message, { length: 100 })
+            }
           />
         )}
       />
@@ -92,37 +95,18 @@ export const Login = ({ onStepChange }: ILoginProps) => {
         render={({ field }) => (
           <Input
             {...field}
+            isClearSpaces
             label={t("auth.password")}
             type={"password"}
             placeholder={t("auth.write_password")}
             value={field.value}
             error={
               errors.password?.message &&
-              t(errors.password?.message, { length: 64 })
+              t(errors.password?.message, { length: 128 })
             }
           />
         )}
       />
-      <div className={styles.save_me}>
-        <Controller
-          name="save_me"
-          control={control}
-          render={({ field }) => (
-            <label className={styles.save_me_text}>
-              <input
-                type="checkbox"
-                checked={field.value ?? false}
-                onChange={(e) => field.onChange(e.target.checked)}
-                onBlur={field.onBlur}
-              />
-              <span>{t("auth.login.save_me")}</span>
-            </label>
-          )}
-        />
-        <span className={styles.forgot_password}>
-          {t("auth.login.forgot_password")}
-        </span>
-      </div>
       <div className={styles.buttons}>
         <div className={styles.capcha}>
           <SmartCaptcha
@@ -145,7 +129,7 @@ export const Login = ({ onStepChange }: ILoginProps) => {
           fullWidth
         />
       </div>
-      {error && <span className={styles.error}>{error}</span>}
+      {error && <span className={styles.error}>{t(error)}</span>}
     </form>
   );
 };

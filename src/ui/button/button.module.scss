@@ -51,6 +51,8 @@
       }
 
       &:disabled {
+        color: #616161;
+
         &:hover {
           background: #1c1c1c;
         }
@@ -97,11 +99,8 @@
       }
 
       &:disabled {
-        outline: 1px solid #c8c8c8;
-
-        &:hover {
-          color: #616161;
-        }
+        outline: 1px solid #616161;
+        color: #616161;
       }
     }
 
@@ -147,6 +146,7 @@
 
   .iconWrapper {
     @include flex(center, center);
+    color: inherit;
 
     svg {
       width: 18px;

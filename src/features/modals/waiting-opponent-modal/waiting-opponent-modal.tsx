@@ -7,11 +7,12 @@ import { useWaitingOpponentModal } from "./hooks/use-waiting-opponent-modal";
 import { ConnectionTimer } from "@/ui/connection-timer/connection-timer";
 import styles from "./waiting-opponent-modal.module.scss";
 export const WaitingOpponentModal = () => {
-  const { handleClose } = useWaitingOpponentModal();
+  const { handleClose, isWaitingModal } = useWaitingOpponentModal();
   return (
     <Modal
       onClose={handleClose}
       size={"l"}
+      fullSize={false}
       name={EModalName.WAITING_OPPONENT_MODAL}
       buttons={[
         {
@@ -25,9 +26,12 @@ export const WaitingOpponentModal = () => {
       ]}
       children={
         <div className={styles.wrapper}>
-          <ConnectionTimer>
-            <ConnectionTimer.Stopwatch />
-          </ConnectionTimer>
+          {isWaitingModal && (
+            <ConnectionTimer>
+              <ConnectionTimer.Stopwatch />
+            </ConnectionTimer>
+          )}
+          <span className={styles.title}>Ожидание соперника</span>
         </div>
       }
     />

@@ -52,3 +52,40 @@
     }
   }
 }
+
+@mixin font(
+  $size: false,
+  $weight: false,
+  $color: false,
+  $lh: false,
+  $align: false,
+  $transform: false,
+  $style: false,
+  $family: false
+) {
+  font-family: var(--font-roboto-flex), sans-serif, serif;
+  @if $size {
+    font-size: $size;
+  }
+  @if $color {
+    color: $color;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $lh {
+    line-height: $lh;
+  }
+  @if $align {
+    text-align: $align;
+  }
+  @if $family {
+    font-family: $family;
+  }
+  @if $transform {
+    text-transform: $transform;
+  }
+  @if $style {
+    font-style: $style;
+  }
+}

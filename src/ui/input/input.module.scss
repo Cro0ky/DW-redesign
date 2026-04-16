@@ -72,6 +72,16 @@
     }
   }
 
+  .text {
+    @include flex(center, space-between, 10px);
+    width: 100%;
+    padding: 0 10px 0 0;
+
+    .counter {
+      margin-left: auto;
+    }
+  }
+
   .error {
     margin-left: 10px;
     font-size: 12px;

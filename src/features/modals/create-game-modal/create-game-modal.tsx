@@ -33,6 +33,9 @@ export const CreateGameModal = () => {
       case "single":
         openModal({ name: EModalName.CREATE_SINGLE_SESSION_MODAL });
         break;
+      case "player_team":
+        openModal({ name: EModalName.CREATE_TEAM_SESSION_MODAL });
+        break;
 
       default:
         console.log(selectedGameMode);

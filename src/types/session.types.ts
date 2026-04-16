@@ -27,7 +27,7 @@ export interface IGameParameters {
   tick_time: number;
   preparation_turn_duration?: number;
   inactivity_limit: number;
-  name?: string;
+  name: string;
 
   //SOLO
   turns_count: number;

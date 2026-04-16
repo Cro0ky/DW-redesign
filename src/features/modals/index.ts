@@ -5,3 +5,4 @@ export { ModalContainer } from "./modal-container";
 export { UnitModal } from "./unit-modal/unit-modal";
 export { CreateSingleSession } from "./create-single-session/create-single-session";
 export { WaitingOpponentModal } from "./waiting-opponent-modal/waiting-opponent-modal";
+export { CreateTeamSession } from "./create-team-session/create-team-session";

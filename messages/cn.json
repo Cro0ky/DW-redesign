@@ -23,8 +23,23 @@
     "support": "技术支持",
     "errors": {
       "incorrect_mail_format": "邮箱格式不正确",
+      "icloud_domain_not_allowed": "不支持 iCloud 域名邮箱",
       "password_must_be_least_8_characters": "密码至少需要8个字符",
-      "passwords_dont_match": "密码不一致"
+      "passwords_dont_match": "密码不一致",
+      "password_invalid_characters": "密码可包含拉丁字母、数字和特殊符号",
+      "password_requirements": "密码必须包含拉丁字母和特殊符号，且不能有空格",
+      "username_no_spaces": "用户名不能包含空格",
+      "username_min_length": "用户名最少 3 个字符",
+      "username_max_length": "用户名最多 30 个字符",
+      "user_already_exists": "用户已存在",
+      "credentials_invalid": "凭据无效",
+      "user_not_found": "未找到用户",
+      "email_taken": "此電子郵件已註冊",
+      "username_taken": "此使用者名稱已註冊",
+      "invalid_password": "密码错误",
+      "verify_account": "请先验证您的账户",
+      "authorization_failed": "授权失败",
+      "registration_failed": "注册失败"
     },
     "login": {
       "save_me": "记住我",
@@ -230,6 +245,33 @@
         }
       }
     },
+    "create_single_session": {
+      "title": "创建单人会话",
+      "tabs": {
+        "open": "公开",
+        "private": "私密"
+      },
+      "fields": {
+        "name": "名称",
+        "game_side": "阵营",
+        "game_type": "游戏类型",
+        "day_count": "天数",
+        "tick_time": "Tick 时间",
+        "turns_count": "天数",
+        "preparation_turn_duration": "准备阶段时间",
+        "sub_turn_duration": "步长时长",
+        "inactivity_limit": "自动结束前的不活跃步数（0 为关闭）",
+        "inactivity_limit_rt": "自动结束前的不活跃 tick 数（0-8，0 为关闭）",
+        "arrangement_turn_duration": "部署时间",
+        "destribution_turn_duration": "分配时间",
+        "enable_weather": "天气"
+      },
+      "placeholders": {
+        "name": "请输入会话名称"
+      },
+      "weather_caption": "在对局中启用天气效果",
+      "hint_range": "（{min} 到 {max}）"
+    },
     "unit": {
       "description": "说明",
       "peculiarities": "特点"
@@ -430,5 +472,9 @@
   "sub_type": {
     "common": "常规",
     "single": "单人"
+  },
+  "side": {
+    "russia": "俄羅斯",
+    "nato": "北約"
   }
 }

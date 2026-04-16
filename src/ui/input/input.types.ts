@@ -8,4 +8,8 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   withoutBorder?: boolean;
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
+  isShowCounter?: boolean;
+  isClearSpaces?: boolean;
+  min?: number;
+  max?: number;
 }

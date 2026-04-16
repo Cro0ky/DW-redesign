@@ -1,14 +1,16 @@
+"use client";
+
 import { PropsWithChildren } from "react";
 
 import Drone from "@/assets/svg/drone.svg";
 
 import styles from "./connection-timer.module.scss";
-import { Stopwatch } from "./stopwatch";
-import { Timer } from "./timer";
+import { Stopwatch } from "./stopwatch/stopwatch";
+import { Timer } from "./timer/timer";
 
 function ConnectionTimer({ children }: PropsWithChildren) {
   const numIcons = 10; // Количество иконок
-  const radius = 70; // Радиус круга
+  const radius = 80; // Радиус круга
   const axis = 36;
 
   const drons = Array.from({ length: numIcons });
@@ -18,7 +20,7 @@ function ConnectionTimer({ children }: PropsWithChildren) {
       {drons.map((_, index) => {
         const angle = (index / numIcons) * 2 * Math.PI;
 
-        const x = radius * Math.cos(angle) - 14;
+        const x = radius * Math.cos(angle) + 125;
         const y = radius * Math.sin(angle);
         const z = axis * index;
 
@@ -37,7 +39,7 @@ function ConnectionTimer({ children }: PropsWithChildren) {
   );
 }
 
-ConnectionTimer.Timer = Timer;
 ConnectionTimer.Stopwatch = Stopwatch;
+ConnectionTimer.Timer = Timer;
 
 export { ConnectionTimer };

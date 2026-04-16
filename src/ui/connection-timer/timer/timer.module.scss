@@ -1,3 +1,4 @@
 .timer {
+  @include font($size: 26px, $weight: 700, $color: $white);
   @include position($position: absolute, $bottom: 42%, $left: 37.5%);
 }

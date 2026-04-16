@@ -23,8 +23,23 @@
     "support": "Technical Support",
     "errors": {
       "incorrect_mail_format": "Invalid email format",
+      "icloud_domain_not_allowed": "Emails with iCloud domain are not supported",
       "password_must_be_least_8_characters": "Password must be at least 8 characters",
-      "passwords_dont_match": "Passwords do not match"
+      "passwords_dont_match": "Passwords do not match",
+      "password_invalid_characters": "Password can contain Latin letters, digits, and special symbols",
+      "password_requirements": "Password must include Latin letters and special symbols, without spaces",
+      "username_no_spaces": "Username must not contain spaces",
+      "username_min_length": "Username must be at least 3 characters",
+      "username_max_length": "Username must be at most 30 characters",
+      "user_already_exists": "User already exists",
+      "credentials_invalid": "Credentials are invalid",
+      "user_not_found": "User not found",
+      "email_taken": "This email is already registered",
+      "username_taken": "This username is already registered",
+      "invalid_password": "Invalid password",
+      "verify_account": "Please verify your account",
+      "authorization_failed": "Authorization failed",
+      "registration_failed": "Registration failed"
     },
     "login": {
       "save_me": "Remember me",
@@ -230,6 +245,33 @@
         }
       }
     },
+    "create_single_session": {
+      "title": "Create single session",
+      "tabs": {
+        "open": "Open",
+        "private": "Private"
+      },
+      "fields": {
+        "name": "Name",
+        "game_side": "Side",
+        "game_type": "Game type",
+        "day_count": "Days count",
+        "tick_time": "Tick time",
+        "turns_count": "Days count",
+        "preparation_turn_duration": "Preparation turn time",
+        "sub_turn_duration": "Turn duration",
+        "inactivity_limit": "Idle turns before auto-end (0 to disable)",
+        "inactivity_limit_rt": "Idle ticks before auto-end (0-8, 0 to disable)",
+        "arrangement_turn_duration": "Arrangement time",
+        "destribution_turn_duration": "Distribution time",
+        "enable_weather": "Weather"
+      },
+      "placeholders": {
+        "name": "Enter session name"
+      },
+      "weather_caption": "Enable weather conditions in match",
+      "hint_range": "(from {min} to {max})"
+    },
     "unit": {
       "description": "Description",
       "peculiarities": "Features"
@@ -430,5 +472,9 @@
   "sub_type": {
     "common": "Common",
     "single": "Single"
+  },
+  "side": {
+    "russia": "Russia",
+    "nato": "NATO"
   }
 }

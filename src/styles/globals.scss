@@ -8,6 +8,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  object-fit: cover;
   background:
     linear-gradient(
       0deg,
@@ -35,10 +36,19 @@ a {
 }
 
 span,
+button,
+div,
 input {
+  color: $white;
   font-family: "Roboto Flex", serif;
 }
 
 img {
   pointer-events: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
 }

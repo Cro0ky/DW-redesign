@@ -5,6 +5,7 @@ import {
   UnitModal,
   CreateSingleSession,
   WaitingOpponentModal,
+  CreateTeamSession,
 } from "@/features";
 
 export const ModalContainer = () => {
@@ -16,6 +17,7 @@ export const ModalContainer = () => {
       <ChooseGameTypeModal />
       <CreateSingleSession />
       <WaitingOpponentModal />
+      <CreateTeamSession />
     </>
   );
 };

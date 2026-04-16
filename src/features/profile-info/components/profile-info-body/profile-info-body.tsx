@@ -4,13 +4,13 @@ import cn from "classnames";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import { ProfileTab } from "@/features";
+import { ProfileTab, StatisticInfo } from "@/features";
 
 import styles from "./profile-info-body.module.scss";
 
 type THeadTabs = "statistic" | "profile";
 
-const TABS: THeadTabs[] = ["profile"];
+const TABS: THeadTabs[] = ["profile", "statistic"];
 
 export const ProfileInfoBody = () => {
   const t = useTranslations();
@@ -20,8 +20,8 @@ export const ProfileInfoBody = () => {
     switch (activeTab) {
       case "profile":
         return <ProfileTab />;
-      // case "statistic":
-      //   return <StatisticInfo />;
+      case "statistic":
+        return <StatisticInfo />;
     }
   };
 

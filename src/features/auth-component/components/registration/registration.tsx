@@ -83,8 +83,9 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
             type={"email"}
             placeholder={t("auth.write_email")}
             value={field.value}
+            isClearSpaces
             error={
-              errors.email?.message && t(errors.email?.message, { length: 254 })
+              errors.email?.message && t(errors.email?.message, { length: 100 })
             }
           />
         )}
@@ -98,10 +99,17 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
             label={t("auth.username")}
             placeholder={t("auth.write_username")}
             value={field.value}
-            error={
-              errors.username?.message &&
-              t(errors.username?.message, { length: 16 })
-            }
+            isClearSpaces
+            onBeforeInput={(event) => {
+              if (event.data === " ") event.preventDefault();
+            }}
+            onPaste={(event) => {
+              const pastedText = event.clipboardData.getData("text");
+              if (/\s/.test(pastedText)) {
+                event.preventDefault();
+              }
+            }}
+            error={errors.username?.message && t(errors.username?.message)}
           />
         )}
       />
@@ -115,9 +123,10 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
             type={"password"}
             placeholder={t("auth.write_password")}
             value={field.value}
+            isClearSpaces
             error={
               errors.password?.message &&
-              t(errors.password?.message, { length: 64 })
+              t(errors.password?.message, { length: 128 })
             }
           />
         )}
@@ -133,9 +142,10 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
             type={"password"}
             placeholder={t("auth.repeat_password")}
             value={field.value}
+            isClearSpaces
             error={
               errors.confirm_password?.message &&
-              t(errors.confirm_password?.message, { length: 64 })
+              t(errors.confirm_password?.message, { length: 128 })
             }
           />
         )}
@@ -163,7 +173,7 @@ export const Registration = ({ onStepChange }: IRegistrationProps) => {
           children={t("auth.login.button_text")}
         />
       </div>
-      {error && <span className={styles.error}>{error}</span>}
+      {error && <span className={styles.error}>{t(error)}</span>}
     </form>
   );
 };
