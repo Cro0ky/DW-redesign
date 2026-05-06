@@ -1,5 +1,25 @@
 {
-  "all": {},
+  "all": {
+    "send": "Send"
+  },
+  "form": {
+    "last_name": "Last name",
+    "first_name": "First name",
+    "middle_name": "Middle name",
+    "birth_date": "Date of birth",
+    "birth_date_placeholder": "DD.MM.YYYY",
+    "phone_number": "Phone number",
+    "email": "Email"
+  },
+  "game": {
+    "radiochannel_request_title": "Radio channels access request",
+    "radiochannel_request_description": "Fill out the form to apply for participation in the radio channels simulation",
+    "radiochannel_request_pending": "Your application is under review, please wait",
+    "radiochannel_request_rejected": "Your application was declined",
+    "radiochannel_request_rejected_hint": "To submit a new application, please email us at",
+    "radiochannel_copy_email_tooltip": "Copy",
+    "radiochannel_email_copied_toast": "Email copied to clipboard."
+  },
   "header": {
     "battle": "Battle",
     "connect_with_code": "Connect with Code",
@@ -70,7 +90,8 @@
     "feedback": "Feedback",
     "telegram_title": "MAX and Telegram",
     "telegram_description": "Join us and be the first to know all the news!",
-    "join": "Join"
+    "join": "Join",
+    "radio-channels": "Radio channels"
   },
   "home": {
     "banner_title": "Game Basics",

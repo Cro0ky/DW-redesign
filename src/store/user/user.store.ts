@@ -20,4 +20,6 @@ export const initialUserState = {
 export const useUserStore = create<IUserState>((set) => ({
   ...initialUserState,
   setUserInfo: (state) => set(state),
+  setRCStatus: (status) => set((state) => ({ ...state, RCStatus: status })),
+  RCStatus: null,
 }));

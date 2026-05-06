@@ -10,6 +10,7 @@ import { isAuthenticated } from "@/lib/auth";
 import { QueryProvider } from "@/providers/query-provider";
 
 import styles from "./layout.module.scss";
+import { ToastContainer } from "react-toastify";
 
 interface IRootLayoutProps {
   children: ReactNode;
@@ -33,6 +34,13 @@ export default async function RootLayout({
   return (
     <NextIntlClientProvider>
       <QueryProvider>
+        <ToastContainer
+          limit={3}
+          theme={"dark"}
+          position="bottom-right"
+          toastClassName={styles.toast}
+          progressClassName={styles.progressBar}
+        />
         <div className={styles.wrapper}>
           {!isAuth ? (
             <>{children}</>

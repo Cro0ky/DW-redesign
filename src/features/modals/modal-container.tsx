@@ -1,23 +1,25 @@
 import {
-  ChooseGameTypeModal,
-  ChooseSideModal,
-  CreateGameModal,
   UnitModal,
+  CreateGameModal,
+  ChooseSideModal,
+  CreateTeamSession,
+  ChooseGameTypeModal,
   CreateSingleSession,
   WaitingOpponentModal,
-  CreateTeamSession,
+  ConfirmRcApplicationModal,
 } from "@/features";
 
 export const ModalContainer = () => {
   return (
     <>
-      <CreateGameModal />
-      <UnitModal />
-      <ChooseSideModal />
+      <ConfirmRcApplicationModal />
+      <WaitingOpponentModal />
       <ChooseGameTypeModal />
       <CreateSingleSession />
-      <WaitingOpponentModal />
       <CreateTeamSession />
+      <ChooseSideModal />
+      <CreateGameModal />
+      <UnitModal />
     </>
   );
 };

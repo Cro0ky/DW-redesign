@@ -1,5 +1,25 @@
 {
-  "all": {},
+  "all": {
+    "send": "Отправить"
+  },
+  "form": {
+    "last_name": "Фамилия",
+    "first_name": "Имя",
+    "middle_name": "Отчество",
+    "birth_date": "Дата рождения",
+    "birth_date_placeholder": "ДД.ММ.ГГГГ",
+    "phone_number": "Номер телефона",
+    "email": "Электронная почта"
+  },
+  "game": {
+    "radiochannel_request_title": "Заявка на доступ к радиоканалам",
+    "radiochannel_request_description": "Заполните форму, чтобы подать заявку на участие в симуляции радиоканалов",
+    "radiochannel_request_pending": "Ваша заявка на рассмотрении, ожидайте",
+    "radiochannel_request_rejected": "Ваша заявка отклонена",
+    "radiochannel_request_rejected_hint": "Для заполнения новой заявки напишите на почту",
+    "radiochannel_copy_email_tooltip": "Скопировать",
+    "radiochannel_email_copied_toast": "Почта успешно скопирована!"
+  },
   "header": {
     "battle": "В бой",
     "connect_with_code": "Подключиться по коду",
@@ -70,7 +90,8 @@
     "feedback": "Обратная связь",
     "telegram_title": "MAX и Telegram",
     "telegram_description": "Присоединяйся к нам, и узнавай все новости - первым!",
-    "join": "Присоединиться"
+    "join": "Присоединиться",
+    "radio-channels": "Радиоканалы"
   },
   "home": {
     "banner_title": "Основы игры",

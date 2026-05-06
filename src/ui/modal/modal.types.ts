@@ -5,6 +5,7 @@ import { TModalVariant } from "@/types/modal.types";
 import type { IGameParameters } from "@/types/session.types";
 import { IGameType, Size } from "@/types/types";
 import { IButtonProps } from "@/ui";
+import { IRCApplicationRequest } from "@/types/user.types";
 
 export enum EModalName {
   CREATE_GAME_MODAL = "CREATE_GAME_MODAL",
@@ -14,6 +15,7 @@ export enum EModalName {
   CREATE_SINGLE_SESSION_MODAL = "CREATE_SINGLE_SESSION_MODAL",
   CREATE_TEAM_SESSION_MODAL = "CREATE_TEAM_SESSION_MODAL",
   WAITING_OPPONENT_MODAL = "WAITING_OPPONENT_MODAL",
+  CONFIRM_RC_APPLICATION_MODAL = "CONFIRM_RC_APPLICATION_MODAL",
 }
 
 export interface IBaseModalProps {
@@ -66,6 +68,7 @@ export interface IModalParamsMap {
       photo_tick?: number;
     };
   };
+  [EModalName.CONFIRM_RC_APPLICATION_MODAL]: IRCApplicationRequest;
 }
 
 /** Дискриминированное объединение для типизации openModal */

@@ -19,5 +19,13 @@
     @include scrollbar();
     height: 100%;
     width: 100%;
+
+    .topic {
+      font-size: 18px;
+      font-weight: 500;
+      width: 100%;
+      padding-left: 6px;
+      margin-top: 20px;
+    }
   }
 }

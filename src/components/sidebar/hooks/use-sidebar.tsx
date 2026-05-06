@@ -2,11 +2,15 @@
 
 import {
   BookMarked,
+  BookOpenText,
+  BookPlus,
   CircleHelp,
   CircleUser,
   ClipboardClock,
+  Gamepad2,
   GraduationCap,
   Newspaper,
+  NotebookPen,
   Play,
   Trophy,
   Users,
@@ -33,5 +37,17 @@ export const useSidebar = () => {
     { href: "news", title: t("sidebar.news"), icon: <Newspaper /> },
   ];
 
-  return { DEFAULT_SIDEBAR_ITEMS };
+  const ADMIN_SIDEBAR_ITEMS = [
+    { href: "admin/users", title: "Пользователи", icon: <Users /> },
+    { href: "admin/sessions", title: "Сессии", icon: <Gamepad2 /> },
+    { href: "admin/posts", title: "Публикации", icon: <BookPlus /> },
+    { href: "admin/history", title: "История", icon: <BookOpenText /> },
+    {
+      href: "admin/radio-channels",
+      title: "Радиоканал",
+      icon: <NotebookPen />,
+    },
+  ];
+
+  return { DEFAULT_SIDEBAR_ITEMS, ADMIN_SIDEBAR_ITEMS };
 };

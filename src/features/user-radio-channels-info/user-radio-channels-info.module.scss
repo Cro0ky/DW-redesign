@@ -1,0 +1,47 @@
+.wrapper {
+  @include flex(center, flex-start, 10px, column);
+  width: 100%;
+  height: 100%;
+  padding: 70px 20px;
+
+  .title {
+    font-size: 30px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: #9c9c9c;
+  }
+
+  .email {
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 18px;
+    color: #9c9c9c;
+
+    &:hover {
+      color: #7a7979;
+    }
+
+    &:active {
+      color: #fff;
+    }
+  }
+
+  .form {
+    width: 100%;
+    margin-top: 20px;
+
+    .inputs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .button {
+      margin-top: 10px;
+      margin-left: auto;
+    }
+  }
+}

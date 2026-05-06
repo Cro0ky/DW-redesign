@@ -35,6 +35,8 @@ export interface IUser {
 
 export interface IUserState extends IUser {
   setUserInfo: (newState: IUser) => void;
+  setRCStatus: (state: TRCStatus | null) => void;
+  RCStatus: TRCStatus | null;
 }
 
 export interface IPlayer {
@@ -98,4 +100,22 @@ export interface IUserRanks {
   experience: number;
   position: number;
   ranks: IUserRankTier[];
+}
+
+export type TRCStatus = "PENDING" | "APPROVED" | "REJECTED";
+
+export interface IRCApplicationRequest {
+  last_name: string;
+  first_name: string;
+  middle_name: string;
+  email: string;
+  phone_number: string;
+  birth_date: string;
+  created_at?: string;
+  actual_email?: string;
+}
+
+export interface IRCStatusResponse {
+  id: string;
+  status: TRCStatus;
 }

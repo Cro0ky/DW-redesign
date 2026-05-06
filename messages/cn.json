@@ -1,5 +1,25 @@
 {
-  "all": {},
+  "all": {
+    "send": "发送"
+  },
+  "form": {
+    "last_name": "姓",
+    "first_name": "名",
+    "middle_name": "父名",
+    "birth_date": "出生日期",
+    "birth_date_placeholder": "日.月.年",
+    "phone_number": "电话号码",
+    "email": "电子邮箱"
+  },
+  "game": {
+    "radiochannel_request_title": "无线电频道访问申请",
+    "radiochannel_request_description": "填写表单以申请参与无线电频道模拟",
+    "radiochannel_request_pending": "您的申请正在审核中，请稍候",
+    "radiochannel_request_rejected": "您的申请已被拒绝",
+    "radiochannel_request_rejected_hint": "如需提交新申请，请发送邮件至",
+    "radiochannel_copy_email_tooltip": "复制",
+    "radiochannel_email_copied_toast": "邮箱已复制到剪贴板。"
+  },
   "header": {
     "battle": "开始战斗",
     "connect_with_code": "使用代码连接",
@@ -70,7 +90,8 @@
     "feedback": "反馈",
     "telegram_title": "MAX 和 Telegram",
     "telegram_description": "加入我们，第一时间了解所有新闻！",
-    "join": "加入"
+    "join": "加入",
+    "radio-channels": "廣播頻道"
   },
   "home": {
     "banner_title": "游戏基础",

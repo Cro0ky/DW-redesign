@@ -4,6 +4,8 @@ import type { IPaginatedRanking } from "@/types/ranking.types";
 import {
   CreateTutorialPracticeRequest,
   CreateTutorialPracticeResponse,
+  IRCApplicationRequest,
+  IRCStatusResponse,
   IStatistic,
   IUser,
   IUserRanks,
@@ -41,5 +43,16 @@ export const userService = {
     apiRequest<IPaginatedRanking>(`/user/ranking/`, {
       method: "GET",
       params: { page, page_size: pageSize },
+    }),
+
+  getRadioChannelsStatus: () =>
+    apiRequest<IRCStatusResponse>(`/user/applications/rc/my-status`, {
+      method: "GET",
+    }),
+
+  sendRCApplication: (data: IRCApplicationRequest) =>
+    apiRequest<IRCStatusResponse>(`/user/applications/rc`, {
+      method: "POST",
+      body: JSON.stringify(data),
     }),
 };

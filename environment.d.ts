@@ -8,5 +8,6 @@ declare namespace NodeJS {
     readonly NEXT_PUBLIC_DOMAIN_COOKIE: string;
     readonly NEXT_PUBLIC_ENV: "PROD" | "DEV";
     readonly NEXT_PUBLIC_YANDEX_CAPTCHA_KEY: string;
+    readonly NEXT_PUBLIC_RADIO_CHANNELS_SIMULATION_URL: string;
   }
 }
