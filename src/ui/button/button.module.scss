@@ -72,10 +72,14 @@
       }
 
       &:disabled {
-        background: #a52323;
+        outline: 1px solid #881a1a;
+        background: #6e1515;
+        color: #979696;
 
         &:hover {
-          background: #a52323;
+          outline: 1px solid #881a1a;
+          background: #6e1515;
+          color: #979696;
         }
       }
     }

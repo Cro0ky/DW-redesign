@@ -11,3 +11,12 @@ export interface INews {
   published_at: string;
   creator?: string;
 }
+
+export interface INewsStore {
+  news: INews[];
+  isLoading: boolean;
+  isError: boolean;
+  newsFulfilled: (data: INews[]) => void;
+  newsRejected: () => void;
+  fetchNews: () => Promise<void>;
+}

@@ -243,6 +243,12 @@
   },
   "modals": {
     "create_game_close": "ЗАКРЫТЬ",
+    "game_code_connect": {
+      "bar_label": "Подключение по коду",
+      "title": "Введите код",
+      "subtitle": "Введите код игры для подключения",
+      "connect": "Подключиться"
+    },
     "create_game": {
       "back": "Назад",
       "play": "Играть",

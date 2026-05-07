@@ -3,6 +3,7 @@ import type {
   IGameParameters,
   IPaginatedSessions,
 } from "@/types/session.types";
+import { IGameType } from "@/types/types";
 
 export const sessionService = {
   list: (page: number = 1, pageSize: number = 20) =>
@@ -32,4 +33,27 @@ export const sessionService = {
       `/session/${game_id}/start`,
       { method: "GET" },
     ),
+
+  connectToSession: (props: {
+    game_side?: string;
+    session_id?: string;
+    passcode?: number;
+  }) =>
+    apiRequest<ICodeConnectResponse>("session/accession/", {
+      method: "POST",
+      body: JSON.stringify(props),
+    }),
 };
+
+export interface IConnectResponse {}
+
+export interface IBaseConnectResponse {
+  url: string;
+}
+
+export interface ICodeConnectResponse extends IBaseConnectResponse {
+  game_type?: IGameType;
+  session_id?: string;
+  russia_count?: number;
+  nato_count?: number;
+}

@@ -243,6 +243,12 @@
   },
   "modals": {
     "create_game_close": "关闭",
+    "game_code_connect": {
+      "bar_label": "通过代码连接",
+      "title": "输入代码",
+      "subtitle": "请输入游戏代码以加入",
+      "connect": "连接"
+    },
     "create_game": {
       "back": "返回",
       "play": "开始游戏",

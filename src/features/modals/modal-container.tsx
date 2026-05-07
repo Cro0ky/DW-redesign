@@ -6,6 +6,7 @@ import {
   ChooseGameTypeModal,
   CreateSingleSession,
   WaitingOpponentModal,
+  GameCodeConnectModal,
   ConfirmRcApplicationModal,
 } from "@/features";
 
@@ -14,6 +15,7 @@ export const ModalContainer = () => {
     <>
       <ConfirmRcApplicationModal />
       <WaitingOpponentModal />
+      <GameCodeConnectModal />
       <ChooseGameTypeModal />
       <CreateSingleSession />
       <CreateTeamSession />

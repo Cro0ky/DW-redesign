@@ -8,23 +8,10 @@ import { ArrowLeft, Loader } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Image from "next/image";
-import { INews } from "@/types/news.types";
 import { formatDateTime } from "@/utils/formatDateTime";
 import { newsService } from "@/lib/api/services/news/news.service";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { queryKeys } from "@/lib/query/query-keys";
-
-export const newsInitialStateStatic: INews = {
-  id: "",
-  created_at: "",
-  updated_at: "",
-  title: "",
-  description: "",
-  published: false,
-  news_read: false,
-  image: "",
-  published_at: "",
-};
 
 export const CurrentNewInfo = () => {
   const { uuid } = useParams<{ uuid: string }>();

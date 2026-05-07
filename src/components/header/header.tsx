@@ -34,6 +34,7 @@ export const Header = () => {
       iconLeft: <Binary />,
       children: t("header.connect_with_code"),
       color: "gray",
+      onClick: () => openModal({ name: EModalName.GAME_CODE_CONNECT_MODAL }),
     },
   ];
 

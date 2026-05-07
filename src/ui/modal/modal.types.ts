@@ -16,6 +16,7 @@ export enum EModalName {
   CREATE_TEAM_SESSION_MODAL = "CREATE_TEAM_SESSION_MODAL",
   WAITING_OPPONENT_MODAL = "WAITING_OPPONENT_MODAL",
   CONFIRM_RC_APPLICATION_MODAL = "CONFIRM_RC_APPLICATION_MODAL",
+  GAME_CODE_CONNECT_MODAL = "GAME_CODE_CONNECT_MODAL",
 }
 
 export interface IBaseModalProps {
@@ -69,6 +70,7 @@ export interface IModalParamsMap {
     };
   };
   [EModalName.CONFIRM_RC_APPLICATION_MODAL]: IRCApplicationRequest;
+  [EModalName.GAME_CODE_CONNECT_MODAL]: undefined;
 }
 
 /** Дискриминированное объединение для типизации openModal */

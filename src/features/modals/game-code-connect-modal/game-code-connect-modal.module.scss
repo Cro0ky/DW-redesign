@@ -1,0 +1,32 @@
+.inputs {
+  @include flex(center, center, 10px);
+  width: 100%;
+
+  .digit {
+    flex: 1;
+    min-width: 0;
+    max-width: 56px;
+    aspect-ratio: 1;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fefbff;
+    background: rgba(37, 37, 41, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    outline: none;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+      font-weight: 400;
+    }
+
+    &:focus {
+      border-color: rgba(198, 40, 40, 0.65);
+      box-shadow: 0 0 0 1px rgba(198, 40, 40, 0.35);
+    }
+  }
+}
