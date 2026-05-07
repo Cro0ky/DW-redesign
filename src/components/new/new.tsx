@@ -5,10 +5,23 @@ import { INews } from "@/types/news.types";
 import { formatDateTime } from "@/utils/formatDateTime";
 
 import styles from "./new.module.scss";
+import { useRouter } from "@/i18n/routing";
 
-export const New: FC<INews> = ({ image, title, published_at, news_read }) => {
+export const New: FC<INews> = ({
+  image,
+  title,
+  published_at,
+  news_read,
+  id,
+}) => {
+  const { push } = useRouter();
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={styles.wrapper}
+      onClick={() => {
+        push(`/news/${id}`);
+      }}
+    >
       <div className={styles.preview}>
         <img
           alt="new"

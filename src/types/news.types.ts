@@ -7,7 +7,7 @@ export interface INews {
   description: string;
   published: boolean;
   image: string;
-  deleted_at: string | null;
+  deleted_at?: string | null;
   published_at: string;
-  creator: string;
+  creator?: string;
 }

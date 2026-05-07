@@ -1,0 +1,137 @@
+@keyframes newsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wrapper {
+  @include flex(flex-start, flex-start, 10px, column);
+  width: 100%;
+  height: 100%;
+
+  .new {
+    @include flex(flex-start, stretch, 24px, column);
+    width: 100%;
+    min-height: 100%;
+    padding-bottom: 32px;
+    position: relative;
+    animation: newsFadeIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+    .blur {
+      position: absolute;
+      width: 100%;
+      max-height: 300px;
+      height: 100%;
+      opacity: 0.6;
+      filter: blur(16px);
+      z-index: -1;
+    }
+
+    .preview {
+      position: relative;
+      width: 100%;
+      max-width: 660px;
+      margin-inline: auto;
+      aspect-ratio: 660 / 370;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      @include box-shadow(2px 2px 12px 2px #00000083);
+      background-color: #252529;
+    }
+
+    .image {
+      object-fit: cover;
+    }
+
+    .content {
+      @include flex(center, flex-start, 16px, column);
+      width: 100%;
+      margin-inline: auto;
+      padding: 24px 20px 28px;
+      background-color: rgba(22, 22, 26, 0.92);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-sizing: border-box;
+
+      .title {
+        @include font(
+          $size: 26px,
+          $align: center,
+          $style: italic,
+          $weight: 600
+        );
+        width: 100%;
+        color: $white;
+
+        :global(p) {
+          margin: 0;
+        }
+      }
+
+      .description {
+        width: 100%;
+        color: rgba(255, 255, 255, 0.92);
+        line-height: 1.55;
+
+        :global(p) {
+          margin: 0 0 0.75em;
+        }
+
+        :global(p:last-child) {
+          margin-bottom: 0;
+        }
+
+        :global(ul),
+        :global(ol) {
+          margin: 0 0 0.75em;
+          padding-left: 1.25em;
+        }
+
+        :global(a) {
+          color: #9ec5ff;
+          text-decoration: underline;
+        }
+
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        th,
+        td {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        th {
+          background-color: #f2f2f21e;
+        }
+        img {
+          max-width: 100%;
+        }
+      }
+
+      .date {
+        font-size: 12px;
+        align-self: flex-end;
+        color: rgba(255, 255, 255, 0.55);
+      }
+
+      .line {
+        width: 100%;
+        border-bottom: 1px solid $white;
+        opacity: 0.35;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wrapper .new {
+    animation: none;
+  }
+}

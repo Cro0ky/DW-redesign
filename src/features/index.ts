@@ -23,3 +23,4 @@ export { ProfileInfo } from "./profile-info/profile-info";
 export { TutorialBanner } from "./tutorial-banner/tutorial-banner";
 export { TutorialChapters } from "./tutorial-chapters/tutorial-chapters";
 export { UserRadioChannelsInfo } from "./user-radio-channels-info/user-radio-channels-info";
+export { CurrentNewInfo } from "./current-new-info/current-new-info";

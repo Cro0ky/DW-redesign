@@ -27,7 +27,7 @@ export const NewsList: FC<NewsListProps> = ({ variant = "component" }) => {
           ? Array.from({ length: SKELETON_COUNT }).map((_, i) => (
               <NewCardSkeleton key={i} />
             ))
-          : news.map((n) => <New {...n} key={n.id} />)}
+          : news?.map((n) => <New {...n} key={n.id} />)}
       </div>
     </div>
   );

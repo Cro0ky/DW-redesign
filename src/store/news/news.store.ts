@@ -15,8 +15,8 @@ export const useNewsStore = create<INewsStore>((set, get) => ({
   fetchNews: async () => {
     set({ isLoading: true, isError: false });
     try {
-      const { results } = await newsService.getNews();
-      get().newsFulfilled(results ?? []);
+      const list = await newsService.getNews();
+      get().newsFulfilled(list);
     } catch {
       get().newsRejected();
     }

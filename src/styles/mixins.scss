@@ -89,3 +89,15 @@
     font-style: $style;
   }
 }
+
+@mixin box-shadow(
+  $x: 0,
+  $y: 0,
+  $blur-radius: 0,
+  $spread-radius: 0,
+  $color: #00000000
+) {
+  -webkit-box-shadow: $x $y $blur-radius $spread-radius $color;
+  -moz-box-shadow: $x $y $blur-radius $spread-radius $color;
+  box-shadow: $x $y $blur-radius $spread-radius $color;
+}
