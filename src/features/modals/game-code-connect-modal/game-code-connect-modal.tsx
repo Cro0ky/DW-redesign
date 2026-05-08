@@ -14,12 +14,18 @@ import { useModalStore } from "@/store/modal/modal.store";
 import { EModalName, Modal } from "@/ui";
 
 import styles from "./game-code-connect-modal.module.scss";
+import { useMutation } from "@tanstack/react-query";
+import { sessionService } from "@/lib/api/services/session/session.service";
+import { getSimulationUrl } from "@/utils/getSimulationUrl";
+import { useUserStore } from "@/store";
 
 const CODE_LENGTH = 6;
 
 export const GameCodeConnectModal = () => {
   const t = useTranslations("modals.game_code_connect");
   const { closeModal, activeModal } = useModalStore();
+  const { id } = useUserStore();
+
   const [digits, setDigits] = useState<string[]>(() =>
     Array.from({ length: CODE_LENGTH }, () => ""),
   );
@@ -106,9 +112,18 @@ export const GameCodeConnectModal = () => {
   const code = digits.join("");
   const isComplete = code.length === CODE_LENGTH;
 
-  const handleConnect = () => {
+  const sessionConnect = useMutation({
+    mutationFn: sessionService.connectToSession,
+  });
+
+  const handleConnect = async () => {
     if (!isComplete) return;
-    console.log(code);
+    try {
+      const res = await sessionConnect.mutateAsync({ passcode: Number(code) });
+
+      window.location.href = `${getSimulationUrl(res?.game_type)}/init/${res.url}/${id}`;
+    } catch {}
+    return;
   };
 
   return (
